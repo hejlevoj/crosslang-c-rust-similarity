@@ -1,5 +1,6 @@
 torch>=2.0
-transformers>=4.35
+transformers>=4.35,<5   # pinned for consistency with categorization/, where 5.x
+                        # loads non-persistent buffers uninitialised
 peft>=0.6
 numpy>=1.24
 faiss-cpu>=1.7
