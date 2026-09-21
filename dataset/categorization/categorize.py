@@ -43,6 +43,39 @@ OUTPUT_SCORES = os.path.join(ROOT, "outputs", "similarity_scores.json")
 OUTPUT_CATS = os.path.join(ROOT, "outputs", "categories.json")
 
 
+def check_buffers(model):
+    """Fail loudly if the model's non-persistent buffers came back uninitialised.
+
+    This model's remote code registers `position_ids` as a non-persistent
+    buffer holding torch.arange(max_position_embeddings), and derives the RoPE
+    tables from an `inv_freq` buffer. transformers 5.x loads through a meta
+    device and materialises such buffers as uninitialised memory instead of
+    re-running their initialiser. With `position_ids` that surfaces as an
+    IndexError, which is survivable; with `inv_freq` it would not raise at all,
+    and every embedding would be quietly wrong. Hence this check - pin
+    transformers <5 (see requirements.txt) and verify anyway.
+    """
+    problems = []
+    for name, buf in model.named_buffers():
+        if buf.numel() == 0:
+            continue
+        if not torch.isfinite(buf.float()).all():
+            problems.append(f"{name}: contains non-finite values")
+        elif name.endswith("position_ids"):
+            expected = torch.arange(buf.numel(), device=buf.device)
+            if not torch.equal(buf.long(), expected):
+                problems.append(
+                    f"{name}: expected arange(0..{buf.numel() - 1}), got "
+                    f"min={buf.min().item()} max={buf.max().item()}")
+    if problems:
+        raise RuntimeError(
+            "Model buffers did not load correctly, so the embeddings would be "
+            "meaningless:\n  " + "\n  ".join(problems)
+            + "\nThis is what transformers>=5 does to this model's remote code. "
+              "Install transformers<5.")
+    print(f"Buffer sanity check passed ({sum(1 for _ in model.named_buffers())} buffers)")
+
+
 def encode(texts, tokenizer, model, device):
     all_embs = []
     for i in range(0, len(texts), BATCH):
@@ -85,6 +118,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
     print(f"Device: {device}")
+    check_buffers(model)
 
     print("\nEncoding C snippets ...")
     c_embs = encode([r["c_code"] for r in rows], tokenizer, model, device)
