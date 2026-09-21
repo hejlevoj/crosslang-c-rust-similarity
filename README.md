@@ -4,7 +4,7 @@ This repository contains all resources for a research project on measuring and i
 
 ## What’s Included
 
-- **Dataset:** 1886 pairs of C and Rust solutions to the same problems, cleaned and categorized by difficulty. Each pair includes the problem description and normalized code.
+- **Dataset:** 1857 pairs of C and Rust solutions to the same problems, cleaned and categorized by difficulty. Each pair includes the problem description and normalized code.
 - **Code Analysis Pipeline:** Tools to preprocess, analyze, and auto-fix C and Rust code, producing quality metrics and standardized formatting for fair comparison.
 - **Semantic Analysis Scripts:** Utilities to measure similarity between problem descriptions and code pairs, and to categorize dataset difficulty using state-of-the-art code embeddings.
 - **Model Finetuning:** Scripts to train and evaluate UniXcoder models for cross-language code similarity, including both full finetuning and parameter-efficient LoRA adapters.

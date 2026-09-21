@@ -1,6 +1,6 @@
 # Licensing of the C↔Rust dataset
 
-The dataset is an **aggregate of three upstream corpora that are not under the
+The dataset is an **aggregate of two upstream corpora that are not under the
 same licence**, so it is not distributed under a single one. Every record in
 `dataset/dataset.jsonl` carries a `license` field with the SPDX expression that
 governs it.
@@ -15,9 +15,8 @@ upstream licences yourself.
 
 | `origin` | Pairs | Upstream | Data licence |
 |---|---|---|---|
-| `xcodeeval` | 1018 (54.0%) | [xCodeEval](https://github.com/ntunlp/xCodeEval) (Codeforces) | **CC BY-NC 4.0** |
-| `codenet` | 839 (44.5%) | [IBM Project CodeNet](https://github.com/IBM/Project_CodeNet) (AtCoder) | **CDLA-Permissive-2.0** |
-| `common-algorithms` | 29 (1.5%) | [TheAlgorithms/C](https://github.com/TheAlgorithms/C) and [TheAlgorithms/Rust](https://github.com/TheAlgorithms/Rust) | **GPL-3.0** (C side) and **MIT** (Rust side) |
+| `xcodeeval` | 1018 (54.8%) | [xCodeEval](https://github.com/ntunlp/xCodeEval) (Codeforces) | **CC BY-NC 4.0** |
+| `codenet` | 839 (45.2%) | [IBM Project CodeNet](https://github.com/IBM/Project_CodeNet) (AtCoder) | **CDLA-Permissive-2.0** |
 
 Notes on each:
 
@@ -34,25 +33,28 @@ with the shared data. It places no restriction on commercial use and none on
 the licence of derived results (§3.1). `LICENSES/CDLA-Permissive-2.0.txt` is
 included for that reason.
 
-**common-algorithms.** These 29 pairs were taken from the TheAlgorithms
-project, whose per-language repositories do not share a licence: the C
-repository is GPL-3.0, the Rust repository is MIT. So the C and the Rust half of
-each of these 29 records are under different terms.
+**common-algorithms (removed).** The 1886-pair release also held 29 pairs
+taken from the TheAlgorithms project, whose per-language repositories do not
+share a licence: [TheAlgorithms/C](https://github.com/TheAlgorithms/C) is
+GPL-3.0 and [TheAlgorithms/Rust](https://github.com/TheAlgorithms/Rust) is MIT,
+so the two halves of each of those records were under different terms. They
+have been dropped - see the end of this file.
 
 ---
 
 ## What this means for the dataset as a whole
 
-**The aggregate is non-commercial.** 54% of the records are CC BY-NC 4.0, so
+**The aggregate is non-commercial.** 54.8% of the records are CC BY-NC 4.0, so
 the dataset as distributed cannot be used commercially, and cannot be
-relicensed under CC BY 4.0, MIT, Apache-2.0 or CDLA. Attribution to the three
+relicensed under CC BY 4.0, MIT, Apache-2.0 or CDLA. Attribution to both
 upstream projects is required.
 
-**GPL-3.0 and CC BY-NC 4.0 cannot be merged into one work.** GPL-3.0 requires
-that recipients be free to redistribute, including commercially; CC BY-NC
-forbids exactly that. The two sets of files therefore travel together as a
-*collection* — what the GPL calls mere aggregation — and not as a combined
-work. Each record keeps its own terms; none is imposed on the others.
+**There is no copyleft content.** Dropping `common-algorithms` removed the only
+GPL-3.0 files. That matters because GPL-3.0 and CC BY-NC 4.0 cannot be merged
+into a single work — the GPL requires that recipients be free to redistribute,
+including commercially, and CC BY-NC forbids exactly that. While those files
+were present, they and the CC BY-NC ones could only travel together as a
+*collection*, what the GPL calls mere aggregation. That constraint is gone.
 
 **A commercially usable subset exists.** Filtering to `origin == "codenet"`
 gives 839 pairs under CDLA-Permissive-2.0 with no commercial restriction:
@@ -64,22 +66,24 @@ rows = load(origin="codenet")   # 839 pairs, CDLA-Permissive-2.0
 
 ---
 
-## Recommendation: consider dropping `common-algorithms`
+## Why `common-algorithms` was dropped
 
-The 29 `common-algorithms` pairs are worth 1.5% of the dataset and carry most
-of its licensing complexity — they are the only GPL-3.0 content, and the only
-records whose two halves are under different licences.
+The 1886-pair release held 29 pairs from the TheAlgorithms project. They were
+worth 1.5% of the dataset and carried most of its licensing complexity: the
+only GPL-3.0 content, and the only records whose two halves were under
+different licences.
 
-They are also the odd ones out on the merits. They have no problem statement
-(the `problem_description` is a bare title such as `"Bead sort"`), and their
+They were also the odd ones out on the merits. They had no problem statement
+(the `problem_description` was a bare title such as `"Bead sort"`), and their
 functions take arguments (`fn solution(a: &mut [usize])`) rather than reading
-stdin like every competitive-programming pair, so they are structurally
+stdin like every competitive-programming pair, so they were structurally
 unlike the other 1857.
 
-Dropping them would leave a clean two-licence aggregate — CC BY-NC 4.0 plus
+Dropping them leaves a clean two-licence aggregate — CC BY-NC 4.0 plus
 CDLA-Permissive-2.0 — with no copyleft and no split-licence records, at
-negligible cost to size or diversity. This has not been done: it is a call for
-the dataset's authors to make.
+negligible cost to size or diversity. The exclusion is implemented as
+`DROPPED_ORIGINS` in `dataset/scripts/build_dataset_v1.py`, so it is documented
+and reversible rather than a one-off deletion.
 
 ---
 

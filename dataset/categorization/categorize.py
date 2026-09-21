@@ -69,6 +69,9 @@ def main():
     ap.add_argument("--verify", action="store_true",
                     help="compare the regenerated labels against the ones in "
                          "dataset.jsonl and fail on any disagreement")
+    ap.add_argument("--write-labels", action="store_true",
+                    help="write the regenerated difficulty and the raw "
+                         "similarity back into dataset.jsonl")
     args = ap.parse_args()
 
     rows = load()
@@ -124,9 +127,34 @@ def main():
         json.dump(categories, f, indent=2)
     print(f"\nSaved {OUTPUT_SCORES}\nSaved {OUTPUT_CATS}")
 
+    # Always report how far the regenerated labels are from the shipped ones.
+    published = {r["problem_id"]: r["difficulty"] for r in rows}
+    disagreements = [pid for pid in pids if published[pid] != categories[pid]]
+    print(f"\nAgreement with the labels currently in dataset.jsonl: "
+          f"{len(pids) - len(disagreements)}/{len(pids)} "
+          f"({100 * (len(pids) - len(disagreements)) / len(pids):.1f}%)")
+    if disagreements:
+        moved = Counter((published[pid], categories[pid]) for pid in disagreements)
+        for (was, now), n in moved.most_common():
+            print(f"  {was} -> {now}: {n}")
+
+    if args.write_labels:
+        scores = {pid: float(s) for pid, s in zip(pids, sims)}
+        dataset_path = os.path.join(ROOT, "..", "dataset.jsonl")
+        with open(dataset_path, encoding="utf-8") as f:
+            records = [json.loads(line) for line in f if line.strip()]
+        for rec in records:
+            rec["difficulty"] = categories[rec["problem_id"]]
+            rec["difficulty_score"] = round(scores[rec["problem_id"]], 6)
+        with open(dataset_path, "w", encoding="utf-8") as f:
+            for rec in records:
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        print(f"\nWrote difficulty and difficulty_score for {len(records)} pairs "
+              f"to {dataset_path}")
+        print("Now re-run scripts/build_dataset_v1.py --write to re-stratify "
+              "the split against the new tiers.")
+
     if args.verify:
-        published = {r["problem_id"]: r["difficulty"] for r in rows}
-        disagreements = [pid for pid in pids if published[pid] != categories[pid]]
         if disagreements:
             print(f"\nFAIL: {len(disagreements)} of {len(pids)} labels differ from "
                   f"the ones shipped in dataset.jsonl.", file=sys.stderr)

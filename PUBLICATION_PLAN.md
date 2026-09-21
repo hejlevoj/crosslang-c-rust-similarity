@@ -228,12 +228,33 @@ Identifiquei a fonte do `common-algorithms` pelo código: os 29 pares são do pr
 
 **Entregue:** campo `license` por registro (expressão SPDX); [`DATA_LICENSES.md`](DATA_LICENSES.md) com a análise completa; `LICENSES/CDLA-Permissive-2.0.txt` incluído porque a seção 2.1 dessa licença obriga a distribuir o texto junto; `LICENSE` (MIT) cobrindo **apenas o código próprio** do repositório, com aviso explícito de que não cobre os dados. O smoke test valida tudo isso.
 
-**Recomendação:** considerar **remover os 29 pares `common-algorithms`**. Valem 1.5% do dataset e concentram quase toda a complexidade jurídica — são o único conteúdo copyleft e os únicos registros com as duas metades sob licenças diferentes. São também anômalos no mérito: não têm enunciado (a descrição é o título, ex. `"Bead sort"`) e suas funções recebem argumentos (`fn solution(a: &mut [usize])`) em vez de ler stdin como todos os outros 1857. Removê-los deixaria um agregado limpo de duas licenças, sem copyleft, a custo desprezível. **Não fiz isso — é decisão sua.**
+**Os 29 pares `common-algorithms` foram removidos** (decisão do autor, 2026-09-21). O dataset passou de 1886 para **1857 pares**, agregado limpo de duas licenças: CC BY-NC 4.0 (1018) + CDLA-Permissive-2.0 (839), sem copyleft e sem registros com metades sob licenças diferentes. A exclusão está implementada como `DROPPED_ORIGINS` em `build_dataset_v1.py` — documentada e reversível, não uma deleção pontual. Split re-estratificado: **1485 / 185 / 187**.
+
+Efeito colateral esperado: os tiers de dificuldade eram quantis sobre 1886 e ficaram desbalanceados em 458/931/468 ao serem aplicados a 1857. Isso se resolve re-rotulando — ver Seção 9.
 
 **Ainda pendente:** a CC BY-NC 4.0 exige atribuição ao criador, e como os identificadores upstream se perderam (B5), a atribuição hoje só é possível no nível do corpus, não do problema. Esse é o argumento prático mais forte para recuperar a proveniência por problema.
 
 ---
 
-## 9. Próximo passo
+## 9. Re-rotulagem de dificuldade (em execução)
 
-Rodar `python dataset/categorization/categorize.py --verify`. É o último bloqueador de reprodutibilidade em aberto, e o resultado decide se os rótulos `difficulty` do release são defensáveis ou precisam ser regerados.
+`categorize.py --write-labels` está rodando sobre os 1857 pares. Ele recalcula a similaridade SFR, re-binariza em quantis 25/50/25 sobre a população atual, grava `difficulty` e adiciona `difficulty_score` (a similaridade bruta, para que terceiros possam re-binarizar com outros cortes).
+
+Note que `--verify` deixou de ser um teste limpo do B2 depois da remoção dos 29: os rótulos antigos eram quantis sobre 1886, então alguma discordância de fronteira é **esperada** e não indica defeito. Por isso o script agora sempre reporta a taxa de concordância e a matriz de migração (`easy -> medium`, etc.) de forma informativa, e `--verify` só é fatal quando você quer o teste estrito sobre a mesma população.
+
+**O que olhar no resultado:**
+
+- **Concordância alta (> ~95%), migrações só de fronteira** — os rótulos publicados eram reprodutíveis; B2 fechado. A discordância residual é o efeito da mudança de população.
+- **Concordância baixa, ou migrações `easy -> hard`** — o release foi rotulado por um script ou pooling que não está versionado. Nesse caso os números de dificuldade do paper têm que vir da nova rodada, e vale registrar isso como ameaça à validade.
+
+Depois que terminar:
+
+1. `python dataset/scripts/build_dataset_v1.py --write` — re-estratifica o split contra os tiers novos.
+2. Atualizar a tabela de thresholds em `dataset/README.md` (está marcada como pendente).
+3. `python dataset/scripts/smoke_test.py` — o aviso de tiers desbalanceados deve sumir.
+
+---
+
+## 10. Próximo passo depois disso
+
+Reexecutar os baselines (item 11 da Semana 3) sobre o split novo, reportando MRR@10 / R@1 / R@5 **por tier** além do global. É o último número que falta para a Seção V, e os atuais não servem.

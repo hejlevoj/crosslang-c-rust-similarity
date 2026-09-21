@@ -35,9 +35,27 @@ from collections import Counter
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DATASET = os.path.join(ROOT, "dataset.jsonl")
 
-# Counts reported in dataset/README.md. The recovery below is validated
-# against them: if it stops matching, the recovery heuristic is wrong.
-EXPECTED_ORIGINS = {"codenet": 839, "xcodeeval": 1018, "common-algorithms": 29}
+# Counts of the original v0 release. The recovery below is validated against
+# them: if it stops matching, the recovery heuristic is wrong. Only the origins
+# actually present in the input are checked, so this script stays idempotent
+# after the drop below has been applied once.
+RELEASE_ORIGINS = {"codenet": 839, "xcodeeval": 1018, "common-algorithms": 29}
+
+# Origins excluded from the dataset.
+#
+# common-algorithms: 29 pairs (1.5%) taken from TheAlgorithms, dropped for two
+# reasons that point the same way. Licensing - they are the only copyleft
+# content (TheAlgorithms/C is GPL-3.0) and the only records whose two halves
+# carry different licences (the Rust side is MIT), which is most of the legal
+# complexity of the dataset for 1.5% of its size. And fit - they have no
+# problem statement (the description is a bare title such as "Bead sort") and
+# their functions take arguments rather than reading stdin, so they are
+# structurally unlike the 1857 competitive-programming pairs.
+DROPPED_ORIGINS = {"common-algorithms"}
+
+# What the dataset should contain once the drop is applied.
+EXPECTED_ORIGINS = {k: v for k, v in RELEASE_ORIGINS.items()
+                    if k not in DROPPED_ORIGINS}
 
 # SPDX expression governing each record, by source. See DATA_LICENSES.md for
 # where each of these comes from and what it obliges a redistributor to do.
@@ -132,9 +150,14 @@ def assign_splits(rows, origins):
 
 def build(rows):
     origins = {r["problem_id"]: classify_origin(r["problem_description"]) for r in rows}
+    rows = [r for r in rows if origins[r["problem_id"]] not in DROPPED_ORIGINS]
     splits, split_stats = assign_splits(rows, origins)
     out = []
     for r in rows:
+        # difficulty_score is written by categorization/categorize.py
+        # --write-labels; carry it through when it is already there.
+        score = {"difficulty_score": r["difficulty_score"]} \
+            if "difficulty_score" in r else {}
         out.append({
             "problem_id": r["problem_id"],
             "origin": origins[r["problem_id"]],
@@ -144,6 +167,7 @@ def build(rows):
             "c_code": r["c_code"],
             "rust_code": r["rust_code"],
             "difficulty": r["difficulty"],
+            **score,
             "split": splits[r["problem_id"]],
         })
     return out, split_stats
@@ -158,17 +182,28 @@ def main():
     with open(DATASET, encoding="utf-8") as f:
         rows = [json.loads(line) for line in f if line.strip()]
 
+    print(f"Loaded {len(rows)} pairs from {DATASET}")
+
+    # validate the recovery on the input, before anything is dropped
+    recovered = Counter(classify_origin(r["problem_description"]) for r in rows)
+    print("\nRecovered origin (input):")
+    mismatch = False
+    for name, count in sorted(recovered.items()):
+        expected = RELEASE_ORIGINS.get(name)
+        ok = expected == count
+        mismatch |= not ok
+        note = "OK" if ok else f"MISMATCH (release had {expected})"
+        dropped = "  [dropped]" if name in DROPPED_ORIGINS else ""
+        print(f"  {name:20s} {count:5d}   {note}{dropped}")
+
     out, split_stats = build(rows)
 
     origins = Counter(r["origin"] for r in out)
     formats = Counter(r["problem_description_format"] for r in out)
 
-    print(f"Loaded {len(rows)} pairs from {DATASET}")
-    print("\nRecovered origin:")
-    for name, count in sorted(origins.items()):
-        expected = EXPECTED_ORIGINS.get(name)
-        flag = "OK" if expected == count else f"MISMATCH (README says {expected})"
-        print(f"  {name:20s} {count:5d}   {flag}")
+    if len(out) != len(rows):
+        print(f"\nDropped {len(rows) - len(out)} pairs "
+              f"({', '.join(sorted(DROPPED_ORIGINS))}) -> {len(out)} remain")
 
     print("\nDescription format:")
     for name, count in sorted(formats.items()):
@@ -178,9 +213,13 @@ def main():
     for name, count in split_stats.items():
         print(f"  {name:20s} {count:5d}")
 
-    if dict(origins) != EXPECTED_ORIGINS:
+    if mismatch:
         print("\nERROR: origin recovery does not match the documented breakdown.",
               file=sys.stderr)
+        return 1
+    if dict(origins) != EXPECTED_ORIGINS:
+        print(f"\nERROR: after the drop the dataset should hold "
+              f"{EXPECTED_ORIGINS}, got {dict(origins)}.", file=sys.stderr)
         return 1
 
     print("\nTest-set composition (should mirror the dataset):")
