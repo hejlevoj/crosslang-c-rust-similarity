@@ -1,37 +1,43 @@
 """
-Split dataset.jsonl into train/val/test and save as JSON files.
-Filters out outlier C samples (max 10k chars) to avoid one 129k-char anomaly.
+Report the frozen train/val/test split.
+
+This script used to generate the split at run time from `random.seed(42)` plus
+a length filter, writing data_{train,val,test}.json. Two problems with that:
+the split was never distributed, so nobody could reproduce a published number,
+and the length filter silently changed the split sizes depending on the input
+file. The split now lives in the `split` field of dataset.jsonl and is read
+through dataset/common/load.py; this script only reports it.
+
+To regenerate the split, see dataset/scripts/build_dataset_v1.py.
 """
 
-import json, os, random
-
-random.seed(42)
+import os
+import sys
+from collections import Counter
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load  # noqa: E402
 
-records = []
-with open(os.path.join(ROOT, 'data', 'dataset.jsonl')) as f:
-    for line in f:
-        r = json.loads(line.strip())
-        # filter extreme outliers in C (the 129k sample skews tokenization badly)
-        if len(r["c"]) <= 10000 and len(r["rust"]) <= 5000:
-            records.append({"problem_id": r["problem_id"], "c": r["c"], "rust": r["rust"]})
+rows = load()
+counts = Counter(r["split"] for r in rows)
 
-print(f"Total after filtering: {len(records)}")
+print(f"Frozen split over {len(rows)} pairs:")
+for name in ("train", "val", "test", "unused", "excluded"):
+    if counts.get(name):
+        print(f"  {name:10s} {counts[name]:5d}")
 
-random.shuffle(records)
+print("\nBy difficulty within each split:")
+for name in ("train", "val", "test"):
+    tiers = Counter(r["difficulty"] for r in rows if r["split"] == name)
+    print(f"  {name:10s} " + "  ".join(f"{k}={tiers[k]}" for k in ("easy", "medium", "hard")))
 
-n_train = 1500
-n_val   = 200
-n_test  = min(300, len(records) - n_train - n_val)
+print("\nBy origin within each split:")
+for name in ("train", "val", "test"):
+    origins = Counter(r["origin"] for r in rows if r["split"] == name)
+    print(f"  {name:10s} " + "  ".join(f"{k}={v}" for k, v in sorted(origins.items())))
 
-train = records[:n_train]
-val   = records[n_train:n_train + n_val]
-test  = records[n_train + n_val:n_train + n_val + n_test]
-
-print(f"Train: {len(train)}, Val: {len(val)}, Test: {len(test)}")
-
-for split, data in [("train", train), ("val", val), ("test", test)]:
-    with open(os.path.join(ROOT, "data", f"data_{split}.json"), "w") as f:
-        json.dump(data, f, indent=2)
-    print(f"Saved data_{split}.json")
+if counts.get("test") != 300:
+    print(f"\nNote: the test split holds {counts.get('test')} pairs. Results in this "
+          f"repository that were reported against a 300-pair test set were not "
+          f"produced from this dataset - see PUBLICATION_PLAN.md (B6).")

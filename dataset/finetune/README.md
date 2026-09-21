@@ -12,18 +12,20 @@ Finetunes [`microsoft/unixcoder-base`](https://github.com/microsoft/CodeBERT/tre
 
 5× improvement over zero-shot. LoRA achieves 94% of full finetune performance with 0.23% of parameters updated.
 
+> **These numbers need to be regenerated before publication.** They were reported against a 300-pair test set, but the seed-42 split applied to the released 1886-pair dataset yields a **185-pair** test set (1885 pairs survive the length filter; 1885 − 1500 − 200 = 185). They were therefore produced from a different input — most likely the 2013-pair pre-cleaning dataset, which is large enough for the 1500/200/300 split. Since MRR@10 and R@k depend on the size of the candidate pool, they are not comparable to results computed on this release. See `PUBLICATION_PLAN.md` (B6).
+
 ## Setup
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Place your dataset as `data/dataset_cleaned.jsonl`. Each entry must have fields: `problem_id`, `c_code`, `rust_code`.
+No data placement needed — the pipeline reads `dataset/dataset.jsonl` through `dataset/common/load.py` and uses the `split` field frozen in it.
 
 ## Usage
 
 ```bash
-# 1. Split dataset into train/val/test
+# 1. Report the frozen train/val/test split (by tier and by origin)
 python pipeline/prepare_data.py
 
 # 2. Evaluate zero-shot baseline

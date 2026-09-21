@@ -9,7 +9,7 @@ Outputs:
   outputs/description_similarity_openai.json  — same schema as description_similarity.json
 """
 
-import json, os, time
+import json, os, sys, time
 import numpy as np
 from collections import defaultdict
 from openai import OpenAI
@@ -27,8 +27,10 @@ BATCH  = 100   # OpenAI allows up to 2048 inputs per request
 
 # ── load dataset ──────────────────────────────────────────────────────────────
 
-with open('data/dataset.jsonl') as f:
-    entries = [json.loads(l) for l in f if l.strip()]
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from common.load import load  # noqa: E402
+
+entries = load()
 
 print(f"Loaded {len(entries)} entries")
 

@@ -10,6 +10,7 @@ Expected CPU time: ~2-3h for 5 epochs over 1500 pairs at batch_size=8.
 
 import json
 import os
+import sys
 import time
 import numpy as np
 import torch
@@ -74,17 +75,22 @@ def encode_split(data, tokenizer, model, device, batch_size=16):
     return np.vstack(c_embs), np.vstack(r_embs)
 
 
-def load_split(path):
-    with open(path) as f:
-        return json.load(f)
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load  # noqa: E402
+
+
+def load_split(split):
+    """Rows for one frozen split, keyed the way this pipeline expects."""
+    return [{"problem_id": r["problem_id"], "c": r["c_code"], "rust": r["rust_code"]}
+            for r in load(split=split)]
 
 
 def main():
     device = torch.device("cpu")
 
-    train_data = load_split(os.path.join(ROOT, "data", "data_train.json"))
-    val_data   = load_split(os.path.join(ROOT, "data", "data_val.json"))
-    test_data  = load_split(os.path.join(ROOT, "data", "data_test.json"))
+    train_data = load_split("train")
+    val_data   = load_split("val")
+    test_data  = load_split("test")
 
     print(f"Loading model: {MODEL_NAME}")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)

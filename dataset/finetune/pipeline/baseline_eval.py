@@ -3,7 +3,7 @@ Baseline evaluation: zero-shot UniXcoder embeddings, no finetuning.
 Encodes all C and Rust functions and runs the evaluation metrics.
 """
 
-import json, os
+import json, os, sys
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModel
@@ -39,10 +39,13 @@ def encode(texts, tokenizer, model, device, batch_size=BATCH_SIZE):
     return np.vstack(all_embs)
 
 
-def load_split(path):
-    with open(path) as f:
-        data = json.load(f)
-    return [d["c"] for d in data], [d["rust"] for d in data]
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load_pairs  # noqa: E402
+
+
+def load_split(split):
+    c_texts, rust_texts, _ = load_pairs(split=split)
+    return c_texts, rust_texts
 
 
 def main():
@@ -54,7 +57,7 @@ def main():
 
     results_all = {}
     for split in ["val", "test"]:
-        c_texts, rust_texts = load_split(os.path.join(ROOT, "data", f"data_{split}.json"))
+        c_texts, rust_texts = load_split(split)
         print(f"\nEncoding {split} C ({len(c_texts)} samples)...")
         c_embs = encode(c_texts, tokenizer, model, device)
         print(f"Encoding {split} Rust ({len(rust_texts)} samples)...")
