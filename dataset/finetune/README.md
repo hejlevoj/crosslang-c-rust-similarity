@@ -12,7 +12,9 @@ Finetunes [`microsoft/unixcoder-base`](https://github.com/microsoft/CodeBERT/tre
 
 5× improvement over zero-shot. LoRA achieves 94% of full finetune performance with 0.23% of parameters updated.
 
-> **These numbers need to be regenerated before publication.** They were reported against a 300-pair test set, but the seed-42 split applied to the released 1886-pair dataset yields a **185-pair** test set (1885 pairs survive the length filter; 1885 − 1500 − 200 = 185). They were therefore produced from a different input — most likely the 2013-pair pre-cleaning dataset, which is large enough for the 1500/200/300 split. Since MRR@10 and R@k depend on the size of the candidate pool, they are not comparable to results computed on this release. See `PUBLICATION_PLAN.md` (B6).
+> **These numbers are stale and need to be regenerated before publication.** They were reported against a 300-pair test set. The old seed-42 split applied to the 1886-pair dataset yields only 185 test pairs, so they were produced from a different input — most likely the 2013-pair pre-cleaning dataset, which is large enough for the 1500/200/300 split. The dataset now ships a stratified 1508/187/**191** split instead. Since MRR@10 and R@k depend on the size of the candidate pool, none of the numbers above is comparable to a result computed on this release. See `PUBLICATION_PLAN.md` (B6).
+>
+> When re-running, report the metrics **broken down by difficulty tier** as well as overall — the split is stratified precisely so that breakdown is valid.
 
 ## Setup
 

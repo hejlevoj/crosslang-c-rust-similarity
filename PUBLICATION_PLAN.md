@@ -143,7 +143,7 @@ Ordem importa: nada aqui depende de escrever o paper, e escrever o paper depende
 ## 4. Fase 3 — arXiv (semana 6)
 
 - **Categoria primária:** `cs.SE`. **Cross-list:** `cs.LG` (e opcionalmente `cs.CL`).
-- **Licença:** CC BY 4.0 (compatível com FAIR e com reuso).
+- **Licença do preprint:** CC BY 4.0. Vale para o *texto do paper*, que é obra sua. **Não** vale para o dataset, que é não-comercial — ver Seção 8.
 - **Atenção:** se for a primeira submissão sua em `cs.SE`, o arXiv pode exigir **endorsement**. Verificar isso na **semana 4**, não na 6 — resolver endorsement leva dias e é o erro clássico que atrasa preprint.
 - **Momento:** publicar o preprint **no dia da submissão ao MSR ou depois**. O track é single-anonymous, então não há conflito; mas publicar antes não traz benefício e expõe uma versão que ainda pode mudar.
 - Incluir no preprint: DOI do Zenodo, link do repositório, link do HF.
@@ -201,11 +201,39 @@ Ordem importa: nada aqui depende de escrever o paper, e escrever o paper depende
 - **F1 resolvido** via `problem_description_format` (839 html / 1047 text), preservando o original.
 - **Smoke test** em `dataset/scripts/smoke_test.py` — 13 checagens, segundos, sem download. Passa.
 
-### Decisões pendentes do autor
+### Concluído (2026-09-21, segunda rodada)
 
-1. **Manter o test set de 185 ou refazer o split?** O split congelado hoje reproduz fielmente o comportamento antigo, incluindo o defeito. Refazer (ex.: 80/10/10 proporcional sobre os 1886, estratificado por tier e origem) dá um test set maior e mais defensável, mas é decisão metodológica sua.
-2. **Licença.** Não adicionei `LICENSE` de propósito: depende dos termos upstream do CodeNet, xCodeEval e common-algorithms. Escolher uma errada é pior que não ter. Verificar os três e então adicionar (item 4 da Semana 1).
+- **Split refeito.** Estratificado por (origem × dificuldade) a 80/10/10 sobre os 1886 pares: **1508 / 187 / 191**. O test set espelha o dataset com drift máximo de 0.6pp por origem e 0.7pp por tier — pré-requisito para reportar MRR@10 por tier na Seção V. O filtro de tamanho foi removido: excluía exatamente 1 par (problema `0257`, 16460 chars de C) enquanto o filtro de Rust não excluía nenhum, e os modelos truncam em 512 tokens de qualquer forma.
+- **Licenciamento avaliado e materializado** — ver Seção 8, que é o achado mais consequente desta rodada.
 
-### Próximo passo
+---
+
+## 8. Licenciamento (avaliado em 2026-09-21)
+
+As três fontes **não compartilham licença**, e a combinação é mais restritiva do que este plano supunha na primeira versão.
+
+| Fonte | Pares | Licença dos dados | Verificado em |
+|---|---|---|---|
+| xCodeEval (Codeforces) | 1018 (54%) | **CC BY-NC 4.0** | README do `ntunlp/xCodeEval` |
+| CodeNet (AtCoder) | 839 (44.5%) | **CDLA-Permissive-2.0** | IBM / Linux Foundation |
+| common-algorithms | 29 (1.5%) | **GPL-3.0** (lado C) e **MIT** (lado Rust) | `TheAlgorithms/C` e `TheAlgorithms/Rust` |
+
+Identifiquei a fonte do `common-algorithms` pelo código: os 29 pares são do projeto TheAlgorithms, cujos repositórios por linguagem têm licenças diferentes — C é GPL-3.0, Rust é MIT.
+
+**Três consequências que mudam decisões do plano:**
+
+1. **O dataset agregado é não-comercial.** 54% é CC BY-NC 4.0, então o conjunto não pode ser relicenciado como CC BY 4.0, MIT, Apache-2.0 ou CDLA. A recomendação original de CC BY 4.0 para o dataset estava errada e foi corrigida — ela continua valendo só para o texto do preprint.
+2. **GPL-3.0 e CC BY-NC 4.0 não se fundem numa obra só.** A GPL exige liberdade de redistribuição comercial; a CC BY-NC proíbe exatamente isso. Os arquivos convivem como *coleção* (mera agregação), cada registro com seus próprios termos.
+3. **Atenção a uma contradição na fonte.** O mirror do xCodeEval no Hugging Face está marcado `cc-by-4.0`, contradizendo o README do repositório, que diz CC BY-NC 4.0. Segui o README — é a declaração dos próprios autores e a mais restritiva. Se você precisar da leitura permissiva, obtenha confirmação por escrito dos autores; não se apoie na tag do HF.
+
+**Entregue:** campo `license` por registro (expressão SPDX); [`DATA_LICENSES.md`](DATA_LICENSES.md) com a análise completa; `LICENSES/CDLA-Permissive-2.0.txt` incluído porque a seção 2.1 dessa licença obriga a distribuir o texto junto; `LICENSE` (MIT) cobrindo **apenas o código próprio** do repositório, com aviso explícito de que não cobre os dados. O smoke test valida tudo isso.
+
+**Recomendação:** considerar **remover os 29 pares `common-algorithms`**. Valem 1.5% do dataset e concentram quase toda a complexidade jurídica — são o único conteúdo copyleft e os únicos registros com as duas metades sob licenças diferentes. São também anômalos no mérito: não têm enunciado (a descrição é o título, ex. `"Bead sort"`) e suas funções recebem argumentos (`fn solution(a: &mut [usize])`) em vez de ler stdin como todos os outros 1857. Removê-los deixaria um agregado limpo de duas licenças, sem copyleft, a custo desprezível. **Não fiz isso — é decisão sua.**
+
+**Ainda pendente:** a CC BY-NC 4.0 exige atribuição ao criador, e como os identificadores upstream se perderam (B5), a atribuição hoje só é possível no nível do corpus, não do problema. Esse é o argumento prático mais forte para recuperar a proveniência por problema.
+
+---
+
+## 9. Próximo passo
 
 Rodar `python dataset/categorization/categorize.py --verify`. É o último bloqueador de reprodutibilidade em aberto, e o resultado decide se os rótulos `difficulty` do release são defensáveis ou precisam ser regerados.

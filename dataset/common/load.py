@@ -9,12 +9,16 @@ Schema v1.0:
 
     problem_id                  zero-padded id, "0001".."1886"
     origin                      "codenet" | "xcodeeval" | "common-algorithms"
+    license                     SPDX expression governing this record
     problem_description         the upstream statement, verbatim
     problem_description_format  "html" | "text"
     c_code                      C implementation, entry point named solution()
     rust_code                   Rust implementation, entry point fn solution()
     difficulty                  "easy" | "medium" | "hard"
-    split                       "train" | "val" | "test" | "unused" | "excluded"
+    split                       "train" | "val" | "test"
+
+Records do not share a single licence - see DATA_LICENSES.md before
+redistributing or using this data commercially.
 """
 
 import json
@@ -26,6 +30,7 @@ DATASET = os.path.join(ROOT, "dataset.jsonl")
 REQUIRED_FIELDS = (
     "problem_id",
     "origin",
+    "license",
     "problem_description",
     "problem_description_format",
     "c_code",
@@ -39,8 +44,10 @@ def load(path=None, split=None, origin=None, difficulty=None):
     """Read the dataset, optionally filtered.
 
     `split`, `origin` and `difficulty` each accept a string or a collection of
-    strings. Passing split=None returns every pair, including the ones marked
-    "excluded" by the length filter.
+    strings. Passing split=None returns every pair.
+
+    Note that filtering by origin also filters by licence - load(origin="codenet")
+    is the subset that carries no commercial restriction.
     """
     path = path or DATASET
     if not os.path.exists(path):

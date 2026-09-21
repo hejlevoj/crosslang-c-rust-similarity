@@ -17,7 +17,9 @@ from collections import Counter
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 sys.path.insert(0, ROOT)
 from common.load import load, load_pairs, REQUIRED_FIELDS  # noqa: E402
-from scripts.build_dataset_v1 import classify_origin, EXPECTED_ORIGINS  # noqa: E402
+from scripts.build_dataset_v1 import (  # noqa: E402
+    classify_origin, EXPECTED_ORIGINS, ORIGIN_LICENSES,
+)
 
 failures = []
 
@@ -63,16 +65,39 @@ def main():
     check("format is only html or text", set(formats) <= {"html", "text"},
           str(dict(formats)))
 
+    print("\nLicensing")
+    check("every record carries a licence",
+          all(r["license"] for r in rows))
+    check("licence matches the record's origin",
+          all(r["license"] == ORIGIN_LICENSES[r["origin"]] for r in rows),
+          str(dict(Counter(r["license"] for r in rows))))
+    check("CDLA-Permissive-2.0 text is shipped, as its section 2.1 requires",
+          os.path.exists(os.path.join(ROOT, "..", "LICENSES",
+                                      "CDLA-Permissive-2.0.txt")))
+    check("a commercially usable subset is reachable",
+          len(load(origin="codenet")) == EXPECTED_ORIGINS["codenet"])
+
     print("\nSplits")
     splits = Counter(r["split"] for r in rows)
     check("split values are known",
-          set(splits) <= {"train", "val", "test", "unused", "excluded"},
-          str(dict(splits)))
-    check("train/val/test are disjoint and non-empty",
+          set(splits) <= {"train", "val", "test"}, str(dict(splits)))
+    check("every pair is assigned to a split",
+          sum(splits.values()) == len(rows))
+    check("train/val/test are non-empty",
           all(splits.get(s) for s in ("train", "val", "test")))
     c, r_, p = load_pairs(split="test")
     check("load_pairs returns aligned columns",
           len(c) == len(r_) == len(p) == splits["test"])
+
+    # the split is stratified, so the test set should mirror the whole dataset
+    for field in ("origin", "difficulty"):
+        overall = {k: v / len(rows) for k, v in Counter(r[field] for r in rows).items()}
+        in_test = {k: v / splits["test"]
+                   for k, v in Counter(r[field] for r in rows
+                                       if r["split"] == "test").items()}
+        drift = max(abs(in_test.get(k, 0) - overall[k]) for k in overall)
+        check(f"test set mirrors the dataset by {field}", drift < 0.02,
+              f"max drift {100 * drift:.1f}pp")
 
     print("\nDifficulty")
     tiers = Counter(r["difficulty"] for r in rows)

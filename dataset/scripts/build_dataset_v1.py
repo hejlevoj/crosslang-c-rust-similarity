@@ -39,12 +39,27 @@ DATASET = os.path.join(ROOT, "dataset.jsonl")
 # against them: if it stops matching, the recovery heuristic is wrong.
 EXPECTED_ORIGINS = {"codenet": 839, "xcodeeval": 1018, "common-algorithms": 29}
 
-# Split parameters, kept identical to finetune/pipeline/prepare_data.py so the
-# frozen split reproduces what that script generates from the same input.
+# SPDX expression governing each record, by source. See DATA_LICENSES.md for
+# where each of these comes from and what it obliges a redistributor to do.
+# common-algorithms carries two: the C side is taken from TheAlgorithms/C
+# (GPL-3.0) and the Rust side from TheAlgorithms/Rust (MIT).
+ORIGIN_LICENSES = {
+    "codenet": "CDLA-Permissive-2.0",
+    "xcodeeval": "CC-BY-NC-4.0",
+    "common-algorithms": "GPL-3.0-only AND MIT",
+}
+
+# Split parameters. The split is stratified by (origin, difficulty) so that
+# every tier and every source keeps its share in train, val and test - a
+# retrieval score on the test set is otherwise not comparable across tiers.
+#
+# This replaces the earlier scheme, which drew a flat random split at run time
+# after dropping pairs over a length threshold. That threshold excluded exactly
+# one pair (problem 0257, 16460 chars of C; the next longest is 4649) while the
+# Rust threshold excluded none, and the models truncate at 512 tokens anyway -
+# so it bought nothing and made the split sizes depend on the input file.
 SEED = 42
-MAX_C_CHARS = 10000
-MAX_RUST_CHARS = 5000
-N_TRAIN, N_VAL, N_TEST = 1500, 200, 300
+TRAIN_FRAC, VAL_FRAC = 0.80, 0.10
 
 _HTML_TAG = re.compile(r"</(p|div|section|span|var|h3|li|ul|pre|blockquote)>", re.I)
 
@@ -72,53 +87,58 @@ def describe_format(description):
     return "html" if _HTML_TAG.search(description.strip()) else "text"
 
 
-def assign_splits(rows):
-    """Reproduce prepare_data.py's split and freeze it into the dataset.
+def assign_splits(rows, origins):
+    """Stratified train/val/test assignment over every pair.
 
-    Returns (mapping problem_id -> split, stats dict). Pairs dropped by the
-    length filter are marked "excluded" rather than silently disappearing.
+    Each (origin, difficulty) stratum is shuffled with a fixed seed and cut at
+    the same 80/10/10 proportions, so the tier and source mix of the test set
+    matches the dataset as a whole. No pair is dropped.
+
+    Returns (mapping problem_id -> split, stats dict).
     """
-    kept = [
-        r["problem_id"]
-        for r in rows
-        if len(r["c_code"]) <= MAX_C_CHARS and len(r["rust_code"]) <= MAX_RUST_CHARS
-    ]
-    excluded = [r["problem_id"] for r in rows if r["problem_id"] not in set(kept)]
+    strata = {}
+    for r in rows:
+        key = (origins[r["problem_id"]], r["difficulty"])
+        strata.setdefault(key, []).append(r["problem_id"])
 
-    random.seed(SEED)
-    random.shuffle(kept)
-
-    n_test = min(N_TEST, len(kept) - N_TRAIN - N_VAL)
+    rng = random.Random(SEED)
     splits = {}
-    for pid in kept[:N_TRAIN]:
-        splits[pid] = "train"
-    for pid in kept[N_TRAIN:N_TRAIN + N_VAL]:
-        splits[pid] = "val"
-    for pid in kept[N_TRAIN + N_VAL:N_TRAIN + N_VAL + n_test]:
-        splits[pid] = "test"
-    for pid in kept[N_TRAIN + N_VAL + n_test:]:
-        splits[pid] = "unused"
-    for pid in excluded:
-        splits[pid] = "excluded"
+    for key in sorted(strata):
+        # sort first so the shuffle does not inherit file order
+        pids = sorted(strata[key])
+        rng.shuffle(pids)
+        n = len(pids)
+        n_train = round(n * TRAIN_FRAC)
+        n_val = round(n * VAL_FRAC)
+        # guarantee a non-empty test slice for strata big enough to have one
+        if n - n_train - n_val < 1 and n >= 3:
+            n_train = n - n_val - 1
+        for pid in pids[:n_train]:
+            splits[pid] = "train"
+        for pid in pids[n_train:n_train + n_val]:
+            splits[pid] = "val"
+        for pid in pids[n_train + n_val:]:
+            splits[pid] = "test"
 
+    counts = Counter(splits.values())
     stats = {
         "total": len(rows),
-        "after_length_filter": len(kept),
-        "excluded": len(excluded),
-        "train": N_TRAIN,
-        "val": N_VAL,
-        "test": n_test,
+        "train": counts["train"],
+        "val": counts["val"],
+        "test": counts["test"],
     }
     return splits, stats
 
 
 def build(rows):
-    splits, split_stats = assign_splits(rows)
+    origins = {r["problem_id"]: classify_origin(r["problem_description"]) for r in rows}
+    splits, split_stats = assign_splits(rows, origins)
     out = []
     for r in rows:
         out.append({
             "problem_id": r["problem_id"],
-            "origin": classify_origin(r["problem_description"]),
+            "origin": origins[r["problem_id"]],
+            "license": ORIGIN_LICENSES[origins[r["problem_id"]]],
             "problem_description": r["problem_description"],
             "problem_description_format": describe_format(r["problem_description"]),
             "c_code": r["c_code"],
@@ -163,12 +183,14 @@ def main():
               file=sys.stderr)
         return 1
 
-    if split_stats["test"] != N_TEST:
-        print(f"\nWARNING: the length filter leaves only "
-              f"{split_stats['after_length_filter']} pairs, so the test split is "
-              f"{split_stats['test']}, not {N_TEST}. Any result reported against a "
-              f"{N_TEST}-pair test set was not produced from this file.",
-              file=sys.stderr)
+    print("\nTest-set composition (should mirror the dataset):")
+    test_rows = [r for r in out if r["split"] == "test"]
+    for field in ("origin", "difficulty"):
+        overall = Counter(r[field] for r in out)
+        in_test = Counter(r[field] for r in test_rows)
+        parts = [f"{k}={100 * in_test[k] / len(test_rows):.1f}%"
+                 f"/{100 * overall[k] / len(out):.1f}%" for k in sorted(overall)]
+        print(f"  {field:12s} " + "  ".join(parts))
 
     if args.write:
         with open(DATASET, "w", encoding="utf-8") as f:

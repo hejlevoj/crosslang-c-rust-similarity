@@ -12,19 +12,20 @@ Each entry in `dataset.jsonl` is a JSON object with the following fields:
 |-------|------|-------------|
 | `problem_id` | string | Zero-padded sequential ID (`0001`–`1886`) |
 | `origin` | string | `"codenet"` / `"xcodeeval"` / `"common-algorithms"` |
+| `license` | string | SPDX expression governing this record — see [`DATA_LICENSES.md`](../DATA_LICENSES.md) |
 | `problem_description` | string | Full problem statement, verbatim from the source |
 | `problem_description_format` | string | `"html"` (AtCoder markup) / `"text"` |
 | `c_code` | string | C implementation, entry point normalized to `solution()` |
 | `rust_code` | string | Rust implementation, entry point normalized to `fn solution()` |
 | `difficulty` | string | `"easy"` / `"medium"` / `"hard"` |
-| `split` | string | `"train"` / `"val"` / `"test"` / `"excluded"` |
+| `split` | string | `"train"` / `"val"` / `"test"` |
 
 Read it through the shared loader rather than parsing it directly:
 
 ```python
 from common.load import load, load_pairs
 
-rows = load(split="test")                       # 185 pairs
+rows = load(split="test")                       # 191 pairs
 rows = load(origin="codenet", difficulty="hard")
 c, rust, pids = load_pairs(split="train")
 ```
@@ -63,14 +64,17 @@ The `origin` field was recovered from the released data by `scripts/build_datase
 
 ## Splits
 
-The train/val/test assignment is frozen in the `split` field. It reproduces the seed-42 split the finetuning pipeline used to generate at run time, including its length filter (`len(c_code) ≤ 10000 and len(rust_code) ≤ 5000`), which excludes 1 pair.
+The train/val/test assignment is frozen in the `split` field. It is **stratified by (origin × difficulty)** at 80/10/10, so the test set mirrors the dataset on both axes — a retrieval score broken down by tier is otherwise not comparable. Every pair is assigned; none is dropped.
 
 | Split | Pairs |
 |-------|-------|
-| train | 1500 |
-| val | 200 |
-| test | 185 |
-| excluded (length filter) | 1 |
+| train | 1508 |
+| val | 187 |
+| test | 191 |
+
+Max drift between the test set and the full dataset: 0.6pp by origin, 0.7pp by difficulty.
+
+This replaces an earlier scheme that drew a flat random split at run time after dropping pairs over a length threshold. That threshold excluded exactly one pair (problem `0257`, 16460 chars of C; the next longest is 4649) while the Rust threshold excluded none — and since the models truncate at 512 tokens, it bought nothing while making the split sizes depend on the input file.
 
 `python finetune/pipeline/prepare_data.py` reports the split, including its breakdown by difficulty tier and by origin.
 
@@ -89,6 +93,20 @@ The train/val/test assignment is frozen in the `split` field. It reproduces the 
 | Implementation divergence (structurally different algorithms) | 1 |
 
 All entry-point function names are normalized to `solution` in both C and Rust. One consequence: the distributed code is **not** a standalone compilable program, since `main` was renamed.
+
+---
+
+## Licensing
+
+The dataset aggregates three corpora under three different licences, so it has no single one. Each record carries a `license` field.
+
+| `origin` | Pairs | Licence |
+|---|---|---|
+| `xcodeeval` | 1018 | CC BY-NC 4.0 |
+| `codenet` | 839 | CDLA-Permissive-2.0 |
+| `common-algorithms` | 29 | GPL-3.0 (C side) and MIT (Rust side) |
+
+**The aggregate is non-commercial**, because 54% of it is CC BY-NC 4.0. A commercially usable subset exists: `load(origin="codenet")` gives 839 pairs under CDLA-Permissive-2.0. Read [`DATA_LICENSES.md`](../DATA_LICENSES.md) before redistributing.
 
 ---
 
