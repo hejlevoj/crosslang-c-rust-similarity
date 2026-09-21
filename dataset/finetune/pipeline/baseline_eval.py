@@ -11,9 +11,13 @@ from evaluate import evaluate_embeddings, print_results
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load_pairs  # noqa: E402
+from common.runtime import get_device, env_int  # noqa: E402
+
 MODEL_NAME = "microsoft/unixcoder-base"
 MAX_LEN = 512
-BATCH_SIZE = 16
+BATCH_SIZE = env_int("EVAL_BATCH_SIZE", 16)
 
 
 def mean_pool(token_embeddings, attention_mask):
@@ -39,9 +43,6 @@ def encode(texts, tokenizer, model, device, batch_size=BATCH_SIZE):
     return np.vstack(all_embs)
 
 
-sys.path.insert(0, os.path.join(ROOT, ".."))
-from common.load import load_pairs  # noqa: E402
-
 
 def load_split(split):
     c_texts, rust_texts, _ = load_pairs(split=split)
@@ -49,7 +50,7 @@ def load_split(split):
 
 
 def main():
-    device = torch.device("cpu")
+    device = get_device()
     print(f"Loading model {MODEL_NAME} ...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModel.from_pretrained(MODEL_NAME).to(device)

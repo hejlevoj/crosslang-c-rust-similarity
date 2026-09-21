@@ -22,11 +22,15 @@ from evaluate import evaluate_embeddings, print_results
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load  # noqa: E402
+from common.runtime import get_device, env_int  # noqa: E402
+
 MODEL_NAME   = "microsoft/unixcoder-base"
 OUTPUT_DIR   = os.path.join(ROOT, "model_st")
 MAX_LEN      = 512
-BATCH_SIZE   = 8
-EPOCHS       = 5
+BATCH_SIZE   = env_int("BATCH_SIZE", 8)
+EPOCHS       = env_int("EPOCHS", 5)
 LR           = 1e-5       # lower LR than LoRA since we update all params
 WARMUP_RATIO = 0.1
 TEMPERATURE  = 0.07
@@ -58,7 +62,7 @@ def infonce_loss(c_emb, r_emb, temp=TEMPERATURE):
     c_emb = F.normalize(c_emb, dim=-1)
     r_emb = F.normalize(r_emb, dim=-1)
     logits = (c_emb @ r_emb.T) / temp
-    labels = torch.arange(len(c_emb))
+    labels = torch.arange(len(c_emb), device=c_emb.device)
     return (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels)) / 2
 
 
@@ -75,9 +79,6 @@ def encode_split(data, tokenizer, model, device, batch_size=16):
     return np.vstack(c_embs), np.vstack(r_embs)
 
 
-sys.path.insert(0, os.path.join(ROOT, ".."))
-from common.load import load  # noqa: E402
-
 
 def load_split(split):
     """Rows for one frozen split, keyed the way this pipeline expects."""
@@ -86,7 +87,7 @@ def load_split(split):
 
 
 def main():
-    device = torch.device("cpu")
+    device = get_device()
 
     train_data = load_split("train")
     val_data   = load_split("val")
