@@ -1,0 +1,294 @@
+% MSR 2027 - Data and Tool Showcase Track
+% 4 pages + 1 page of references. Single-anonymous: author names ARE listed.
+% Submission: https://msr2027-data-tool.hotcrp.com/
+% Abstract deadline 2026-11-05 AoE, paper deadline 2026-11-10 AoE.
+\documentclass[10pt,conference]{IEEEtran}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{xcolor}
+
+% Numbers still being regenerated. Every \pending must be gone before
+% submission - grep for it.
+\newcommand{\pending}[1]{\textcolor{red}{#1}}
+
+\newcommand{\dsname}{CRUSTPairs}   % TODO: confirm the dataset name
+
+\begin{document}
+
+\title{\dsname: A Cross-Language Dataset of Paired C and Rust Solutions}
+
+\author{
+\IEEEauthorblockN{Leonardo J. Almeida}
+\IEEEauthorblockA{University of S\~ao Paulo\\
+leonardo.j.almeida@usp.br}
+\and
+\IEEEauthorblockN{Vojt\v{e}ch Hejlek}
+\IEEEauthorblockA{TODO affiliation\\
+TODO email}
+% TODO: confirm author list, order, and the advisor's inclusion.
+}
+
+\maketitle
+
+\begin{abstract}
+TODO. Roughly: C-to-Rust migration is an active agenda, but no dataset pairs
+the two languages at the level of whole solutions to the same problem. We
+present \dsname, 1857 C/Rust implementation pairs drawn from competitive
+programming archives, normalised, deduplicated, and stratified into difficulty
+tiers by zero-shot embedding similarity. We report retrieval baselines showing
+that a generic code model finds these pairs hard zero-shot and that the gap
+closes substantially with finetuning.
+\end{abstract}
+
+\begin{IEEEkeywords}
+dataset, cross-language, code similarity, Rust, C, code retrieval
+\end{IEEEkeywords}
+
+\section{Introduction}
+\label{sec:intro}
+
+% ~0.5 page. Why C<->Rust specifically:
+%  - memory-safety driven migration is an active agenda, including public-sector
+%    pushes; C-to-Rust translation tools (c2rust, LLM-based) are proliferating
+%  - evaluating them needs paired ground truth, which does not exist at the
+%    level of whole solutions to a shared problem
+%  - existing cross-language corpora stop short of Rust (see Sec. II)
+% Close with the contribution list.
+
+\noindent\textbf{Contributions.}
+\begin{itemize}
+  \item \dsname, 1857 C/Rust solution pairs with problem statements,
+        normalised entry points, per-record provenance and licensing.
+  \item A difficulty stratification derived from zero-shot cross-language
+        embedding similarity, independent of the model family used in
+        evaluation.
+  \item Retrieval baselines, per difficulty tier, over a frozen stratified
+        split.
+\end{itemize}
+
+\section{Related Datasets}
+\label{sec:related}
+
+% ~0.5 page. The positioning table is the argument: a "covers Rust?" column
+% with a column of No.
+% Cover: CodeNet, xCodeEval, XLCoST, CoST, AVATAR, CodeXGLUE/POJ-104.
+% Say explicitly what each does and where it stops.
+
+\begin{table}[t]
+\caption{Cross-language code corpora. \dsname{} is the only one pairing C with
+Rust at solution granularity. TODO: verify every cell.}
+\label{tab:related}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Dataset & Languages & Paired & Rust \\
+\midrule
+CodeNet        & 55  & no  & no \\
+xCodeEval      & 17  & yes & no \\
+XLCoST         & 7   & yes & no \\
+CoST           & 7   & yes & no \\
+AVATAR         & 2   & yes & no \\
+\midrule
+\dsname{}      & 2   & yes & yes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Construction}
+\label{sec:construction}
+
+% ~0.75 page. Figure 1 is the pipeline with counts at each stage.
+
+\subsection{Sources and pairing}
+
+\dsname{} draws on two competitive programming archives: xCodeEval
+\cite{khan2023xcodeeval}, itself derived from Codeforces, and IBM Project
+CodeNet \cite{puri2021codenet}, derived from AtCoder. Both distribute accepted
+submissions, so the two implementations of a pair are known to have passed the
+same official tests. A pair is one problem, one accepted C submission, and one
+accepted Rust submission.
+
+\subsection{Normalisation}
+
+Both sides pass through a static analysis pipeline that strips comments,
+removes unused functions and macros, normalises encoding, and applies the
+language's standard formatter (\texttt{clang-format}, \texttt{rustfmt}). Entry
+points are renamed to \texttt{solution} in both languages so that the function
+name carries no signal. One consequence, discussed in
+Section~\ref{sec:limitations}, is that the distributed code is no longer a
+standalone compilable program.
+
+\subsection{Cleaning}
+
+From an initial 2013 pairs, 127 were removed: 2 confirmed mis-pairs, 69 AtCoder
+easy/hard variants whose statements were near-identical (description embedding
+similarity $>0.90$), 54 further suspicious pairs ($0.80$--$0.90$), 1 length
+ratio outlier, and 1 case of genuine implementation divergence. Near-duplicate
+detection used OpenAI \texttt{text-embedding-3-large} over the raw statements.
+
+A further 29 pairs, a set of textbook reference implementations, were dropped
+for two converging reasons. They carried the dataset's only copyleft content
+and were its only records whose two halves were under different licences
+(Section~\ref{sec:availability}); and they were structurally unlike the rest,
+having no problem statement and functions taking arguments rather than reading
+standard input. This leaves 1857 pairs.
+
+\subsection{Difficulty stratification}
+
+Each pair is scored by the cosine similarity between zero-shot
+\texttt{SFR-Embedding-Code-400M\_R} embeddings of its C and Rust sides, and
+binned at the 25th and 75th percentiles into easy, medium and hard. Pairs a
+generic code model already embeds close together are near-literal translations;
+pairs it separates diverge structurally and demand a real cross-language
+remapping.
+
+The choice of SFR rather than UniXcoder is deliberate. Defining the tiers with
+the same model family that is later finetuned would make hard pairs hard by
+construction, and any reported per-tier improvement would be circular. SFR is
+trained on a different corpus, so the tiers remain an independent axis. The
+stratification is also origin-agnostic: AtCoder and Codeforces publish
+difficulty ratings on incompatible scales, so upstream ratings are not used.
+
+\section{Dataset Description}
+\label{sec:description}
+
+\subsection{Schema}
+
+% TODO: schema table. Fields: problem_id, origin, license,
+% problem_description, problem_description_format, c_code, rust_code,
+% difficulty, difficulty_score, split.
+
+\subsection{Statistics}
+
+\begin{table}[t]
+\caption{Size of the two sides, in characters and lines.}
+\label{tab:sizes}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+ & Mean & Median & p90 & Max \\
+\midrule
+C, characters     & 616  & 516  & 1046 & 16460 \\
+Rust, characters  & 851  & 749  & 1424 & 4888 \\
+Statement, chars  & 1459 & 1231 & 2717 & 7368 \\
+\midrule
+C, lines          & 33.6 & & & \\
+Rust, lines       & 31.4 & & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Rust side is about $1.5\times$ longer than the C side in characters
+(median ratio $1.50$) while being \emph{shorter} in lines (31.4 against 33.6):
+Rust solutions pack more into each line. This is worth stating because it means
+a length-based heuristic does not separate the two languages the way a naive
+reading of the character counts would suggest.
+
+\begin{table}[t]
+\caption{Composition by source and difficulty tier.
+\pending{Tier counts pending regeneration over the 1857-pair population.}}
+\label{tab:composition}
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Source & Easy & Medium & Hard & Total \\
+\midrule
+CodeNet (AtCoder)     & \pending{251} & \pending{403} & \pending{185} & 839 \\
+xCodeEval (Codeforces)& \pending{207} & \pending{528} & \pending{283} & 1018 \\
+\midrule
+Total                 & \pending{458} & \pending{931} & \pending{468} & 1857 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Source and difficulty are not independent: the CodeNet portion skews easy while
+the xCodeEval portion skews hard. Reporting a per-tier result therefore
+requires a split that controls for both.
+
+\subsection{Splits}
+
+The train/validation/test assignment is frozen in the data rather than
+regenerated from a seed, and is stratified by source $\times$ difficulty at
+80/10/10: 1485, 185 and 187 pairs. The test set mirrors the full dataset to
+within 0.3 percentage points by source and 0.6 by tier.
+
+\section{Baselines}
+\label{sec:baselines}
+
+% ~0.5 page, one table. Zero-shot UniXcoder vs LoRA vs full finetune,
+% MRR@10 / R@1 / R@5, overall and per tier.
+% Frame as evidence of utility, NOT as the contribution.
+
+\begin{table}[t]
+\caption{Cross-language retrieval on the 187-pair test set.
+\pending{All numbers pending re-run against the current split.}}
+\label{tab:baselines}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Model & MRR@10 & R@1 & R@5 \\
+\midrule
+UniXcoder, zero-shot   & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder + LoRA       & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Use Cases}
+\label{sec:usecases}
+
+% ~0.25 page:
+%  - evaluating C-to-Rust translators (c2rust, LLM-based) against real pairs
+%  - cross-language code search and clone detection (type-4, across languages)
+%  - training cross-language retrieval models
+%  - studying how idiom differs between a systems language with and without
+%    ownership
+
+\section{Limitations}
+\label{sec:limitations}
+
+\textbf{Equivalence is inherited, not verified.} No test cases or expected I/O
+are distributed. That both submissions were accepted upstream is evidence of
+functional equivalence, but this dataset does not itself execute anything, and
+the entry-point renaming means the distributed code does not compile as a
+standalone program. Execution-based verification is the clearest line of future
+work.
+
+\textbf{Upstream identifiers are absent.} The pairs cannot be traced back to
+the originating problem or submission, which limits attribution to the corpus
+level and prevents joining against upstream metadata.
+
+\textbf{Competitive programming is not production code.} Solutions are short,
+single-file, and I/O-driven. Conclusions drawn here should not be assumed to
+transfer to systems code, which is where C-to-Rust migration actually matters.
+
+\textbf{Difficulty is a proxy.} The tiers measure embedding similarity, not
+algorithmic difficulty or translation effort.
+
+\textbf{Pre-training contamination is possible.} Both source archives are
+public and may appear in the pre-training corpora of the models evaluated here.
+
+\section{Availability and Licensing}
+\label{sec:availability}
+
+% TODO: Zenodo DOI (required at camera-ready; get it before submitting),
+% repository URL, Hugging Face URL.
+
+\dsname{} aggregates two corpora under different licences, so it is not
+distributed under a single one; every record carries its own SPDX expression.
+The 1018 xCodeEval-derived pairs are CC BY-NC 4.0 and the 839 CodeNet-derived
+pairs are CDLA-Permissive-2.0. The aggregate is therefore non-commercial, and
+attribution to both upstream projects is required. Filtering to the CodeNet
+portion yields a 839-pair subset with no commercial restriction.
+
+\section*{Acknowledgements}
+TODO.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}
