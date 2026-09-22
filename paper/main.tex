@@ -140,7 +140,10 @@ standard input. This leaves 1857 pairs.
 
 Each pair is scored by the cosine similarity between zero-shot
 \texttt{SFR-Embedding-Code-400M\_R} embeddings of its C and Rust sides, and
-binned at the 25th and 75th percentiles into easy, medium and hard. Pairs a
+binned at the 25th and 75th percentiles into easy, medium and hard
+(thresholds $0.7856$ and $0.8687$; similarity mean $0.826$, standard deviation
+$0.058$). The raw score is distributed alongside the tier, so the cuts can be
+redrawn without re-running the model. Pairs a
 generic code model already embeds close together are near-literal translations;
 pairs it separates diverge structurally and demand a real cross-language
 remapping.
@@ -188,18 +191,17 @@ a length-based heuristic does not separate the two languages the way a naive
 reading of the character counts would suggest.
 
 \begin{table}[t]
-\caption{Composition by source and difficulty tier.
-\pending{Tier counts pending regeneration over the 1857-pair population.}}
+\caption{Composition by source and difficulty tier.}
 \label{tab:composition}
 \centering
 \begin{tabular}{lrrrr}
 \toprule
 Source & Easy & Medium & Hard & Total \\
 \midrule
-CodeNet (AtCoder)     & \pending{251} & \pending{403} & \pending{185} & 839 \\
-xCodeEval (Codeforces)& \pending{207} & \pending{528} & \pending{283} & 1018 \\
+CodeNet (AtCoder)     & 241 & 408 & 190 & 839 \\
+xCodeEval (Codeforces)& 224 & 520 & 274 & 1018 \\
 \midrule
-Total                 & \pending{458} & \pending{931} & \pending{468} & 1857 \\
+Total                 & 465 & 928 & 464 & 1857 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -268,6 +270,15 @@ transfer to systems code, which is where C-to-Rust migration actually matters.
 
 \textbf{Difficulty is a proxy.} The tiers measure embedding similarity, not
 algorithmic difficulty or translation effort.
+
+\textbf{The original tier labels were not exactly reproducible.} An earlier
+release of this dataset shipped tier labels whose generating script had since
+diverged. Regenerating them reproduces the aggregate distribution closely
+(mean $0.826$ against a reported $0.823$) but agrees on only 89\% of individual
+pairs, with the disagreement spread symmetrically across adjacent tiers --- a
+pattern that threshold movement alone cannot produce, and that indicates the
+per-pair scores differed. The labels released here are the regenerated ones,
+and the raw scores are now distributed so that the question cannot recur.
 
 \textbf{Pre-training contamination is possible.} Both source archives are
 public and may appear in the pre-training corpora of the models evaluated here.

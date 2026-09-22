@@ -18,6 +18,7 @@ Each entry in `dataset.jsonl` is a JSON object with the following fields:
 | `c_code` | string | C implementation, entry point normalized to `solution()` |
 | `rust_code` | string | Rust implementation, entry point normalized to `fn solution()` |
 | `difficulty` | string | `"easy"` / `"medium"` / `"hard"` |
+| `difficulty_score` | float | Raw SFR cosine similarity the tier was cut from |
 | `split` | string | `"train"` / `"val"` / `"test"` |
 
 Read it through the shared loader rather than parsing it directly:
@@ -38,9 +39,15 @@ Validate a clone with `python scripts/smoke_test.py` (seconds, no downloads).
 
 Difficulty is assigned based on the cosine similarity between the zero-shot `SFR-Embedding-Code-400M_R` embeddings of the C and Rust implementations — without any finetuning. SFR is used rather than UniXcoder to avoid a methodological dependency: using the same model family to both define difficulty tiers and measure finetuning improvement would make "hard" pairs hard by definition for UniXcoder. SFR is independently trained on a different corpus.
 
-Thresholds are quantile-based (25/50/25), so the tiers are balanced by construction over whatever population they are computed on.
+Thresholds are quantile-based (25/50/25), so the tiers are balanced by construction. The raw similarity is kept in `difficulty_score`, so the tiers can be recut at other thresholds without re-running the model.
 
-> **Being regenerated.** The labels currently in the file are quantiles of the **1886-pair** release (thresholds: easy ≥ 0.868, hard < 0.781; SFR sim mean=0.823, std=0.062), which gave a balanced 472/943/471. Dropping the 29 `common-algorithms` pairs left them slightly out of balance at 458/931/468, since the tiers are quantiles of a population that changed. Re-running `categorization/categorize.py --write-labels` re-bins over the 1857 pairs and adds a `difficulty_score` field with the raw similarity; `scripts/build_dataset_v1.py --write` then re-stratifies the split against the new tiers. This table is updated once that has run.
+Distribution over the 1857 pairs: mean=0.8260, std=0.0580, min=0.6214, max=0.9635.
+
+| Category | SFR similarity | Count | Mean score |
+|----------|----------------|-------|------------|
+| Easy | ≥ 0.8687 | 465 (25.0%) | 0.8967 |
+| Medium | 0.7856 – 0.8687 | 928 (50.0%) | 0.8292 |
+| Hard | < 0.7856 | 464 (25.0%) | 0.7486 |
 
 This categorization is origin-agnostic — it avoids comparing difficulty ratings across sources since AtCoder and Codeforces use incompatible rating scales.
 

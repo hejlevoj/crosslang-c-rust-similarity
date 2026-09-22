@@ -32,7 +32,7 @@ import re
 import sys
 from collections import Counter
 
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET = os.path.join(ROOT, "dataset.jsonl")
 
 # Counts of the original v0 release. The recovery below is validated against

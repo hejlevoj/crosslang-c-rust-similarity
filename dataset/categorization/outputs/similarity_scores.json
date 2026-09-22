@@ -1,0 +1,9287 @@
+[
+  {
+    "problem_id": "0001",
+    "similarity": 0.7939813137054443,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0002",
+    "similarity": 0.8980169296264648,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0003",
+    "similarity": 0.8426558971405029,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0004",
+    "similarity": 0.8156236410140991,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0005",
+    "similarity": 0.8552711009979248,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0006",
+    "similarity": 0.822786271572113,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0007",
+    "similarity": 0.7876830697059631,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0008",
+    "similarity": 0.8919133543968201,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0009",
+    "similarity": 0.871340274810791,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0010",
+    "similarity": 0.8688461780548096,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0011",
+    "similarity": 0.7498091459274292,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0012",
+    "similarity": 0.7982395887374878,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0013",
+    "similarity": 0.7645919919013977,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0014",
+    "similarity": 0.7102581858634949,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0015",
+    "similarity": 0.7977898120880127,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0016",
+    "similarity": 0.8017405867576599,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0017",
+    "similarity": 0.8126195669174194,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0018",
+    "similarity": 0.8100612163543701,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0019",
+    "similarity": 0.80746990442276,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0020",
+    "similarity": 0.8843427300453186,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0021",
+    "similarity": 0.77852463722229,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0022",
+    "similarity": 0.7426245808601379,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0023",
+    "similarity": 0.8997363448143005,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0024",
+    "similarity": 0.7775107622146606,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0025",
+    "similarity": 0.807502269744873,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0026",
+    "similarity": 0.921664297580719,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0027",
+    "similarity": 0.8848271369934082,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0028",
+    "similarity": 0.7474569082260132,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0029",
+    "similarity": 0.865970253944397,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0030",
+    "similarity": 0.8316646814346313,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0031",
+    "similarity": 0.8551150560379028,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0032",
+    "similarity": 0.7188992500305176,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0033",
+    "similarity": 0.8453540802001953,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0034",
+    "similarity": 0.8298096656799316,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0035",
+    "similarity": 0.7555413246154785,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0036",
+    "similarity": 0.8281099796295166,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0037",
+    "similarity": 0.7659077644348145,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0038",
+    "similarity": 0.8320897221565247,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0039",
+    "similarity": 0.8502684831619263,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0040",
+    "similarity": 0.8519273996353149,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0041",
+    "similarity": 0.7943986654281616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0042",
+    "similarity": 0.91506028175354,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0043",
+    "similarity": 0.7830460667610168,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0044",
+    "similarity": 0.8583086729049683,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0045",
+    "similarity": 0.7882871031761169,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0046",
+    "similarity": 0.6837049722671509,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0047",
+    "similarity": 0.8010421395301819,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0048",
+    "similarity": 0.8727985620498657,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0049",
+    "similarity": 0.8513003587722778,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0050",
+    "similarity": 0.7475674748420715,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0051",
+    "similarity": 0.7557986974716187,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0052",
+    "similarity": 0.7812917828559875,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0053",
+    "similarity": 0.8724422454833984,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0054",
+    "similarity": 0.8025751709938049,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0055",
+    "similarity": 0.9335212707519531,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0056",
+    "similarity": 0.8856494426727295,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0057",
+    "similarity": 0.9282130002975464,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0058",
+    "similarity": 0.8064259886741638,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0060",
+    "similarity": 0.8024303913116455,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0061",
+    "similarity": 0.7995657324790955,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0062",
+    "similarity": 0.7892535924911499,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0063",
+    "similarity": 0.90972900390625,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0064",
+    "similarity": 0.8298958539962769,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0065",
+    "similarity": 0.7916045188903809,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0066",
+    "similarity": 0.8276585936546326,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0067",
+    "similarity": 0.8831167817115784,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0068",
+    "similarity": 0.6594771146774292,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0069",
+    "similarity": 0.9138367772102356,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0070",
+    "similarity": 0.8578341603279114,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0071",
+    "similarity": 0.8239367008209229,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0072",
+    "similarity": 0.8506592512130737,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0073",
+    "similarity": 0.7723539471626282,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0074",
+    "similarity": 0.9246946573257446,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0075",
+    "similarity": 0.794625461101532,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0076",
+    "similarity": 0.8694693446159363,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0077",
+    "similarity": 0.7760334014892578,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0078",
+    "similarity": 0.7235236167907715,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0079",
+    "similarity": 0.8767062425613403,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0080",
+    "similarity": 0.8730121850967407,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0081",
+    "similarity": 0.7720057964324951,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0082",
+    "similarity": 0.8683920502662659,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0083",
+    "similarity": 0.889681339263916,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0084",
+    "similarity": 0.7487680912017822,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0085",
+    "similarity": 0.8639905452728271,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0086",
+    "similarity": 0.832667887210846,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0087",
+    "similarity": 0.7984579801559448,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0088",
+    "similarity": 0.9055209159851074,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0089",
+    "similarity": 0.8734164237976074,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0090",
+    "similarity": 0.8595311641693115,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0091",
+    "similarity": 0.7606416940689087,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0092",
+    "similarity": 0.7863410711288452,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0093",
+    "similarity": 0.7201770544052124,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0094",
+    "similarity": 0.7657562494277954,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0095",
+    "similarity": 0.8162715435028076,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0096",
+    "similarity": 0.7592940926551819,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0097",
+    "similarity": 0.8054057955741882,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0098",
+    "similarity": 0.7430490255355835,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0099",
+    "similarity": 0.7866544723510742,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0100",
+    "similarity": 0.9213581681251526,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0101",
+    "similarity": 0.8032785654067993,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0102",
+    "similarity": 0.7243344783782959,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0103",
+    "similarity": 0.7541484832763672,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0104",
+    "similarity": 0.7586348056793213,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0105",
+    "similarity": 0.8099182844161987,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0106",
+    "similarity": 0.8062553405761719,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0107",
+    "similarity": 0.7568982243537903,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0108",
+    "similarity": 0.8458871841430664,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0109",
+    "similarity": 0.7543773651123047,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0110",
+    "similarity": 0.8660962581634521,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0111",
+    "similarity": 0.8200405836105347,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0112",
+    "similarity": 0.8777110576629639,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0113",
+    "similarity": 0.8193191885948181,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0114",
+    "similarity": 0.889106035232544,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0115",
+    "similarity": 0.82221519947052,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0116",
+    "similarity": 0.7175911068916321,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0117",
+    "similarity": 0.8992330431938171,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0118",
+    "similarity": 0.8511742949485779,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0119",
+    "similarity": 0.7323014736175537,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0120",
+    "similarity": 0.8305574059486389,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0121",
+    "similarity": 0.7977819442749023,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0122",
+    "similarity": 0.8748221397399902,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0123",
+    "similarity": 0.7852582931518555,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0124",
+    "similarity": 0.8693974614143372,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0125",
+    "similarity": 0.8715949058532715,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0126",
+    "similarity": 0.8850131034851074,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0127",
+    "similarity": 0.8767139315605164,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0128",
+    "similarity": 0.8108344674110413,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0129",
+    "similarity": 0.9048526287078857,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0130",
+    "similarity": 0.8455905914306641,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0131",
+    "similarity": 0.8910506963729858,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0132",
+    "similarity": 0.8422455787658691,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0133",
+    "similarity": 0.8233622312545776,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0134",
+    "similarity": 0.7490811944007874,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0135",
+    "similarity": 0.8871626257896423,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0136",
+    "similarity": 0.8077625036239624,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0137",
+    "similarity": 0.8871323466300964,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0138",
+    "similarity": 0.9137897491455078,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0139",
+    "similarity": 0.9118920564651489,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0140",
+    "similarity": 0.9635021686553955,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0141",
+    "similarity": 0.8193140625953674,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0142",
+    "similarity": 0.8530926704406738,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0143",
+    "similarity": 0.8378087878227234,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0144",
+    "similarity": 0.8975772261619568,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0145",
+    "similarity": 0.8607461452484131,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0146",
+    "similarity": 0.9446292519569397,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0147",
+    "similarity": 0.7880879640579224,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0148",
+    "similarity": 0.8018003702163696,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0149",
+    "similarity": 0.8090481162071228,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0150",
+    "similarity": 0.7278975248336792,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0151",
+    "similarity": 0.8739185333251953,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0152",
+    "similarity": 0.934600830078125,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0153",
+    "similarity": 0.7948673367500305,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0154",
+    "similarity": 0.808232843875885,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0155",
+    "similarity": 0.8642325401306152,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0156",
+    "similarity": 0.8457289934158325,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0157",
+    "similarity": 0.7900290489196777,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0158",
+    "similarity": 0.7281399965286255,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0159",
+    "similarity": 0.8566356897354126,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0161",
+    "similarity": 0.8360608816146851,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0162",
+    "similarity": 0.8386950492858887,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0163",
+    "similarity": 0.885446310043335,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0164",
+    "similarity": 0.8626304864883423,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0165",
+    "similarity": 0.9358242750167847,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0166",
+    "similarity": 0.8124052286148071,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0167",
+    "similarity": 0.9150916934013367,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0168",
+    "similarity": 0.9079658389091492,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0169",
+    "similarity": 0.7582444548606873,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0170",
+    "similarity": 0.9216463565826416,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0171",
+    "similarity": 0.7797293663024902,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0172",
+    "similarity": 0.8598655462265015,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0173",
+    "similarity": 0.8247301578521729,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0174",
+    "similarity": 0.7221866846084595,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0175",
+    "similarity": 0.8114067912101746,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0176",
+    "similarity": 0.8897830247879028,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0177",
+    "similarity": 0.8171098232269287,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0178",
+    "similarity": 0.7249042987823486,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0179",
+    "similarity": 0.8149315118789673,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0180",
+    "similarity": 0.8404513001441956,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0181",
+    "similarity": 0.7741543054580688,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0182",
+    "similarity": 0.9046933650970459,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0183",
+    "similarity": 0.8162683248519897,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0184",
+    "similarity": 0.7364245653152466,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0185",
+    "similarity": 0.8000273704528809,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0186",
+    "similarity": 0.8810182213783264,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0187",
+    "similarity": 0.8231971859931946,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0188",
+    "similarity": 0.7381894588470459,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0189",
+    "similarity": 0.7914766669273376,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0190",
+    "similarity": 0.8879813551902771,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0191",
+    "similarity": 0.7756214737892151,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0192",
+    "similarity": 0.7764286994934082,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0193",
+    "similarity": 0.9335245490074158,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0194",
+    "similarity": 0.8921309113502502,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0195",
+    "similarity": 0.7578968405723572,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0196",
+    "similarity": 0.739253044128418,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0197",
+    "similarity": 0.8842207789421082,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0198",
+    "similarity": 0.8544734716415405,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0199",
+    "similarity": 0.81014484167099,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0200",
+    "similarity": 0.808475136756897,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0201",
+    "similarity": 0.8305280804634094,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0202",
+    "similarity": 0.7466685771942139,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0203",
+    "similarity": 0.8121187686920166,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0204",
+    "similarity": 0.8129398822784424,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0205",
+    "similarity": 0.8987022638320923,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0206",
+    "similarity": 0.868554949760437,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0207",
+    "similarity": 0.7782516479492188,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0209",
+    "similarity": 0.8887265920639038,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0210",
+    "similarity": 0.8123080730438232,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0211",
+    "similarity": 0.8614075779914856,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0212",
+    "similarity": 0.834773600101471,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0213",
+    "similarity": 0.8413742780685425,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0214",
+    "similarity": 0.7497995495796204,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0215",
+    "similarity": 0.9105547666549683,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0216",
+    "similarity": 0.9168932437896729,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0217",
+    "similarity": 0.7347079515457153,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0218",
+    "similarity": 0.793449878692627,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0219",
+    "similarity": 0.8389642834663391,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0220",
+    "similarity": 0.8680679798126221,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0221",
+    "similarity": 0.6979904174804688,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0222",
+    "similarity": 0.8090958595275879,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0223",
+    "similarity": 0.7855997085571289,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0224",
+    "similarity": 0.8987728953361511,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0225",
+    "similarity": 0.8001539707183838,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0226",
+    "similarity": 0.7242067456245422,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0227",
+    "similarity": 0.8557032942771912,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0228",
+    "similarity": 0.8136277198791504,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0229",
+    "similarity": 0.8486533761024475,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0230",
+    "similarity": 0.8688507080078125,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0231",
+    "similarity": 0.6871474981307983,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0232",
+    "similarity": 0.8157474994659424,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0233",
+    "similarity": 0.8333503603935242,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0234",
+    "similarity": 0.7627185583114624,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0235",
+    "similarity": 0.8113342523574829,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0236",
+    "similarity": 0.8531348705291748,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0237",
+    "similarity": 0.8739822506904602,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0238",
+    "similarity": 0.8967522382736206,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0239",
+    "similarity": 0.7970377206802368,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0240",
+    "similarity": 0.8567914962768555,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0241",
+    "similarity": 0.8795398473739624,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0242",
+    "similarity": 0.7506922483444214,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0243",
+    "similarity": 0.7735859751701355,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0244",
+    "similarity": 0.882838249206543,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0245",
+    "similarity": 0.8126789927482605,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0246",
+    "similarity": 0.7811793088912964,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0247",
+    "similarity": 0.8957654237747192,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0248",
+    "similarity": 0.8746740221977234,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0249",
+    "similarity": 0.8372151255607605,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0250",
+    "similarity": 0.8859269618988037,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0251",
+    "similarity": 0.7931662797927856,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0252",
+    "similarity": 0.8690420985221863,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0253",
+    "similarity": 0.8463519811630249,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0254",
+    "similarity": 0.8409587144851685,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0255",
+    "similarity": 0.8641406297683716,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0256",
+    "similarity": 0.8920971751213074,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0257",
+    "similarity": 0.7942109704017639,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0258",
+    "similarity": 0.8628085851669312,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0259",
+    "similarity": 0.8537673950195312,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0260",
+    "similarity": 0.8199869990348816,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0261",
+    "similarity": 0.7311515808105469,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0262",
+    "similarity": 0.8800560235977173,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0263",
+    "similarity": 0.853262186050415,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0264",
+    "similarity": 0.8458077907562256,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0265",
+    "similarity": 0.7812908887863159,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0266",
+    "similarity": 0.8757798671722412,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0267",
+    "similarity": 0.8259271383285522,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0268",
+    "similarity": 0.7899743318557739,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0269",
+    "similarity": 0.9237608909606934,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0270",
+    "similarity": 0.7695255279541016,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0271",
+    "similarity": 0.8848313093185425,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0272",
+    "similarity": 0.8553844690322876,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0273",
+    "similarity": 0.799458384513855,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0274",
+    "similarity": 0.7556068897247314,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0275",
+    "similarity": 0.7532860636711121,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0276",
+    "similarity": 0.7637536525726318,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0277",
+    "similarity": 0.7474206686019897,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0278",
+    "similarity": 0.9524419903755188,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0279",
+    "similarity": 0.6755439043045044,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0280",
+    "similarity": 0.8335840702056885,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0281",
+    "similarity": 0.8388336300849915,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0282",
+    "similarity": 0.663292646408081,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0283",
+    "similarity": 0.7423706650733948,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0284",
+    "similarity": 0.8220329284667969,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0285",
+    "similarity": 0.8064837455749512,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0286",
+    "similarity": 0.8461861610412598,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0287",
+    "similarity": 0.8919497728347778,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0288",
+    "similarity": 0.8536016941070557,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0289",
+    "similarity": 0.6388163566589355,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0290",
+    "similarity": 0.9097614884376526,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0291",
+    "similarity": 0.8850820064544678,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0292",
+    "similarity": 0.8583227396011353,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0293",
+    "similarity": 0.7929684519767761,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0294",
+    "similarity": 0.8336817622184753,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0295",
+    "similarity": 0.9054343700408936,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0296",
+    "similarity": 0.8006328344345093,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0297",
+    "similarity": 0.886626124382019,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0298",
+    "similarity": 0.8623584508895874,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0299",
+    "similarity": 0.8592125177383423,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0300",
+    "similarity": 0.7463055849075317,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0301",
+    "similarity": 0.8231019973754883,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0302",
+    "similarity": 0.7806654572486877,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0303",
+    "similarity": 0.7629166841506958,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0304",
+    "similarity": 0.8609480261802673,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0305",
+    "similarity": 0.7512728571891785,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0306",
+    "similarity": 0.8915547728538513,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0307",
+    "similarity": 0.7228320837020874,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0308",
+    "similarity": 0.9152910709381104,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0309",
+    "similarity": 0.8613096475601196,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0310",
+    "similarity": 0.829765796661377,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0311",
+    "similarity": 0.8060488700866699,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0312",
+    "similarity": 0.8878811597824097,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0313",
+    "similarity": 0.7967379689216614,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0314",
+    "similarity": 0.7363477945327759,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0315",
+    "similarity": 0.8756964206695557,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0316",
+    "similarity": 0.7618566751480103,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0317",
+    "similarity": 0.8140850067138672,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0318",
+    "similarity": 0.8670781850814819,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0319",
+    "similarity": 0.8958807587623596,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0320",
+    "similarity": 0.8583482503890991,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0321",
+    "similarity": 0.7856448888778687,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0322",
+    "similarity": 0.7737849354743958,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0323",
+    "similarity": 0.8220363855361938,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0324",
+    "similarity": 0.8214952945709229,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0325",
+    "similarity": 0.884713888168335,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0326",
+    "similarity": 0.7345753908157349,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0327",
+    "similarity": 0.894006609916687,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0328",
+    "similarity": 0.8371296525001526,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0329",
+    "similarity": 0.7471333742141724,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0330",
+    "similarity": 0.8294981718063354,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0331",
+    "similarity": 0.8087711334228516,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0332",
+    "similarity": 0.8045871257781982,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0333",
+    "similarity": 0.7576501369476318,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0334",
+    "similarity": 0.828016996383667,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0335",
+    "similarity": 0.8192634582519531,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0336",
+    "similarity": 0.8007299900054932,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0337",
+    "similarity": 0.8926309943199158,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0338",
+    "similarity": 0.8819832801818848,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0339",
+    "similarity": 0.705199122428894,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0340",
+    "similarity": 0.843859076499939,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0341",
+    "similarity": 0.8236628770828247,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0342",
+    "similarity": 0.840514063835144,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0343",
+    "similarity": 0.8355172872543335,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0344",
+    "similarity": 0.7758356332778931,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0345",
+    "similarity": 0.73757404088974,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0346",
+    "similarity": 0.6919255256652832,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0347",
+    "similarity": 0.8413594365119934,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0349",
+    "similarity": 0.8976339101791382,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0350",
+    "similarity": 0.8625534772872925,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0351",
+    "similarity": 0.8580386638641357,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0352",
+    "similarity": 0.9387012720108032,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0353",
+    "similarity": 0.7156996726989746,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0354",
+    "similarity": 0.8647036552429199,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0355",
+    "similarity": 0.8678706288337708,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0356",
+    "similarity": 0.7446652054786682,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0357",
+    "similarity": 0.8836601376533508,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0358",
+    "similarity": 0.7311639189720154,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0359",
+    "similarity": 0.903376579284668,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0360",
+    "similarity": 0.8012229204177856,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0361",
+    "similarity": 0.8616176247596741,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0362",
+    "similarity": 0.77958083152771,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0363",
+    "similarity": 0.8806111812591553,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0364",
+    "similarity": 0.7606432437896729,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0365",
+    "similarity": 0.8583000898361206,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0366",
+    "similarity": 0.8766429424285889,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0367",
+    "similarity": 0.7966645956039429,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0368",
+    "similarity": 0.7470358610153198,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0369",
+    "similarity": 0.8970919847488403,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0370",
+    "similarity": 0.7976123094558716,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0371",
+    "similarity": 0.8305608034133911,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0372",
+    "similarity": 0.8123303651809692,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0373",
+    "similarity": 0.693189263343811,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0374",
+    "similarity": 0.8400775790214539,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0375",
+    "similarity": 0.904984712600708,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0376",
+    "similarity": 0.7482913732528687,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0377",
+    "similarity": 0.7720850706100464,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0378",
+    "similarity": 0.7359180450439453,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0379",
+    "similarity": 0.9483173489570618,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0380",
+    "similarity": 0.8681336641311646,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0381",
+    "similarity": 0.7550207376480103,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0382",
+    "similarity": 0.8531299829483032,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0383",
+    "similarity": 0.8251441717147827,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0384",
+    "similarity": 0.8516369462013245,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0385",
+    "similarity": 0.8017585277557373,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0386",
+    "similarity": 0.8276540637016296,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0387",
+    "similarity": 0.7982176542282104,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0388",
+    "similarity": 0.8744150400161743,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0389",
+    "similarity": 0.8263735771179199,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0390",
+    "similarity": 0.7037367820739746,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0391",
+    "similarity": 0.7448761463165283,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0392",
+    "similarity": 0.8131691813468933,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0393",
+    "similarity": 0.752232551574707,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0394",
+    "similarity": 0.8304935097694397,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0395",
+    "similarity": 0.7143718004226685,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0396",
+    "similarity": 0.8102245330810547,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0397",
+    "similarity": 0.8555935025215149,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0398",
+    "similarity": 0.8933492302894592,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0399",
+    "similarity": 0.8256729245185852,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0400",
+    "similarity": 0.7869430184364319,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0401",
+    "similarity": 0.9012977480888367,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0402",
+    "similarity": 0.7912027835845947,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0403",
+    "similarity": 0.8017138242721558,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0404",
+    "similarity": 0.8332289457321167,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0405",
+    "similarity": 0.8414403200149536,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0406",
+    "similarity": 0.813103199005127,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0407",
+    "similarity": 0.9353901743888855,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0408",
+    "similarity": 0.7797487378120422,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0409",
+    "similarity": 0.8629111051559448,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0410",
+    "similarity": 0.8001962900161743,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0411",
+    "similarity": 0.8554791808128357,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0412",
+    "similarity": 0.7884904146194458,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0413",
+    "similarity": 0.8340787887573242,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0414",
+    "similarity": 0.860116720199585,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0415",
+    "similarity": 0.8687928915023804,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0416",
+    "similarity": 0.7457507848739624,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0417",
+    "similarity": 0.8791577816009521,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0418",
+    "similarity": 0.7658370137214661,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0419",
+    "similarity": 0.7612916827201843,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0420",
+    "similarity": 0.7794495820999146,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0421",
+    "similarity": 0.9194653034210205,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0422",
+    "similarity": 0.8076211810112,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0423",
+    "similarity": 0.744819700717926,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0424",
+    "similarity": 0.8267877697944641,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0425",
+    "similarity": 0.7855416536331177,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0426",
+    "similarity": 0.7975436449050903,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0427",
+    "similarity": 0.6824414730072021,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0428",
+    "similarity": 0.8732907772064209,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0429",
+    "similarity": 0.8282011151313782,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0431",
+    "similarity": 0.8465120792388916,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0432",
+    "similarity": 0.8666559457778931,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0433",
+    "similarity": 0.8996387124061584,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0434",
+    "similarity": 0.7944579124450684,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0435",
+    "similarity": 0.7996296286582947,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0436",
+    "similarity": 0.7330904006958008,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0437",
+    "similarity": 0.8082641959190369,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0438",
+    "similarity": 0.8911625742912292,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0439",
+    "similarity": 0.8928890824317932,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0440",
+    "similarity": 0.8701454997062683,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0441",
+    "similarity": 0.802161455154419,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0442",
+    "similarity": 0.8493779897689819,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0443",
+    "similarity": 0.7830768823623657,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0444",
+    "similarity": 0.8227090835571289,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0445",
+    "similarity": 0.9092527627944946,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0446",
+    "similarity": 0.8365560173988342,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0447",
+    "similarity": 0.8488746881484985,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0448",
+    "similarity": 0.741835355758667,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0449",
+    "similarity": 0.77140212059021,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0450",
+    "similarity": 0.7361936569213867,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0451",
+    "similarity": 0.7774447202682495,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0452",
+    "similarity": 0.7699788212776184,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0453",
+    "similarity": 0.867903470993042,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0454",
+    "similarity": 0.7741114497184753,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0455",
+    "similarity": 0.783105194568634,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0456",
+    "similarity": 0.8062902688980103,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0457",
+    "similarity": 0.8610384464263916,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0458",
+    "similarity": 0.8043482303619385,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0459",
+    "similarity": 0.782935619354248,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0460",
+    "similarity": 0.8499228954315186,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0461",
+    "similarity": 0.905884861946106,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0462",
+    "similarity": 0.8944246768951416,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0463",
+    "similarity": 0.8324971199035645,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0464",
+    "similarity": 0.870447039604187,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0465",
+    "similarity": 0.7508730888366699,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0466",
+    "similarity": 0.9012160301208496,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0467",
+    "similarity": 0.8755319118499756,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0468",
+    "similarity": 0.7462729215621948,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0469",
+    "similarity": 0.7650324702262878,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0470",
+    "similarity": 0.7795687913894653,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0471",
+    "similarity": 0.8157504200935364,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0472",
+    "similarity": 0.8346862196922302,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0473",
+    "similarity": 0.7031221389770508,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0474",
+    "similarity": 0.8871577978134155,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0475",
+    "similarity": 0.7159516215324402,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0476",
+    "similarity": 0.8792728185653687,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0477",
+    "similarity": 0.7496284246444702,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0478",
+    "similarity": 0.810515820980072,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0479",
+    "similarity": 0.8528154492378235,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0480",
+    "similarity": 0.812616229057312,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0481",
+    "similarity": 0.8232136964797974,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0482",
+    "similarity": 0.7324600219726562,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0483",
+    "similarity": 0.8807278871536255,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0484",
+    "similarity": 0.8287856578826904,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0485",
+    "similarity": 0.8086100816726685,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0487",
+    "similarity": 0.8377372026443481,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0488",
+    "similarity": 0.7593190670013428,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0489",
+    "similarity": 0.7760797739028931,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0490",
+    "similarity": 0.8196969032287598,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0491",
+    "similarity": 0.8655985593795776,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0492",
+    "similarity": 0.840785026550293,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0493",
+    "similarity": 0.8613411784172058,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0494",
+    "similarity": 0.8510473966598511,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0495",
+    "similarity": 0.762585461139679,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0496",
+    "similarity": 0.9005566835403442,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0497",
+    "similarity": 0.7808332443237305,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0498",
+    "similarity": 0.8786090612411499,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0499",
+    "similarity": 0.819057047367096,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0500",
+    "similarity": 0.8425909280776978,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0501",
+    "similarity": 0.8354952335357666,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0502",
+    "similarity": 0.8747414350509644,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0503",
+    "similarity": 0.7859740257263184,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0504",
+    "similarity": 0.7568341493606567,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0505",
+    "similarity": 0.8984862565994263,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0506",
+    "similarity": 0.8572138547897339,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0507",
+    "similarity": 0.8092689514160156,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0508",
+    "similarity": 0.669792652130127,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0509",
+    "similarity": 0.7560153603553772,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0510",
+    "similarity": 0.8547630310058594,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0511",
+    "similarity": 0.773464560508728,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0512",
+    "similarity": 0.8304324150085449,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0513",
+    "similarity": 0.7917720079421997,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0514",
+    "similarity": 0.7937650084495544,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0515",
+    "similarity": 0.7600747346878052,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0516",
+    "similarity": 0.7743856906890869,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0517",
+    "similarity": 0.8396598100662231,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0518",
+    "similarity": 0.8788465261459351,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0519",
+    "similarity": 0.8922597765922546,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0520",
+    "similarity": 0.8975619077682495,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0521",
+    "similarity": 0.7936110496520996,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0522",
+    "similarity": 0.6965250968933105,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0523",
+    "similarity": 0.8440362215042114,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0524",
+    "similarity": 0.9035595655441284,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0525",
+    "similarity": 0.8709580898284912,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0526",
+    "similarity": 0.7938312888145447,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0527",
+    "similarity": 0.7844313979148865,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0528",
+    "similarity": 0.8373957872390747,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0529",
+    "similarity": 0.8465966582298279,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0530",
+    "similarity": 0.8794405460357666,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0531",
+    "similarity": 0.833235502243042,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0532",
+    "similarity": 0.8428325653076172,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0533",
+    "similarity": 0.807275652885437,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0534",
+    "similarity": 0.7771604061126709,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0535",
+    "similarity": 0.7755157947540283,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0536",
+    "similarity": 0.8651987314224243,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0537",
+    "similarity": 0.8560231924057007,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0538",
+    "similarity": 0.6928954124450684,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0539",
+    "similarity": 0.7530657052993774,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0540",
+    "similarity": 0.761798083782196,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0541",
+    "similarity": 0.7841767072677612,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0542",
+    "similarity": 0.8339686393737793,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0543",
+    "similarity": 0.8860569000244141,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0544",
+    "similarity": 0.8504539728164673,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0545",
+    "similarity": 0.8863756656646729,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0546",
+    "similarity": 0.8640297651290894,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0547",
+    "similarity": 0.7586720585823059,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0548",
+    "similarity": 0.8604011535644531,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0550",
+    "similarity": 0.889508068561554,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0551",
+    "similarity": 0.8694331645965576,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0552",
+    "similarity": 0.8042813539505005,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0553",
+    "similarity": 0.8643861413002014,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0554",
+    "similarity": 0.7774284482002258,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0555",
+    "similarity": 0.8593291640281677,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0556",
+    "similarity": 0.7594568729400635,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0557",
+    "similarity": 0.7652523517608643,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0558",
+    "similarity": 0.6963614225387573,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0559",
+    "similarity": 0.7921190857887268,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0560",
+    "similarity": 0.7310595512390137,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0561",
+    "similarity": 0.6890283823013306,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0562",
+    "similarity": 0.8178410530090332,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0563",
+    "similarity": 0.8456007242202759,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0564",
+    "similarity": 0.8064040541648865,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0565",
+    "similarity": 0.748723030090332,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0566",
+    "similarity": 0.7464514374732971,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0567",
+    "similarity": 0.800743579864502,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0568",
+    "similarity": 0.7298359274864197,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0569",
+    "similarity": 0.7694887518882751,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0570",
+    "similarity": 0.9178147315979004,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0571",
+    "similarity": 0.8468216061592102,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0572",
+    "similarity": 0.945252537727356,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0573",
+    "similarity": 0.8470411896705627,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0574",
+    "similarity": 0.79326993227005,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0575",
+    "similarity": 0.8184823989868164,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0576",
+    "similarity": 0.8401907682418823,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0577",
+    "similarity": 0.750676155090332,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0578",
+    "similarity": 0.7867742776870728,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0579",
+    "similarity": 0.8016282320022583,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0580",
+    "similarity": 0.8086313009262085,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0581",
+    "similarity": 0.8997003436088562,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0582",
+    "similarity": 0.6900627613067627,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0583",
+    "similarity": 0.7871615886688232,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0584",
+    "similarity": 0.8302508592605591,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0585",
+    "similarity": 0.7919093370437622,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0586",
+    "similarity": 0.9218956232070923,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0587",
+    "similarity": 0.7091412544250488,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0588",
+    "similarity": 0.8565119504928589,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0589",
+    "similarity": 0.8402096033096313,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0590",
+    "similarity": 0.8271794319152832,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0591",
+    "similarity": 0.8305239081382751,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0592",
+    "similarity": 0.7676566243171692,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0593",
+    "similarity": 0.8093592524528503,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0594",
+    "similarity": 0.8962152600288391,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0595",
+    "similarity": 0.8748073577880859,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0596",
+    "similarity": 0.7531365752220154,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0597",
+    "similarity": 0.7492539286613464,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0598",
+    "similarity": 0.8729125261306763,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0599",
+    "similarity": 0.8787878751754761,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0600",
+    "similarity": 0.8373437523841858,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0601",
+    "similarity": 0.8362933993339539,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0602",
+    "similarity": 0.8672521114349365,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0603",
+    "similarity": 0.8682451248168945,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0604",
+    "similarity": 0.8399186134338379,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0605",
+    "similarity": 0.7730721235275269,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0606",
+    "similarity": 0.84150230884552,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0607",
+    "similarity": 0.7055649757385254,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0608",
+    "similarity": 0.8740218877792358,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0609",
+    "similarity": 0.8225505352020264,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0610",
+    "similarity": 0.8090038299560547,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0611",
+    "similarity": 0.7977138757705688,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0612",
+    "similarity": 0.7261345386505127,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0613",
+    "similarity": 0.8854864835739136,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0614",
+    "similarity": 0.8284477591514587,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0615",
+    "similarity": 0.8387541174888611,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0616",
+    "similarity": 0.7540308833122253,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0617",
+    "similarity": 0.923301100730896,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0618",
+    "similarity": 0.8897148370742798,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0619",
+    "similarity": 0.9107950925827026,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0621",
+    "similarity": 0.8616043329238892,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0622",
+    "similarity": 0.8633671998977661,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0623",
+    "similarity": 0.876876950263977,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0624",
+    "similarity": 0.8510950803756714,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0625",
+    "similarity": 0.8689069151878357,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0626",
+    "similarity": 0.9203966856002808,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0627",
+    "similarity": 0.7552098035812378,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0628",
+    "similarity": 0.7283259034156799,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0629",
+    "similarity": 0.7847331762313843,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0630",
+    "similarity": 0.7614372372627258,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0631",
+    "similarity": 0.85594642162323,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0632",
+    "similarity": 0.7368674278259277,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0633",
+    "similarity": 0.7120882272720337,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0634",
+    "similarity": 0.8327114582061768,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0635",
+    "similarity": 0.8043216466903687,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0636",
+    "similarity": 0.7946368455886841,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0637",
+    "similarity": 0.8795264363288879,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0638",
+    "similarity": 0.7773936986923218,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0639",
+    "similarity": 0.8012382388114929,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0640",
+    "similarity": 0.7844053506851196,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0641",
+    "similarity": 0.8795462250709534,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0642",
+    "similarity": 0.7619915008544922,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0643",
+    "similarity": 0.9050328731536865,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0644",
+    "similarity": 0.8670178651809692,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0646",
+    "similarity": 0.8021251559257507,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0647",
+    "similarity": 0.7845345735549927,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0648",
+    "similarity": 0.8489001989364624,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0649",
+    "similarity": 0.913196325302124,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0650",
+    "similarity": 0.8468869924545288,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0651",
+    "similarity": 0.762843668460846,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0652",
+    "similarity": 0.7827125787734985,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0653",
+    "similarity": 0.843629002571106,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0654",
+    "similarity": 0.7918345928192139,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0655",
+    "similarity": 0.7914811372756958,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0656",
+    "similarity": 0.8482271432876587,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0657",
+    "similarity": 0.8314437866210938,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0658",
+    "similarity": 0.8143378496170044,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0659",
+    "similarity": 0.8026710152626038,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0660",
+    "similarity": 0.8564836978912354,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0661",
+    "similarity": 0.89211505651474,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0662",
+    "similarity": 0.7812289595603943,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0663",
+    "similarity": 0.8739044666290283,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0664",
+    "similarity": 0.8990485668182373,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0665",
+    "similarity": 0.8519681692123413,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0666",
+    "similarity": 0.7606984972953796,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0667",
+    "similarity": 0.8454451560974121,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0668",
+    "similarity": 0.8596065044403076,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0669",
+    "similarity": 0.8302690982818604,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0670",
+    "similarity": 0.9382643699645996,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0671",
+    "similarity": 0.7446709871292114,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0672",
+    "similarity": 0.7830812335014343,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0673",
+    "similarity": 0.9259599447250366,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0674",
+    "similarity": 0.6479994058609009,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0675",
+    "similarity": 0.9181233644485474,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0676",
+    "similarity": 0.8452539443969727,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0677",
+    "similarity": 0.9506417512893677,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0678",
+    "similarity": 0.8005698919296265,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0679",
+    "similarity": 0.8678092956542969,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0680",
+    "similarity": 0.8586030006408691,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0681",
+    "similarity": 0.8101972341537476,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0682",
+    "similarity": 0.8575466275215149,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0683",
+    "similarity": 0.8813861608505249,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0684",
+    "similarity": 0.9038466215133667,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0685",
+    "similarity": 0.8945140838623047,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0686",
+    "similarity": 0.8270303010940552,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0687",
+    "similarity": 0.8636177778244019,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0688",
+    "similarity": 0.7758846282958984,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0689",
+    "similarity": 0.7497200965881348,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0690",
+    "similarity": 0.8076077699661255,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0691",
+    "similarity": 0.8165239095687866,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0692",
+    "similarity": 0.8285489678382874,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0693",
+    "similarity": 0.8711656332015991,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0694",
+    "similarity": 0.8492088317871094,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0695",
+    "similarity": 0.8844166994094849,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0696",
+    "similarity": 0.7410975694656372,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0697",
+    "similarity": 0.8493530750274658,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0698",
+    "similarity": 0.8632276058197021,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0699",
+    "similarity": 0.8210415244102478,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0700",
+    "similarity": 0.8348751068115234,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0701",
+    "similarity": 0.9063750505447388,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0702",
+    "similarity": 0.8428642153739929,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0703",
+    "similarity": 0.8297564387321472,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0704",
+    "similarity": 0.7816691994667053,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0705",
+    "similarity": 0.8299503326416016,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0706",
+    "similarity": 0.8656355738639832,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0707",
+    "similarity": 0.7259749174118042,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0709",
+    "similarity": 0.8355774283409119,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0710",
+    "similarity": 0.8319829106330872,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0711",
+    "similarity": 0.894632875919342,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0712",
+    "similarity": 0.7979932427406311,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0713",
+    "similarity": 0.7534446120262146,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0714",
+    "similarity": 0.9179996252059937,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0715",
+    "similarity": 0.8536816239356995,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0716",
+    "similarity": 0.8596398830413818,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0717",
+    "similarity": 0.8014661073684692,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0718",
+    "similarity": 0.7622426152229309,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0719",
+    "similarity": 0.8186303377151489,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0720",
+    "similarity": 0.7570466995239258,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0721",
+    "similarity": 0.8224306702613831,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0722",
+    "similarity": 0.836525559425354,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0723",
+    "similarity": 0.8021924495697021,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0724",
+    "similarity": 0.7719696760177612,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0725",
+    "similarity": 0.8673204183578491,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0726",
+    "similarity": 0.8702509999275208,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0727",
+    "similarity": 0.7821453213691711,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0728",
+    "similarity": 0.9148765802383423,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0729",
+    "similarity": 0.9353539347648621,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0730",
+    "similarity": 0.8516203761100769,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0731",
+    "similarity": 0.8142764568328857,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0732",
+    "similarity": 0.8480508327484131,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0733",
+    "similarity": 0.7601615190505981,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0734",
+    "similarity": 0.7783535718917847,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0735",
+    "similarity": 0.7871918082237244,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0737",
+    "similarity": 0.8795097470283508,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0738",
+    "similarity": 0.8237431049346924,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0739",
+    "similarity": 0.8326244950294495,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0740",
+    "similarity": 0.7525354623794556,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0741",
+    "similarity": 0.7976251244544983,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0742",
+    "similarity": 0.675761878490448,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0743",
+    "similarity": 0.9066749811172485,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0744",
+    "similarity": 0.922672688961029,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0745",
+    "similarity": 0.8994577527046204,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0746",
+    "similarity": 0.9023576378822327,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0747",
+    "similarity": 0.8873409628868103,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0748",
+    "similarity": 0.8852049708366394,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0749",
+    "similarity": 0.7988960146903992,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0750",
+    "similarity": 0.7565641403198242,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0751",
+    "similarity": 0.8723688721656799,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0752",
+    "similarity": 0.911711573600769,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0753",
+    "similarity": 0.7881776690483093,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0754",
+    "similarity": 0.8839974403381348,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0755",
+    "similarity": 0.8651754856109619,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0756",
+    "similarity": 0.8316824436187744,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0757",
+    "similarity": 0.8177730441093445,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0758",
+    "similarity": 0.866080105304718,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0759",
+    "similarity": 0.8137510418891907,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0760",
+    "similarity": 0.8932106494903564,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0761",
+    "similarity": 0.8850799798965454,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0762",
+    "similarity": 0.8155695199966431,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0763",
+    "similarity": 0.7913123965263367,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0764",
+    "similarity": 0.8119713664054871,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0765",
+    "similarity": 0.8149204850196838,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0766",
+    "similarity": 0.8710052371025085,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0767",
+    "similarity": 0.8850727081298828,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0768",
+    "similarity": 0.7840662002563477,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0769",
+    "similarity": 0.8307169079780579,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0770",
+    "similarity": 0.8530571460723877,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0771",
+    "similarity": 0.8149902820587158,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0772",
+    "similarity": 0.8605020046234131,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0773",
+    "similarity": 0.6916603446006775,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0774",
+    "similarity": 0.8709473609924316,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0775",
+    "similarity": 0.8244055509567261,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0776",
+    "similarity": 0.8488970994949341,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0777",
+    "similarity": 0.821038007736206,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0778",
+    "similarity": 0.9337388277053833,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0779",
+    "similarity": 0.7745996713638306,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0780",
+    "similarity": 0.8442952632904053,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0781",
+    "similarity": 0.8812124729156494,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0782",
+    "similarity": 0.8411840796470642,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0783",
+    "similarity": 0.8826102018356323,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0784",
+    "similarity": 0.8738895654678345,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0785",
+    "similarity": 0.8461804389953613,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0786",
+    "similarity": 0.7166475057601929,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0787",
+    "similarity": 0.8842301368713379,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0788",
+    "similarity": 0.8864479064941406,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0789",
+    "similarity": 0.8473035097122192,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0790",
+    "similarity": 0.8318132162094116,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0791",
+    "similarity": 0.866399884223938,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0792",
+    "similarity": 0.8222682476043701,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0793",
+    "similarity": 0.9434754848480225,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0794",
+    "similarity": 0.7904524207115173,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0795",
+    "similarity": 0.8939683437347412,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0796",
+    "similarity": 0.7852125763893127,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0797",
+    "similarity": 0.8293789625167847,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0798",
+    "similarity": 0.899939775466919,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0799",
+    "similarity": 0.7639205455780029,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0800",
+    "similarity": 0.9002575278282166,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0801",
+    "similarity": 0.7789552807807922,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0802",
+    "similarity": 0.9061604738235474,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0803",
+    "similarity": 0.7961734533309937,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0804",
+    "similarity": 0.8593471646308899,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0805",
+    "similarity": 0.8465769290924072,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0806",
+    "similarity": 0.8188989758491516,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0807",
+    "similarity": 0.7075563669204712,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0808",
+    "similarity": 0.8638222813606262,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0809",
+    "similarity": 0.8310757875442505,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0810",
+    "similarity": 0.8608608245849609,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0811",
+    "similarity": 0.8990538120269775,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0812",
+    "similarity": 0.9131579995155334,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0813",
+    "similarity": 0.8625942468643188,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0814",
+    "similarity": 0.8734725713729858,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0815",
+    "similarity": 0.9042598605155945,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0816",
+    "similarity": 0.8337193727493286,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0817",
+    "similarity": 0.6911057829856873,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0818",
+    "similarity": 0.7897982597351074,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0819",
+    "similarity": 0.9031631946563721,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0820",
+    "similarity": 0.8076927065849304,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0821",
+    "similarity": 0.7846680283546448,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0822",
+    "similarity": 0.8924734592437744,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0823",
+    "similarity": 0.7903854846954346,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0824",
+    "similarity": 0.7681876420974731,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0825",
+    "similarity": 0.7250486612319946,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0826",
+    "similarity": 0.7950776219367981,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0827",
+    "similarity": 0.87594074010849,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0828",
+    "similarity": 0.8842900991439819,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0829",
+    "similarity": 0.8837615251541138,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0830",
+    "similarity": 0.8312503099441528,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0831",
+    "similarity": 0.8078310489654541,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0832",
+    "similarity": 0.8689076900482178,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0833",
+    "similarity": 0.7727845907211304,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0834",
+    "similarity": 0.7989686727523804,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0835",
+    "similarity": 0.7708827257156372,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0836",
+    "similarity": 0.8590830564498901,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0837",
+    "similarity": 0.8749113082885742,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0838",
+    "similarity": 0.7904894351959229,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0839",
+    "similarity": 0.8896996974945068,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0840",
+    "similarity": 0.8416178226470947,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0841",
+    "similarity": 0.831808865070343,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0842",
+    "similarity": 0.7819084525108337,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0843",
+    "similarity": 0.8480597138404846,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0844",
+    "similarity": 0.8634793758392334,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0845",
+    "similarity": 0.8012913465499878,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0846",
+    "similarity": 0.8273904323577881,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0847",
+    "similarity": 0.8120932579040527,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0848",
+    "similarity": 0.8482648730278015,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0849",
+    "similarity": 0.8937668204307556,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0850",
+    "similarity": 0.7743713855743408,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0851",
+    "similarity": 0.8671141862869263,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0852",
+    "similarity": 0.7909102439880371,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0853",
+    "similarity": 0.8555362820625305,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0854",
+    "similarity": 0.860612154006958,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0855",
+    "similarity": 0.8488798141479492,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0856",
+    "similarity": 0.8083407878875732,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0857",
+    "similarity": 0.7603769302368164,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0859",
+    "similarity": 0.8632100820541382,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0860",
+    "similarity": 0.7743809223175049,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0861",
+    "similarity": 0.8816660642623901,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0862",
+    "similarity": 0.8053620457649231,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0863",
+    "similarity": 0.7642669677734375,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0864",
+    "similarity": 0.9020962715148926,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0865",
+    "similarity": 0.8102678060531616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0866",
+    "similarity": 0.8772062063217163,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0867",
+    "similarity": 0.8472899198532104,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0868",
+    "similarity": 0.916549801826477,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0869",
+    "similarity": 0.9309809803962708,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0870",
+    "similarity": 0.8883379697799683,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0871",
+    "similarity": 0.8476967215538025,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0872",
+    "similarity": 0.8167879581451416,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0873",
+    "similarity": 0.7921350002288818,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0874",
+    "similarity": 0.8597917556762695,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0875",
+    "similarity": 0.7312812805175781,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0876",
+    "similarity": 0.8427188396453857,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0877",
+    "similarity": 0.8682732582092285,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0878",
+    "similarity": 0.7471215724945068,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0879",
+    "similarity": 0.8441944718360901,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0880",
+    "similarity": 0.8728469014167786,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0881",
+    "similarity": 0.8109090328216553,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0882",
+    "similarity": 0.8523471355438232,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0883",
+    "similarity": 0.7410439252853394,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0884",
+    "similarity": 0.7719337940216064,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0885",
+    "similarity": 0.7400696277618408,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0886",
+    "similarity": 0.8990397453308105,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0887",
+    "similarity": 0.9165381193161011,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0888",
+    "similarity": 0.857314944267273,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0889",
+    "similarity": 0.8267184495925903,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0890",
+    "similarity": 0.8149014711380005,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0891",
+    "similarity": 0.8426201343536377,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0892",
+    "similarity": 0.8885973691940308,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0893",
+    "similarity": 0.8626125454902649,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0895",
+    "similarity": 0.8972176313400269,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0896",
+    "similarity": 0.7352144718170166,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0897",
+    "similarity": 0.7380800247192383,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0898",
+    "similarity": 0.8692933320999146,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0899",
+    "similarity": 0.8301504254341125,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0900",
+    "similarity": 0.7440260648727417,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0901",
+    "similarity": 0.6213908791542053,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0902",
+    "similarity": 0.7782080769538879,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0903",
+    "similarity": 0.8636372089385986,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0904",
+    "similarity": 0.8262636661529541,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0905",
+    "similarity": 0.8754128217697144,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0906",
+    "similarity": 0.8292845487594604,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0907",
+    "similarity": 0.8428885340690613,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0908",
+    "similarity": 0.9033205509185791,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0909",
+    "similarity": 0.8808302283287048,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0910",
+    "similarity": 0.886329174041748,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0911",
+    "similarity": 0.7684300541877747,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0912",
+    "similarity": 0.7543807625770569,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0913",
+    "similarity": 0.8401223421096802,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0914",
+    "similarity": 0.7467707395553589,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0915",
+    "similarity": 0.7200202941894531,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0916",
+    "similarity": 0.7880720496177673,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0917",
+    "similarity": 0.7771958112716675,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0918",
+    "similarity": 0.7648323774337769,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0919",
+    "similarity": 0.8695845603942871,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0920",
+    "similarity": 0.84639573097229,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0921",
+    "similarity": 0.786905825138092,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0922",
+    "similarity": 0.8696278929710388,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0923",
+    "similarity": 0.9408603310585022,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0924",
+    "similarity": 0.8400939106941223,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0925",
+    "similarity": 0.8094995021820068,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0926",
+    "similarity": 0.7288037538528442,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0927",
+    "similarity": 0.8701205849647522,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0928",
+    "similarity": 0.9042401313781738,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0929",
+    "similarity": 0.8658190965652466,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0930",
+    "similarity": 0.8204885125160217,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0931",
+    "similarity": 0.7694043517112732,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0932",
+    "similarity": 0.8542558550834656,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0933",
+    "similarity": 0.8161243796348572,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0934",
+    "similarity": 0.9114429950714111,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0935",
+    "similarity": 0.8286256790161133,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0936",
+    "similarity": 0.7390377521514893,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0937",
+    "similarity": 0.8875342011451721,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0938",
+    "similarity": 0.8470321297645569,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0939",
+    "similarity": 0.8250662088394165,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0940",
+    "similarity": 0.8427401781082153,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0941",
+    "similarity": 0.8289340138435364,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0942",
+    "similarity": 0.87018883228302,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0943",
+    "similarity": 0.8825985193252563,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0944",
+    "similarity": 0.8979548811912537,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0945",
+    "similarity": 0.782834529876709,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0946",
+    "similarity": 0.8354816436767578,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0947",
+    "similarity": 0.8114407062530518,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0948",
+    "similarity": 0.9277545213699341,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0949",
+    "similarity": 0.802140474319458,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0950",
+    "similarity": 0.7330095171928406,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0951",
+    "similarity": 0.9123969078063965,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0952",
+    "similarity": 0.8339231014251709,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0953",
+    "similarity": 0.7328456044197083,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0954",
+    "similarity": 0.7762999534606934,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0955",
+    "similarity": 0.8769487142562866,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0956",
+    "similarity": 0.9395718574523926,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0957",
+    "similarity": 0.865003228187561,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0958",
+    "similarity": 0.8755367994308472,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0959",
+    "similarity": 0.7816689014434814,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0960",
+    "similarity": 0.8338273763656616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0961",
+    "similarity": 0.6958885788917542,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0962",
+    "similarity": 0.8213456869125366,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0963",
+    "similarity": 0.7962462902069092,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0964",
+    "similarity": 0.7182011604309082,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0965",
+    "similarity": 0.8990271687507629,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0966",
+    "similarity": 0.8637410402297974,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0967",
+    "similarity": 0.9252474308013916,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0968",
+    "similarity": 0.8558078408241272,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0969",
+    "similarity": 0.9297468066215515,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0970",
+    "similarity": 0.9336094856262207,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0971",
+    "similarity": 0.7885387539863586,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0972",
+    "similarity": 0.8627773523330688,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0973",
+    "similarity": 0.7258623242378235,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0974",
+    "similarity": 0.83402419090271,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0975",
+    "similarity": 0.8175619840621948,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0976",
+    "similarity": 0.7247480154037476,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0977",
+    "similarity": 0.871848464012146,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0978",
+    "similarity": 0.8036777973175049,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0979",
+    "similarity": 0.8071192502975464,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0980",
+    "similarity": 0.8700307011604309,
+    "category": "easy"
+  },
+  {
+    "problem_id": "0981",
+    "similarity": 0.7937413454055786,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0982",
+    "similarity": 0.7817354798316956,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0983",
+    "similarity": 0.7998684644699097,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0984",
+    "similarity": 0.8637562990188599,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0985",
+    "similarity": 0.8595964312553406,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0986",
+    "similarity": 0.8681020736694336,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0987",
+    "similarity": 0.8084921836853027,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0988",
+    "similarity": 0.8252397775650024,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0989",
+    "similarity": 0.8435463309288025,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0990",
+    "similarity": 0.8422762155532837,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0991",
+    "similarity": 0.7601062059402466,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0992",
+    "similarity": 0.8589873909950256,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0993",
+    "similarity": 0.8066426515579224,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0994",
+    "similarity": 0.7120124697685242,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0995",
+    "similarity": 0.7057739496231079,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0996",
+    "similarity": 0.7951313257217407,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0997",
+    "similarity": 0.8332280516624451,
+    "category": "medium"
+  },
+  {
+    "problem_id": "0998",
+    "similarity": 0.7175058126449585,
+    "category": "hard"
+  },
+  {
+    "problem_id": "0999",
+    "similarity": 0.7268010377883911,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1000",
+    "similarity": 0.9060602188110352,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1001",
+    "similarity": 0.8449525833129883,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1002",
+    "similarity": 0.875938892364502,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1003",
+    "similarity": 0.7824703454971313,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1004",
+    "similarity": 0.7818207740783691,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1005",
+    "similarity": 0.6960967183113098,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1006",
+    "similarity": 0.7553892135620117,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1007",
+    "similarity": 0.8521856069564819,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1008",
+    "similarity": 0.7989810705184937,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1009",
+    "similarity": 0.8078250885009766,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1010",
+    "similarity": 0.7728532552719116,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1011",
+    "similarity": 0.8395029306411743,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1012",
+    "similarity": 0.845054030418396,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1013",
+    "similarity": 0.8702623844146729,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1014",
+    "similarity": 0.7979190349578857,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1015",
+    "similarity": 0.8568277955055237,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1016",
+    "similarity": 0.8640607595443726,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1017",
+    "similarity": 0.8569461107254028,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1018",
+    "similarity": 0.6630902290344238,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1019",
+    "similarity": 0.8789576292037964,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1020",
+    "similarity": 0.7424315810203552,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1021",
+    "similarity": 0.8843638896942139,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1022",
+    "similarity": 0.7998039722442627,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1024",
+    "similarity": 0.8476849794387817,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1025",
+    "similarity": 0.908728837966919,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1026",
+    "similarity": 0.7687229514122009,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1027",
+    "similarity": 0.8561713695526123,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1028",
+    "similarity": 0.8838532567024231,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1029",
+    "similarity": 0.873691976070404,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1030",
+    "similarity": 0.8821696043014526,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1031",
+    "similarity": 0.8768007159233093,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1032",
+    "similarity": 0.800761878490448,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1033",
+    "similarity": 0.8172420263290405,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1034",
+    "similarity": 0.8742692470550537,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1035",
+    "similarity": 0.844919741153717,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1036",
+    "similarity": 0.9102596044540405,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1037",
+    "similarity": 0.8448107242584229,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1038",
+    "similarity": 0.8512578010559082,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1039",
+    "similarity": 0.801372766494751,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1040",
+    "similarity": 0.7586983442306519,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1041",
+    "similarity": 0.8513470888137817,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1042",
+    "similarity": 0.7928427457809448,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1043",
+    "similarity": 0.8383461236953735,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1044",
+    "similarity": 0.8546003103256226,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1045",
+    "similarity": 0.8430483341217041,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1046",
+    "similarity": 0.9139959216117859,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1047",
+    "similarity": 0.6685361862182617,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1048",
+    "similarity": 0.7844358086585999,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1049",
+    "similarity": 0.9075292348861694,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1050",
+    "similarity": 0.8453012704849243,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1051",
+    "similarity": 0.7942957878112793,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1052",
+    "similarity": 0.8485743403434753,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1053",
+    "similarity": 0.7493830323219299,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1054",
+    "similarity": 0.8030775785446167,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1055",
+    "similarity": 0.9329598546028137,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1056",
+    "similarity": 0.7876690626144409,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1057",
+    "similarity": 0.8481662273406982,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1058",
+    "similarity": 0.7998037338256836,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1059",
+    "similarity": 0.7672238349914551,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1060",
+    "similarity": 0.8512488007545471,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1061",
+    "similarity": 0.8245881795883179,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1062",
+    "similarity": 0.6976968050003052,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1063",
+    "similarity": 0.862849235534668,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1064",
+    "similarity": 0.736016035079956,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1065",
+    "similarity": 0.9002298712730408,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1066",
+    "similarity": 0.8199103474617004,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1067",
+    "similarity": 0.8586646318435669,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1068",
+    "similarity": 0.7766847610473633,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1069",
+    "similarity": 0.8417709469795227,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1070",
+    "similarity": 0.7877074480056763,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1071",
+    "similarity": 0.808430552482605,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1072",
+    "similarity": 0.8455461263656616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1073",
+    "similarity": 0.9084647297859192,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1074",
+    "similarity": 0.8064146637916565,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1075",
+    "similarity": 0.772284209728241,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1076",
+    "similarity": 0.7687249779701233,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1077",
+    "similarity": 0.7747518420219421,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1078",
+    "similarity": 0.9372038841247559,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1079",
+    "similarity": 0.8134787678718567,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1080",
+    "similarity": 0.8187390565872192,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1081",
+    "similarity": 0.9122719764709473,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1082",
+    "similarity": 0.7116199731826782,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1083",
+    "similarity": 0.8689331412315369,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1084",
+    "similarity": 0.8025068640708923,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1085",
+    "similarity": 0.8169699311256409,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1086",
+    "similarity": 0.8849057555198669,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1087",
+    "similarity": 0.727744460105896,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1088",
+    "similarity": 0.9202251434326172,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1089",
+    "similarity": 0.808448076248169,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1090",
+    "similarity": 0.9441925287246704,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1091",
+    "similarity": 0.8079822063446045,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1092",
+    "similarity": 0.8201889991760254,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1093",
+    "similarity": 0.8084181547164917,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1094",
+    "similarity": 0.8040356040000916,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1095",
+    "similarity": 0.7436331510543823,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1096",
+    "similarity": 0.732932448387146,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1097",
+    "similarity": 0.8816110491752625,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1098",
+    "similarity": 0.837044894695282,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1099",
+    "similarity": 0.8131835460662842,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1100",
+    "similarity": 0.8858233690261841,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1101",
+    "similarity": 0.9009143710136414,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1102",
+    "similarity": 0.8995419144630432,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1103",
+    "similarity": 0.8090569972991943,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1104",
+    "similarity": 0.7484326958656311,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1105",
+    "similarity": 0.7744321227073669,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1106",
+    "similarity": 0.8409519195556641,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1107",
+    "similarity": 0.924517810344696,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1108",
+    "similarity": 0.8706640005111694,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1109",
+    "similarity": 0.8525075912475586,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1110",
+    "similarity": 0.7955235242843628,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1111",
+    "similarity": 0.9288274645805359,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1112",
+    "similarity": 0.8686008453369141,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1113",
+    "similarity": 0.8451189994812012,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1114",
+    "similarity": 0.785412073135376,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1115",
+    "similarity": 0.7966986894607544,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1116",
+    "similarity": 0.934708833694458,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1117",
+    "similarity": 0.8479398488998413,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1118",
+    "similarity": 0.7714629173278809,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1119",
+    "similarity": 0.8477687239646912,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1120",
+    "similarity": 0.7603920102119446,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1121",
+    "similarity": 0.8027162551879883,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1122",
+    "similarity": 0.8642160892486572,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1123",
+    "similarity": 0.908728301525116,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1124",
+    "similarity": 0.8423708081245422,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1125",
+    "similarity": 0.7795381546020508,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1126",
+    "similarity": 0.7636502981185913,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1127",
+    "similarity": 0.6977630853652954,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1128",
+    "similarity": 0.8124055862426758,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1129",
+    "similarity": 0.821300745010376,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1130",
+    "similarity": 0.8963063359260559,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1131",
+    "similarity": 0.8699525594711304,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1132",
+    "similarity": 0.8496767282485962,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1133",
+    "similarity": 0.9105539917945862,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1134",
+    "similarity": 0.7247188687324524,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1135",
+    "similarity": 0.817838191986084,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1136",
+    "similarity": 0.6972054243087769,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1137",
+    "similarity": 0.835049033164978,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1138",
+    "similarity": 0.8207575678825378,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1139",
+    "similarity": 0.8271994590759277,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1140",
+    "similarity": 0.8733788728713989,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1141",
+    "similarity": 0.8926159739494324,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1142",
+    "similarity": 0.762519121170044,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1143",
+    "similarity": 0.8290557861328125,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1144",
+    "similarity": 0.8518892526626587,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1145",
+    "similarity": 0.940515398979187,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1147",
+    "similarity": 0.8971104621887207,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1148",
+    "similarity": 0.8240617513656616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1149",
+    "similarity": 0.8241039514541626,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1150",
+    "similarity": 0.8767210841178894,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1151",
+    "similarity": 0.8004646897315979,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1152",
+    "similarity": 0.8051295280456543,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1153",
+    "similarity": 0.7764401435852051,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1154",
+    "similarity": 0.8063284754753113,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1155",
+    "similarity": 0.7982262372970581,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1156",
+    "similarity": 0.8115045428276062,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1157",
+    "similarity": 0.7904872894287109,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1158",
+    "similarity": 0.9069350957870483,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1159",
+    "similarity": 0.7934409379959106,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1160",
+    "similarity": 0.7945175170898438,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1161",
+    "similarity": 0.8296534419059753,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1162",
+    "similarity": 0.6938024759292603,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1163",
+    "similarity": 0.8286129236221313,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1164",
+    "similarity": 0.769736647605896,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1165",
+    "similarity": 0.7001810073852539,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1166",
+    "similarity": 0.8277251720428467,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1167",
+    "similarity": 0.8326175212860107,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1168",
+    "similarity": 0.7809741497039795,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1169",
+    "similarity": 0.8094662427902222,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1170",
+    "similarity": 0.8554149270057678,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1171",
+    "similarity": 0.8347678780555725,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1172",
+    "similarity": 0.8261513710021973,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1173",
+    "similarity": 0.7819703817367554,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1174",
+    "similarity": 0.8536444306373596,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1175",
+    "similarity": 0.8653199076652527,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1176",
+    "similarity": 0.7599371671676636,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1177",
+    "similarity": 0.815294086933136,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1178",
+    "similarity": 0.7918229699134827,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1179",
+    "similarity": 0.9026845097541809,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1180",
+    "similarity": 0.8896000385284424,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1181",
+    "similarity": 0.7137733101844788,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1182",
+    "similarity": 0.875568151473999,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1183",
+    "similarity": 0.8234850168228149,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1184",
+    "similarity": 0.8276323080062866,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1185",
+    "similarity": 0.775020956993103,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1186",
+    "similarity": 0.8555699586868286,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1187",
+    "similarity": 0.8212443590164185,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1188",
+    "similarity": 0.9053202867507935,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1189",
+    "similarity": 0.786994457244873,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1190",
+    "similarity": 0.8799628019332886,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1191",
+    "similarity": 0.9122551679611206,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1193",
+    "similarity": 0.9141589403152466,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1194",
+    "similarity": 0.9022620916366577,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1196",
+    "similarity": 0.7837684154510498,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1197",
+    "similarity": 0.683544933795929,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1198",
+    "similarity": 0.8898257613182068,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1199",
+    "similarity": 0.7409899234771729,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1201",
+    "similarity": 0.8365702033042908,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1202",
+    "similarity": 0.7235926389694214,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1203",
+    "similarity": 0.8315905332565308,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1204",
+    "similarity": 0.8809865713119507,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1205",
+    "similarity": 0.9213055968284607,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1206",
+    "similarity": 0.7664958238601685,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1207",
+    "similarity": 0.8091724514961243,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1208",
+    "similarity": 0.8621885776519775,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1209",
+    "similarity": 0.7699761390686035,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1210",
+    "similarity": 0.8530762195587158,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1211",
+    "similarity": 0.8602079749107361,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1212",
+    "similarity": 0.8913887739181519,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1213",
+    "similarity": 0.9174123406410217,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1214",
+    "similarity": 0.8799657225608826,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1215",
+    "similarity": 0.900621235370636,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1216",
+    "similarity": 0.8711351752281189,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1217",
+    "similarity": 0.841637134552002,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1218",
+    "similarity": 0.8978716731071472,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1219",
+    "similarity": 0.8102812170982361,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1220",
+    "similarity": 0.8166142702102661,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1221",
+    "similarity": 0.91864013671875,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1222",
+    "similarity": 0.8488745093345642,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1223",
+    "similarity": 0.7783957719802856,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1224",
+    "similarity": 0.8342261910438538,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1225",
+    "similarity": 0.8343261480331421,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1226",
+    "similarity": 0.9173409938812256,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1227",
+    "similarity": 0.8310476541519165,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1228",
+    "similarity": 0.863219141960144,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1229",
+    "similarity": 0.8333888649940491,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1230",
+    "similarity": 0.7553867101669312,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1231",
+    "similarity": 0.8193058967590332,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1232",
+    "similarity": 0.8526462912559509,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1233",
+    "similarity": 0.8550970554351807,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1234",
+    "similarity": 0.8185064792633057,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1235",
+    "similarity": 0.7490192651748657,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1236",
+    "similarity": 0.8129885196685791,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1237",
+    "similarity": 0.8139774799346924,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1238",
+    "similarity": 0.8444955945014954,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1239",
+    "similarity": 0.9137097597122192,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1240",
+    "similarity": 0.8202110528945923,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1241",
+    "similarity": 0.8351427316665649,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1242",
+    "similarity": 0.8950867652893066,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1243",
+    "similarity": 0.817350447177887,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1244",
+    "similarity": 0.8119981288909912,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1245",
+    "similarity": 0.785812497138977,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1246",
+    "similarity": 0.9283237457275391,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1247",
+    "similarity": 0.7763479948043823,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1248",
+    "similarity": 0.8995557427406311,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1249",
+    "similarity": 0.8220476508140564,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1250",
+    "similarity": 0.8731352090835571,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1251",
+    "similarity": 0.735173761844635,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1252",
+    "similarity": 0.9074650406837463,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1253",
+    "similarity": 0.8501642942428589,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1254",
+    "similarity": 0.7152610421180725,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1255",
+    "similarity": 0.7768893241882324,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1256",
+    "similarity": 0.7543154358863831,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1258",
+    "similarity": 0.8171029090881348,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1259",
+    "similarity": 0.7293627858161926,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1260",
+    "similarity": 0.8731001019477844,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1261",
+    "similarity": 0.7530155181884766,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1262",
+    "similarity": 0.769371509552002,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1263",
+    "similarity": 0.827744722366333,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1264",
+    "similarity": 0.8342849612236023,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1265",
+    "similarity": 0.8429814577102661,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1266",
+    "similarity": 0.7031103372573853,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1267",
+    "similarity": 0.74045729637146,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1268",
+    "similarity": 0.8931756019592285,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1269",
+    "similarity": 0.8789802193641663,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1270",
+    "similarity": 0.8733469247817993,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1271",
+    "similarity": 0.87279212474823,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1272",
+    "similarity": 0.8180477023124695,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1273",
+    "similarity": 0.825912594795227,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1274",
+    "similarity": 0.9209772348403931,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1275",
+    "similarity": 0.7728420495986938,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1276",
+    "similarity": 0.9098338484764099,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1277",
+    "similarity": 0.8578451871871948,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1278",
+    "similarity": 0.8743828535079956,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1279",
+    "similarity": 0.7796558141708374,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1280",
+    "similarity": 0.8497953414916992,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1281",
+    "similarity": 0.6897979974746704,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1282",
+    "similarity": 0.8712742924690247,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1283",
+    "similarity": 0.8225231170654297,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1284",
+    "similarity": 0.7693798542022705,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1285",
+    "similarity": 0.8237948417663574,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1286",
+    "similarity": 0.8028031587600708,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1287",
+    "similarity": 0.890400230884552,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1288",
+    "similarity": 0.8692435026168823,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1289",
+    "similarity": 0.8571255207061768,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1290",
+    "similarity": 0.8306140899658203,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1291",
+    "similarity": 0.7810314893722534,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1292",
+    "similarity": 0.8599957227706909,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1293",
+    "similarity": 0.757346510887146,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1294",
+    "similarity": 0.8591189384460449,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1295",
+    "similarity": 0.8686217069625854,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1296",
+    "similarity": 0.7205381989479065,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1297",
+    "similarity": 0.7591104507446289,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1299",
+    "similarity": 0.9051101803779602,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1300",
+    "similarity": 0.8124082088470459,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1301",
+    "similarity": 0.8055418133735657,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1302",
+    "similarity": 0.9088351726531982,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1303",
+    "similarity": 0.9064304828643799,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1304",
+    "similarity": 0.8115583658218384,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1305",
+    "similarity": 0.8514820337295532,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1306",
+    "similarity": 0.8360217809677124,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1307",
+    "similarity": 0.7552000880241394,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1308",
+    "similarity": 0.8400758504867554,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1309",
+    "similarity": 0.8388925194740295,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1310",
+    "similarity": 0.7374045848846436,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1311",
+    "similarity": 0.7507503032684326,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1312",
+    "similarity": 0.8331940770149231,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1313",
+    "similarity": 0.8862342834472656,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1314",
+    "similarity": 0.8624458312988281,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1315",
+    "similarity": 0.6989628076553345,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1316",
+    "similarity": 0.8688443899154663,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1317",
+    "similarity": 0.8128418922424316,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1318",
+    "similarity": 0.8281198740005493,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1319",
+    "similarity": 0.8044275045394897,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1320",
+    "similarity": 0.7846099138259888,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1321",
+    "similarity": 0.9320932626724243,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1322",
+    "similarity": 0.8360582590103149,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1323",
+    "similarity": 0.843833327293396,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1324",
+    "similarity": 0.8261621594429016,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1325",
+    "similarity": 0.8351868987083435,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1326",
+    "similarity": 0.9378836750984192,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1327",
+    "similarity": 0.8676861524581909,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1328",
+    "similarity": 0.77267986536026,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1329",
+    "similarity": 0.8247781991958618,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1330",
+    "similarity": 0.8235256671905518,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1331",
+    "similarity": 0.8452461957931519,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1332",
+    "similarity": 0.8396331667900085,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1333",
+    "similarity": 0.7136877179145813,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1334",
+    "similarity": 0.942919135093689,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1335",
+    "similarity": 0.7136553525924683,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1336",
+    "similarity": 0.8094086647033691,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1337",
+    "similarity": 0.8572147488594055,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1338",
+    "similarity": 0.8035183548927307,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1339",
+    "similarity": 0.7914835810661316,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1340",
+    "similarity": 0.8628170490264893,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1341",
+    "similarity": 0.9278600215911865,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1342",
+    "similarity": 0.9135525226593018,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1343",
+    "similarity": 0.7257925271987915,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1344",
+    "similarity": 0.809721827507019,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1345",
+    "similarity": 0.8475021123886108,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1346",
+    "similarity": 0.8473525643348694,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1347",
+    "similarity": 0.8469122648239136,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1348",
+    "similarity": 0.9313205480575562,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1349",
+    "similarity": 0.8797637224197388,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1350",
+    "similarity": 0.929949164390564,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1351",
+    "similarity": 0.8637549877166748,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1352",
+    "similarity": 0.7090078592300415,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1353",
+    "similarity": 0.7833622097969055,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1354",
+    "similarity": 0.7832430005073547,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1355",
+    "similarity": 0.8394273519515991,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1356",
+    "similarity": 0.8971267938613892,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1357",
+    "similarity": 0.9368634223937988,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1358",
+    "similarity": 0.811852216720581,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1359",
+    "similarity": 0.8423253893852234,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1360",
+    "similarity": 0.8680460453033447,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1361",
+    "similarity": 0.8630423545837402,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1362",
+    "similarity": 0.8330034017562866,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1363",
+    "similarity": 0.8629975318908691,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1364",
+    "similarity": 0.7578592896461487,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1365",
+    "similarity": 0.722790539264679,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1366",
+    "similarity": 0.8063855171203613,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1367",
+    "similarity": 0.8241877555847168,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1368",
+    "similarity": 0.8924311399459839,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1369",
+    "similarity": 0.8368661999702454,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1371",
+    "similarity": 0.7894052267074585,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1372",
+    "similarity": 0.8695813417434692,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1373",
+    "similarity": 0.8619225025177002,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1375",
+    "similarity": 0.8272663950920105,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1376",
+    "similarity": 0.8457499146461487,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1377",
+    "similarity": 0.8243076205253601,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1378",
+    "similarity": 0.8227603435516357,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1379",
+    "similarity": 0.9225221872329712,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1380",
+    "similarity": 0.789528489112854,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1381",
+    "similarity": 0.8858952522277832,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1382",
+    "similarity": 0.8957971334457397,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1383",
+    "similarity": 0.8806178569793701,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1384",
+    "similarity": 0.7654611468315125,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1385",
+    "similarity": 0.857917308807373,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1386",
+    "similarity": 0.8765822052955627,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1387",
+    "similarity": 0.7596015334129333,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1388",
+    "similarity": 0.848964273929596,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1389",
+    "similarity": 0.9509839415550232,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1390",
+    "similarity": 0.8502911329269409,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1391",
+    "similarity": 0.8660647869110107,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1392",
+    "similarity": 0.9096828103065491,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1393",
+    "similarity": 0.7788850665092468,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1394",
+    "similarity": 0.8039876818656921,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1395",
+    "similarity": 0.92643141746521,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1396",
+    "similarity": 0.8976905345916748,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1397",
+    "similarity": 0.7763155698776245,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1398",
+    "similarity": 0.7463146448135376,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1399",
+    "similarity": 0.8068740963935852,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1400",
+    "similarity": 0.8777010440826416,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1401",
+    "similarity": 0.8020539879798889,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1402",
+    "similarity": 0.7915626168251038,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1403",
+    "similarity": 0.7916127443313599,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1404",
+    "similarity": 0.8500750660896301,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1405",
+    "similarity": 0.8133244514465332,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1406",
+    "similarity": 0.8565366268157959,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1407",
+    "similarity": 0.86030513048172,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1408",
+    "similarity": 0.8342583775520325,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1409",
+    "similarity": 0.921877384185791,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1410",
+    "similarity": 0.8568834066390991,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1411",
+    "similarity": 0.808286190032959,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1412",
+    "similarity": 0.7113408446311951,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1413",
+    "similarity": 0.8350850343704224,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1414",
+    "similarity": 0.7636954188346863,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1415",
+    "similarity": 0.9179387092590332,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1416",
+    "similarity": 0.8451991081237793,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1417",
+    "similarity": 0.7858010530471802,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1418",
+    "similarity": 0.8933283686637878,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1419",
+    "similarity": 0.8583258390426636,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1420",
+    "similarity": 0.8247450590133667,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1421",
+    "similarity": 0.8329856991767883,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1422",
+    "similarity": 0.8145057559013367,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1423",
+    "similarity": 0.8906737565994263,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1424",
+    "similarity": 0.7809797525405884,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1425",
+    "similarity": 0.7538533210754395,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1426",
+    "similarity": 0.7829006910324097,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1427",
+    "similarity": 0.792756974697113,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1428",
+    "similarity": 0.7719650268554688,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1429",
+    "similarity": 0.8508910536766052,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1430",
+    "similarity": 0.8242382407188416,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1431",
+    "similarity": 0.9220644235610962,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1432",
+    "similarity": 0.805255115032196,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1433",
+    "similarity": 0.7761853337287903,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1434",
+    "similarity": 0.7588398456573486,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1435",
+    "similarity": 0.7856460213661194,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1436",
+    "similarity": 0.9075304269790649,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1437",
+    "similarity": 0.8481708765029907,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1438",
+    "similarity": 0.7698889970779419,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1439",
+    "similarity": 0.7838580012321472,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1440",
+    "similarity": 0.7921104431152344,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1441",
+    "similarity": 0.8597508668899536,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1442",
+    "similarity": 0.9033696055412292,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1443",
+    "similarity": 0.82032710313797,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1444",
+    "similarity": 0.9017273187637329,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1445",
+    "similarity": 0.8536692261695862,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1446",
+    "similarity": 0.9483921527862549,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1447",
+    "similarity": 0.8927271366119385,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1448",
+    "similarity": 0.7105028629302979,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1449",
+    "similarity": 0.901618480682373,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1450",
+    "similarity": 0.8494244813919067,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1451",
+    "similarity": 0.7772490978240967,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1452",
+    "similarity": 0.7993234992027283,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1453",
+    "similarity": 0.7661404609680176,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1454",
+    "similarity": 0.8723468780517578,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1455",
+    "similarity": 0.8785174489021301,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1456",
+    "similarity": 0.8500298261642456,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1457",
+    "similarity": 0.7793644666671753,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1458",
+    "similarity": 0.8514084815979004,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1459",
+    "similarity": 0.8925209045410156,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1460",
+    "similarity": 0.9409275054931641,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1461",
+    "similarity": 0.7697373032569885,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1462",
+    "similarity": 0.8476231098175049,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1463",
+    "similarity": 0.7842258810997009,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1464",
+    "similarity": 0.9001098275184631,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1465",
+    "similarity": 0.8074163794517517,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1466",
+    "similarity": 0.7675893306732178,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1467",
+    "similarity": 0.8069533705711365,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1468",
+    "similarity": 0.7194643616676331,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1469",
+    "similarity": 0.7379888892173767,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1470",
+    "similarity": 0.8104109764099121,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1471",
+    "similarity": 0.9249519109725952,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1472",
+    "similarity": 0.773537278175354,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1473",
+    "similarity": 0.8570563197135925,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1474",
+    "similarity": 0.7472805976867676,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1475",
+    "similarity": 0.7663961052894592,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1476",
+    "similarity": 0.7864760160446167,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1477",
+    "similarity": 0.7922176122665405,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1478",
+    "similarity": 0.9254157543182373,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1479",
+    "similarity": 0.7671563029289246,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1480",
+    "similarity": 0.8516475558280945,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1481",
+    "similarity": 0.8821714520454407,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1482",
+    "similarity": 0.8424527645111084,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1483",
+    "similarity": 0.8283896446228027,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1484",
+    "similarity": 0.8357369899749756,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1485",
+    "similarity": 0.7545560002326965,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1486",
+    "similarity": 0.8203404545783997,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1487",
+    "similarity": 0.7972240447998047,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1489",
+    "similarity": 0.8223227262496948,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1490",
+    "similarity": 0.7992404699325562,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1491",
+    "similarity": 0.8378968834877014,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1492",
+    "similarity": 0.7578635215759277,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1493",
+    "similarity": 0.7881549000740051,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1494",
+    "similarity": 0.8992279171943665,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1495",
+    "similarity": 0.813327431678772,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1496",
+    "similarity": 0.8412061929702759,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1497",
+    "similarity": 0.8076852560043335,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1498",
+    "similarity": 0.774552583694458,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1499",
+    "similarity": 0.7605646252632141,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1500",
+    "similarity": 0.865108847618103,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1501",
+    "similarity": 0.8095949292182922,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1502",
+    "similarity": 0.8286736607551575,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1503",
+    "similarity": 0.860686182975769,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1504",
+    "similarity": 0.8542509078979492,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1505",
+    "similarity": 0.8553694486618042,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1506",
+    "similarity": 0.8596309423446655,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1507",
+    "similarity": 0.8979421257972717,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1508",
+    "similarity": 0.7970738410949707,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1509",
+    "similarity": 0.8538450002670288,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1510",
+    "similarity": 0.7929204106330872,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1511",
+    "similarity": 0.7797797918319702,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1512",
+    "similarity": 0.8858502507209778,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1513",
+    "similarity": 0.8914145231246948,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1514",
+    "similarity": 0.8722509145736694,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1515",
+    "similarity": 0.7771233320236206,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1516",
+    "similarity": 0.7605501413345337,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1517",
+    "similarity": 0.828022837638855,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1518",
+    "similarity": 0.7657372951507568,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1519",
+    "similarity": 0.7406141757965088,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1520",
+    "similarity": 0.8588590621948242,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1521",
+    "similarity": 0.8087409734725952,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1522",
+    "similarity": 0.8545276522636414,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1523",
+    "similarity": 0.7303701043128967,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1524",
+    "similarity": 0.8763126134872437,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1525",
+    "similarity": 0.7996460199356079,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1526",
+    "similarity": 0.7274664044380188,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1527",
+    "similarity": 0.738899827003479,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1528",
+    "similarity": 0.8239712715148926,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1529",
+    "similarity": 0.8218481540679932,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1530",
+    "similarity": 0.8920550346374512,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1531",
+    "similarity": 0.8532328605651855,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1532",
+    "similarity": 0.7487649917602539,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1533",
+    "similarity": 0.8399717211723328,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1534",
+    "similarity": 0.7966452836990356,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1535",
+    "similarity": 0.8281185626983643,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1536",
+    "similarity": 0.8628242611885071,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1537",
+    "similarity": 0.718285858631134,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1538",
+    "similarity": 0.7552124261856079,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1539",
+    "similarity": 0.7890809774398804,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1540",
+    "similarity": 0.8503537774085999,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1541",
+    "similarity": 0.8169810771942139,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1542",
+    "similarity": 0.8606302738189697,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1543",
+    "similarity": 0.8960402607917786,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1544",
+    "similarity": 0.8470942974090576,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1545",
+    "similarity": 0.8895525932312012,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1546",
+    "similarity": 0.8465226888656616,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1547",
+    "similarity": 0.8454417586326599,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1548",
+    "similarity": 0.8089736700057983,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1549",
+    "similarity": 0.8151452541351318,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1550",
+    "similarity": 0.8686625957489014,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1551",
+    "similarity": 0.7873502969741821,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1552",
+    "similarity": 0.7072535753250122,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1553",
+    "similarity": 0.8012968301773071,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1554",
+    "similarity": 0.8548226952552795,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1555",
+    "similarity": 0.8520348072052002,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1556",
+    "similarity": 0.8821941614151001,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1557",
+    "similarity": 0.8328297734260559,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1558",
+    "similarity": 0.900584876537323,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1559",
+    "similarity": 0.9222749471664429,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1560",
+    "similarity": 0.7785694599151611,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1561",
+    "similarity": 0.895269513130188,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1562",
+    "similarity": 0.7592789530754089,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1563",
+    "similarity": 0.8233616352081299,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1564",
+    "similarity": 0.709753155708313,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1565",
+    "similarity": 0.7459891438484192,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1566",
+    "similarity": 0.9151425957679749,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1567",
+    "similarity": 0.8166937232017517,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1568",
+    "similarity": 0.8407247066497803,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1569",
+    "similarity": 0.7967206239700317,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1570",
+    "similarity": 0.7818779945373535,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1571",
+    "similarity": 0.8237699270248413,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1572",
+    "similarity": 0.7993174195289612,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1573",
+    "similarity": 0.7591936588287354,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1574",
+    "similarity": 0.6494327783584595,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1575",
+    "similarity": 0.8198345899581909,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1576",
+    "similarity": 0.7635584473609924,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1577",
+    "similarity": 0.8715934753417969,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1578",
+    "similarity": 0.8800594806671143,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1581",
+    "similarity": 0.7172948718070984,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1582",
+    "similarity": 0.8217882513999939,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1583",
+    "similarity": 0.7982710003852844,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1584",
+    "similarity": 0.7210006713867188,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1585",
+    "similarity": 0.6905075311660767,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1586",
+    "similarity": 0.8401434421539307,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1587",
+    "similarity": 0.8271505832672119,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1588",
+    "similarity": 0.8603262901306152,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1589",
+    "similarity": 0.7862635850906372,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1590",
+    "similarity": 0.8426538109779358,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1591",
+    "similarity": 0.8307815790176392,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1592",
+    "similarity": 0.824266791343689,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1593",
+    "similarity": 0.8443785905838013,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1594",
+    "similarity": 0.7379341721534729,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1595",
+    "similarity": 0.7902536988258362,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1596",
+    "similarity": 0.9001380205154419,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1597",
+    "similarity": 0.8536314964294434,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1598",
+    "similarity": 0.7861969470977783,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1599",
+    "similarity": 0.8349001407623291,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1600",
+    "similarity": 0.906040370464325,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1601",
+    "similarity": 0.899909496307373,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1602",
+    "similarity": 0.7458372712135315,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1603",
+    "similarity": 0.8115434646606445,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1604",
+    "similarity": 0.7243936061859131,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1605",
+    "similarity": 0.754702627658844,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1606",
+    "similarity": 0.8582763075828552,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1607",
+    "similarity": 0.8528283834457397,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1608",
+    "similarity": 0.8264315128326416,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1609",
+    "similarity": 0.7612671256065369,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1610",
+    "similarity": 0.7190960049629211,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1611",
+    "similarity": 0.7879723906517029,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1612",
+    "similarity": 0.7457846403121948,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1613",
+    "similarity": 0.8347247242927551,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1614",
+    "similarity": 0.8520286083221436,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1615",
+    "similarity": 0.8686711192131042,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1616",
+    "similarity": 0.8876562118530273,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1617",
+    "similarity": 0.8524346351623535,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1618",
+    "similarity": 0.9407436847686768,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1619",
+    "similarity": 0.8561227321624756,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1620",
+    "similarity": 0.8305030465126038,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1621",
+    "similarity": 0.9065712690353394,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1622",
+    "similarity": 0.8804681301116943,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1623",
+    "similarity": 0.8500831127166748,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1624",
+    "similarity": 0.7926146388053894,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1625",
+    "similarity": 0.7994686365127563,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1626",
+    "similarity": 0.8259661793708801,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1627",
+    "similarity": 0.7546342015266418,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1628",
+    "similarity": 0.8490599989891052,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1629",
+    "similarity": 0.8019334673881531,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1630",
+    "similarity": 0.7289066314697266,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1631",
+    "similarity": 0.6962600946426392,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1632",
+    "similarity": 0.7773967981338501,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1633",
+    "similarity": 0.8894047737121582,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1634",
+    "similarity": 0.8846303224563599,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1635",
+    "similarity": 0.8901621103286743,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1636",
+    "similarity": 0.8421988487243652,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1637",
+    "similarity": 0.8393905162811279,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1639",
+    "similarity": 0.9060549736022949,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1640",
+    "similarity": 0.8210746049880981,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1641",
+    "similarity": 0.8760432600975037,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1642",
+    "similarity": 0.8493117690086365,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1643",
+    "similarity": 0.8373352885246277,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1644",
+    "similarity": 0.856631875038147,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1645",
+    "similarity": 0.7660753726959229,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1646",
+    "similarity": 0.8471017479896545,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1647",
+    "similarity": 0.8613148927688599,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1648",
+    "similarity": 0.9148281812667847,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1649",
+    "similarity": 0.854699432849884,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1650",
+    "similarity": 0.8093465566635132,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1651",
+    "similarity": 0.8245113492012024,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1652",
+    "similarity": 0.7900534272193909,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1653",
+    "similarity": 0.783024787902832,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1654",
+    "similarity": 0.8297005295753479,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1655",
+    "similarity": 0.8183597326278687,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1656",
+    "similarity": 0.8468955159187317,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1657",
+    "similarity": 0.8358707427978516,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1658",
+    "similarity": 0.7626621723175049,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1659",
+    "similarity": 0.896902322769165,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1660",
+    "similarity": 0.8871728777885437,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1661",
+    "similarity": 0.8090195655822754,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1662",
+    "similarity": 0.7676597833633423,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1663",
+    "similarity": 0.9071207642555237,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1664",
+    "similarity": 0.7719791531562805,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1665",
+    "similarity": 0.8858277797698975,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1666",
+    "similarity": 0.8705395460128784,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1667",
+    "similarity": 0.8746029138565063,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1668",
+    "similarity": 0.8214268088340759,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1669",
+    "similarity": 0.8098981380462646,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1670",
+    "similarity": 0.8923222422599792,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1671",
+    "similarity": 0.7767951488494873,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1672",
+    "similarity": 0.9297298192977905,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1673",
+    "similarity": 0.8237820267677307,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1674",
+    "similarity": 0.8342022895812988,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1675",
+    "similarity": 0.8883209824562073,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1676",
+    "similarity": 0.7808140516281128,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1677",
+    "similarity": 0.8318049311637878,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1678",
+    "similarity": 0.8852009177207947,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1679",
+    "similarity": 0.8351485729217529,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1680",
+    "similarity": 0.9227308630943298,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1681",
+    "similarity": 0.837393045425415,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1682",
+    "similarity": 0.7134727835655212,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1683",
+    "similarity": 0.9052144289016724,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1684",
+    "similarity": 0.8275476694107056,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1685",
+    "similarity": 0.8304425477981567,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1686",
+    "similarity": 0.9026275873184204,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1687",
+    "similarity": 0.7269813418388367,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1688",
+    "similarity": 0.8379495143890381,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1689",
+    "similarity": 0.6917047500610352,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1690",
+    "similarity": 0.9364126920700073,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1691",
+    "similarity": 0.8850117921829224,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1692",
+    "similarity": 0.790081262588501,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1693",
+    "similarity": 0.785541296005249,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1694",
+    "similarity": 0.8762136101722717,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1695",
+    "similarity": 0.859032154083252,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1696",
+    "similarity": 0.7726933360099792,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1697",
+    "similarity": 0.8915807604789734,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1698",
+    "similarity": 0.8752466440200806,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1699",
+    "similarity": 0.8907555341720581,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1700",
+    "similarity": 0.8080475330352783,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1701",
+    "similarity": 0.8868752717971802,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1702",
+    "similarity": 0.902546763420105,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1703",
+    "similarity": 0.7116451859474182,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1704",
+    "similarity": 0.7430603504180908,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1705",
+    "similarity": 0.8467753529548645,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1706",
+    "similarity": 0.8861356973648071,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1707",
+    "similarity": 0.8673896789550781,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1708",
+    "similarity": 0.6797354221343994,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1709",
+    "similarity": 0.7674002051353455,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1710",
+    "similarity": 0.913756787776947,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1711",
+    "similarity": 0.7641121745109558,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1712",
+    "similarity": 0.8634748458862305,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1713",
+    "similarity": 0.8451626896858215,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1714",
+    "similarity": 0.8925515413284302,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1715",
+    "similarity": 0.7668121457099915,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1716",
+    "similarity": 0.8006114959716797,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1717",
+    "similarity": 0.8787235021591187,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1718",
+    "similarity": 0.7802853584289551,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1719",
+    "similarity": 0.7521476745605469,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1720",
+    "similarity": 0.8911044597625732,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1721",
+    "similarity": 0.88685142993927,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1722",
+    "similarity": 0.8686505556106567,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1723",
+    "similarity": 0.9380280375480652,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1724",
+    "similarity": 0.8210225701332092,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1725",
+    "similarity": 0.8969656825065613,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1726",
+    "similarity": 0.8020580410957336,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1727",
+    "similarity": 0.8868571519851685,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1728",
+    "similarity": 0.7584608197212219,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1729",
+    "similarity": 0.7772001028060913,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1730",
+    "similarity": 0.8524733781814575,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1731",
+    "similarity": 0.8250205516815186,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1732",
+    "similarity": 0.764856219291687,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1733",
+    "similarity": 0.8341183066368103,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1734",
+    "similarity": 0.8428449630737305,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1735",
+    "similarity": 0.7991433143615723,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1736",
+    "similarity": 0.8456242084503174,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1737",
+    "similarity": 0.72130286693573,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1738",
+    "similarity": 0.823972225189209,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1739",
+    "similarity": 0.7810629606246948,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1740",
+    "similarity": 0.7876449823379517,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1741",
+    "similarity": 0.7933666706085205,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1742",
+    "similarity": 0.8494511246681213,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1743",
+    "similarity": 0.8296318054199219,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1744",
+    "similarity": 0.7445763945579529,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1745",
+    "similarity": 0.7166209816932678,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1746",
+    "similarity": 0.782849907875061,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1747",
+    "similarity": 0.8966778516769409,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1748",
+    "similarity": 0.7766046524047852,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1749",
+    "similarity": 0.8457928895950317,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1750",
+    "similarity": 0.8303877115249634,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1751",
+    "similarity": 0.7813388705253601,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1752",
+    "similarity": 0.8896133899688721,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1753",
+    "similarity": 0.9605477452278137,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1754",
+    "similarity": 0.7625007629394531,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1755",
+    "similarity": 0.693893551826477,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1756",
+    "similarity": 0.8047389388084412,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1757",
+    "similarity": 0.7305117845535278,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1758",
+    "similarity": 0.7529854774475098,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1759",
+    "similarity": 0.8145295977592468,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1760",
+    "similarity": 0.8454486131668091,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1761",
+    "similarity": 0.8370292782783508,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1762",
+    "similarity": 0.9035122394561768,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1763",
+    "similarity": 0.8457514047622681,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1764",
+    "similarity": 0.8156492710113525,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1765",
+    "similarity": 0.7062209844589233,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1766",
+    "similarity": 0.8779224753379822,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1767",
+    "similarity": 0.8715488910675049,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1768",
+    "similarity": 0.8605154752731323,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1769",
+    "similarity": 0.9181182384490967,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1770",
+    "similarity": 0.8368229269981384,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1771",
+    "similarity": 0.7101630568504333,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1772",
+    "similarity": 0.7450321316719055,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1773",
+    "similarity": 0.8857791423797607,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1774",
+    "similarity": 0.800598680973053,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1775",
+    "similarity": 0.9300106763839722,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1776",
+    "similarity": 0.8096277117729187,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1777",
+    "similarity": 0.8469648957252502,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1778",
+    "similarity": 0.7368817329406738,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1779",
+    "similarity": 0.8364922404289246,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1780",
+    "similarity": 0.8171077966690063,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1781",
+    "similarity": 0.9354775547981262,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1782",
+    "similarity": 0.7719865441322327,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1783",
+    "similarity": 0.770864725112915,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1784",
+    "similarity": 0.8415316939353943,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1785",
+    "similarity": 0.8418281674385071,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1786",
+    "similarity": 0.8646115064620972,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1787",
+    "similarity": 0.8102256655693054,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1788",
+    "similarity": 0.8018565773963928,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1789",
+    "similarity": 0.7540918588638306,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1790",
+    "similarity": 0.811514139175415,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1791",
+    "similarity": 0.841079831123352,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1792",
+    "similarity": 0.7817428112030029,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1793",
+    "similarity": 0.8512002825737,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1794",
+    "similarity": 0.8053034543991089,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1795",
+    "similarity": 0.888795793056488,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1796",
+    "similarity": 0.8588737845420837,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1797",
+    "similarity": 0.770851731300354,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1798",
+    "similarity": 0.8110619783401489,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1799",
+    "similarity": 0.9205179214477539,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1800",
+    "similarity": 0.8298275470733643,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1801",
+    "similarity": 0.8384866714477539,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1802",
+    "similarity": 0.7855426669120789,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1803",
+    "similarity": 0.7334570288658142,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1804",
+    "similarity": 0.9148883819580078,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1805",
+    "similarity": 0.8520492315292358,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1806",
+    "similarity": 0.8590061068534851,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1807",
+    "similarity": 0.846088171005249,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1808",
+    "similarity": 0.798174262046814,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1809",
+    "similarity": 0.724200963973999,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1810",
+    "similarity": 0.8405701518058777,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1811",
+    "similarity": 0.7484514713287354,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1812",
+    "similarity": 0.8094831705093384,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1813",
+    "similarity": 0.8312478065490723,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1814",
+    "similarity": 0.7954548597335815,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1815",
+    "similarity": 0.8880062103271484,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1816",
+    "similarity": 0.7842745780944824,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1817",
+    "similarity": 0.901633620262146,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1818",
+    "similarity": 0.6903809309005737,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1819",
+    "similarity": 0.7920695543289185,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1820",
+    "similarity": 0.8521967530250549,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1821",
+    "similarity": 0.8940434455871582,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1822",
+    "similarity": 0.8773468136787415,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1823",
+    "similarity": 0.8298166990280151,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1824",
+    "similarity": 0.8737074136734009,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1825",
+    "similarity": 0.8212110996246338,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1826",
+    "similarity": 0.7988687753677368,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1827",
+    "similarity": 0.7551870942115784,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1828",
+    "similarity": 0.8046040534973145,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1829",
+    "similarity": 0.7461455464363098,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1830",
+    "similarity": 0.8489472270011902,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1831",
+    "similarity": 0.7572191953659058,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1832",
+    "similarity": 0.8290989995002747,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1833",
+    "similarity": 0.8571218252182007,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1834",
+    "similarity": 0.8545025587081909,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1835",
+    "similarity": 0.7998557686805725,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1836",
+    "similarity": 0.9289804697036743,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1837",
+    "similarity": 0.9146154522895813,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1838",
+    "similarity": 0.7553016543388367,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1839",
+    "similarity": 0.8646882176399231,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1840",
+    "similarity": 0.8973729014396667,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1841",
+    "similarity": 0.7944754362106323,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1842",
+    "similarity": 0.8682339787483215,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1844",
+    "similarity": 0.8310371041297913,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1845",
+    "similarity": 0.8759267330169678,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1846",
+    "similarity": 0.8674098253250122,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1847",
+    "similarity": 0.9002974033355713,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1848",
+    "similarity": 0.8080490827560425,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1849",
+    "similarity": 0.8137797713279724,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1850",
+    "similarity": 0.8228693604469299,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1851",
+    "similarity": 0.7032111287117004,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1852",
+    "similarity": 0.7591139078140259,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1853",
+    "similarity": 0.7604978680610657,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1854",
+    "similarity": 0.7804811596870422,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1856",
+    "similarity": 0.8309227228164673,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1857",
+    "similarity": 0.881233811378479,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1858",
+    "similarity": 0.841425895690918,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1859",
+    "similarity": 0.7868314981460571,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1860",
+    "similarity": 0.9213614463806152,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1861",
+    "similarity": 0.8653262257575989,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1862",
+    "similarity": 0.874807596206665,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1863",
+    "similarity": 0.8532310724258423,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1864",
+    "similarity": 0.7643662691116333,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1865",
+    "similarity": 0.8545328378677368,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1866",
+    "similarity": 0.8625842928886414,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1867",
+    "similarity": 0.8511868715286255,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1868",
+    "similarity": 0.9222185015678406,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1869",
+    "similarity": 0.8712871074676514,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1871",
+    "similarity": 0.8465524911880493,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1872",
+    "similarity": 0.7210919260978699,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1873",
+    "similarity": 0.8496547937393188,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1874",
+    "similarity": 0.8932874798774719,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1875",
+    "similarity": 0.8721120953559875,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1876",
+    "similarity": 0.7553157210350037,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1877",
+    "similarity": 0.7796224355697632,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1878",
+    "similarity": 0.6728208661079407,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1879",
+    "similarity": 0.8486630916595459,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1880",
+    "similarity": 0.8722424507141113,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1881",
+    "similarity": 0.9021668434143066,
+    "category": "easy"
+  },
+  {
+    "problem_id": "1882",
+    "similarity": 0.729495108127594,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1883",
+    "similarity": 0.7875881195068359,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1884",
+    "similarity": 0.7654275894165039,
+    "category": "hard"
+  },
+  {
+    "problem_id": "1885",
+    "similarity": 0.8314335346221924,
+    "category": "medium"
+  },
+  {
+    "problem_id": "1886",
+    "similarity": 0.8905799984931946,
+    "category": "easy"
+  }
+]

@@ -236,22 +236,29 @@ Efeito colateral esperado: os tiers de dificuldade eram quantis sobre 1886 e fic
 
 ---
 
-## 9. Re-rotulagem de dificuldade (em execução)
+## 9. Re-rotulagem de dificuldade (concluída, 2026-09-22)
 
-`categorize.py --write-labels` está rodando sobre os 1857 pares. Ele recalcula a similaridade SFR, re-binariza em quantis 25/50/25 sobre a população atual, grava `difficulty` e adiciona `difficulty_score` (a similaridade bruta, para que terceiros possam re-binarizar com outros cortes).
+`categorize.py --write-labels` rodou sobre os 1857 pares. Dataset re-rotulado, `difficulty_score` gravado, split re-estratificado, smoke test verde (tiers balanceados em 465/928/464).
 
-Note que `--verify` deixou de ser um teste limpo do B2 depois da remoção dos 29: os rótulos antigos eram quantis sobre 1886, então alguma discordância de fronteira é **esperada** e não indica defeito. Por isso o script agora sempre reporta a taxa de concordância e a matriz de migração (`easy -> medium`, etc.) de forma informativa, e `--verify` só é fatal quando você quer o teste estrito sobre a mesma população.
+| Tier | Faixa SFR | Contagem | Score médio |
+|---|---|---|---|
+| Easy | ≥ 0.8687 | 465 (25.0%) | 0.8967 |
+| Medium | 0.7856 – 0.8687 | 928 (50.0%) | 0.8292 |
+| Hard | < 0.7856 | 464 (25.0%) | 0.7486 |
 
-**O que olhar no resultado:**
+Distribuição: mean=0.8260, std=0.0580, min=0.6214, max=0.9635.
 
-- **Concordância alta (> ~95%), migrações só de fronteira** — os rótulos publicados eram reprodutíveis; B2 fechado. A discordância residual é o efeito da mudança de população.
-- **Concordância baixa, ou migrações `easy -> hard`** — o release foi rotulado por um script ou pooling que não está versionado. Nesse caso os números de dificuldade do paper têm que vir da nova rodada, e vale registrar isso como ameaça à validade.
+### Veredito sobre o B2: método confirmado, rótulos originais irreprodutíveis
 
-Depois que terminar:
+**As estatísticas agregadas batem de perto.** mean 0.8260 vs 0.823 publicado, std 0.0580 vs 0.062, thresholds 0.8687/0.7856 vs 0.868/0.781. Isso confirma que o modelo e o método eram os documentados — o release *era* SFR, como o README dizia.
 
-1. `python dataset/scripts/build_dataset_v1.py --write` — re-estratifica o split contra os tiers novos.
-2. Atualizar a tabela de thresholds em `dataset/README.md` (está marcada como pendente).
-3. `python dataset/scripts/smoke_test.py` — o aviso de tiers desbalanceados deve sumir.
+**Mas os rótulos por par não reproduzem.** Concordância de 1653/1857 (89.0%), com as migrações distribuídas assim: medium→easy 57, hard→medium 51, easy→medium 49, medium→hard 46, easy→hard 1.
+
+Só um par anda dois tiers, então nada se moveu longe. O problema é que a migração é **bidirecional**, e isso elimina a explicação fácil. Remover 29 pares deslocou os cortes de quantil; se os scores por par fossem idênticos, toda reatribuição seria numa direção só — e verifiquei que apenas 62 pares caem entre os thresholds antigo e novo. Observar 204 reatribuições nos dois sentidos significa que **os scores por par mudaram**, não só os cortes.
+
+A causa não é recuperável: a rodada original salvou só os bins, não os scores. Candidatos plausíveis são variante de pooling, comprimento de truncamento, precisão numérica ou versão do `transformers`.
+
+**Consequência prática:** os rótulos publicados agora são os regerados, e `difficulty_score` passa a ser distribuído — então essa ambiguidade não pode se repetir. Registrei como ameaça à validade na Seção VII do paper.
 
 ---
 
