@@ -28,10 +28,32 @@ Run these on the host and copy the answers in:
 | Setting | How to find it |
 |---|---|
 | `MODULES` | `module avail 2>&1 \| grep -i -E 'python\|cuda'` — take the Python and CUDA modules, in load order |
-| `TORCH_CUDA` | `nvidia-smi` → read `CUDA Version` in the header. 12.1 → `cu121`, 12.4 → `cu124`, 11.8 → `cu118` |
+| `TORCH_CUDA` | `nvidia-smi` → read `CUDA Version` in the header, then see the table below. Default `cu126` |
 | `WORKDIR` | `df -h ~ /scratch /work /data 2>/dev/null` — pick a filesystem with tens of GB free, **not** `$HOME` |
 | `PYTHON_BIN` | after `module load`, `python3 -V` — must be ≥3.9 |
 | `BATCH_SIZE` | start at the shipped default, then watch `nvidia-smi` and raise until memory is ~80% used |
+
+### torch must be >= 2.6
+
+`microsoft/unixcoder-base` publishes only `pytorch_model.bin` — no safetensors —
+so `transformers` has to go through `torch.load`, and it refuses to do that on
+torch older than 2.6 (CVE-2025-32434). A run on an older torch gets all the way
+to `from_pretrained` and then dies with a `ValueError`.
+
+The trap is that the CUDA index caps the torch version, quietly:
+
+| Index | Highest torch | |
+|---|---|---|
+| `cu118` | 2.7.1 | ok |
+| `cu121` | 2.5.1 | **too old — never use** |
+| `cu124` | 2.6.0 | ok, only just |
+| `cu126` | 2.14.0 | preferred, the default |
+| `cu128` | 2.11.0 | ok |
+
+`setup.sh` now installs `torch>=2.6` explicitly, so an index that cannot
+satisfy it fails at install time with a resolver error rather than an hour
+later at model load. CUDA 12.x drivers are minor-version compatible, so a 12.x
+driver generally runs any `cu12x` build.
 
 Quick one-liner to gather most of it:
 
