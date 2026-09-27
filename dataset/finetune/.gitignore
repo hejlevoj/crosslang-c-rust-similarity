@@ -1,0 +1,17 @@
+# Tokenizer files that save_pretrained copies next to a trained adapter.
+# They are byte-identical to microsoft/unixcoder-base's own, and nothing
+# reloads them from here: the pipelines always build the tokenizer with
+# AutoTokenizer.from_pretrained(MODEL_NAME), and PeftModel.from_pretrained
+# reads only adapter_config.json and adapter_model.safetensors. Keeping them
+# added ~5 MB of duplicated vocabulary to every clone.
+model_lora/tokenizer.json
+model_lora/tokenizer_config.json
+model_lora/special_tokens_map.json
+model_lora/vocab.json
+model_lora/merges.txt
+
+# The full finetune writes a complete 126M-parameter checkpoint. That is far
+# too large for git; it belongs in the Zenodo deposit if it is published at
+# all. The LoRA adapter is small enough to track and is the one people will
+# actually reuse.
+model_st/

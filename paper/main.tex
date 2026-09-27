@@ -34,13 +34,17 @@ TODO email}
 \maketitle
 
 \begin{abstract}
-TODO. Roughly: C-to-Rust migration is an active agenda, but no dataset pairs
-the two languages at the level of whole solutions to the same problem. We
-present \dsname, 1857 C/Rust implementation pairs drawn from competitive
-programming archives, normalised, deduplicated, and stratified into difficulty
-tiers by zero-shot embedding similarity. We report retrieval baselines showing
-that a generic code model finds these pairs hard zero-shot and that the gap
-closes substantially with finetuning.
+C-to-Rust migration is an active agenda, but no dataset pairs the two
+languages at the level of whole solutions to a shared problem. We present
+\dsname, 1857 C/Rust implementation pairs drawn from competitive programming
+archives, normalised, deduplicated, and stratified into difficulty tiers by
+zero-shot cross-language embedding similarity, with per-record provenance and
+licensing. Cross-language retrieval is hard on this data: a generic code model
+reaches MRR $0.19$ zero-shot, and only $0.05$ on the hardest quarter, which is
+$1.7	imes$ chance. LoRA finetuning lifts the overall figure to $0.71$ and the
+hardest quarter by $7.3	imes$. The difficulty tiers are cut with one encoder
+family and hold under another, so they index a property of the pairs rather
+than of the model that defined them.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -234,8 +238,8 @@ problem. Chance is $\mathrm{MRR}=0.031$ and $\mathrm{MRR@10}=0.016$ at this
 pool size.
 
 \begin{table}[t]
-\caption{Cross-language retrieval on the 187-pair test set.
-\pending{Pending the cluster re-run.}}
+\caption{Cross-language retrieval on the 187-pair test set. Each C
+implementation queries the pool of all 187 Rust implementations.}
 \label{tab:baselines}
 \centering
 \begin{tabular}{lccccc}
@@ -244,8 +248,8 @@ Model & MRR & MRR@10 & R@1 & R@5 & R@10 \\
 \midrule
 Chance                 & 0.031 & 0.016 & 0.005 & 0.027 & 0.053 \\
 \midrule
-UniXcoder, zero-shot   & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
-UniXcoder + LoRA       & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder, zero-shot   & 0.189 & 0.170 & 0.134 & 0.203 & 0.283 \\
+UniXcoder + LoRA       & \textbf{0.713} & \textbf{0.708} & \textbf{0.610} & \textbf{0.824} & \textbf{0.909} \\
 UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
 \bottomrule
 \end{tabular}
@@ -253,31 +257,49 @@ UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} & \pending{-
 
 \begin{table}[t]
 \caption{MRR by difficulty tier. Every tier is scored against the same
-187-candidate pool; only the queries are partitioned.
-\pending{Pending the cluster re-run.}}
+187-candidate pool; only the queries are partitioned.}
 \label{tab:bytier}
 \centering
 \begin{tabular}{lccc}
 \toprule
 Model & Easy (47) & Medium (93) & Hard (47) \\
 \midrule
-UniXcoder, zero-shot   & \pending{--} & \pending{--} & \pending{--} \\
-UniXcoder + LoRA       & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder, zero-shot   & 0.328 & 0.186 & 0.053 \\
+UniXcoder + LoRA       & 0.947 & 0.760 & 0.386 \\
 UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} \\
+\midrule
+LoRA gain              & 2.9$\times$ & 4.1$\times$ & 7.3$\times$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-% The per-tier table is the one that earns the difficulty stratification its
-% place in the paper. Two outcomes are worth writing differently:
-%   - easy >> hard: the SFR-derived tiers transfer to a different model family,
-%     so they measure something about the pairs rather than about SFR.
-%   - easy ~ hard: they do not transfer, and the tiers should be presented as
-%     an SFR-specific annotation rather than a difficulty axis. Say so.
+LoRA moves MRR from $0.189$ to $0.713$, a factor of $3.8$ ($4.2$ on
+MRR@10), against a chance level of $0.031$. The two ratios differ because many
+zero-shot positives fall outside the top ten, which is exactly the regime where
+MRR and MRR@10 come apart.
 
-Note that the tiers are cut by SFR similarity while the models evaluated here
-are UniXcoder-based, so a per-tier gap is evidence that the tiers capture
-something about the pairs themselves rather than an artefact of one encoder.
+Table~\ref{tab:bytier} is the result that earns the difficulty tiers their
+place. Retrieval is monotone in tier for \emph{both} models, and the tiers were
+cut with SFR while the models here are UniXcoder-based --- so the ordering is a
+property of the pairs, not an artefact of the encoder that defined it. Two
+figures are worth stating plainly. Zero-shot UniXcoder reaches $0.053$ on the
+hard tier, $1.7\times$ chance, and places exactly one of the 47 hard pairs at
+rank 1: a generic code model effectively cannot solve a quarter of this
+dataset. And finetuning helps most where it is needed most, lifting the hard
+tier by $7.3\times$ against $2.9\times$ for easy.
+
+The mechanism is visible in the similarity statistics. The positive/negative
+gap widens from $0.079$ to $0.461$, but mean positive similarity in fact
+\emph{falls} slightly, from $0.622$ to $0.573$, while mean negative similarity
+collapses from $0.544$ to $0.112$. The contrastive objective buys its
+separation by pushing negatives apart rather than by pulling positives
+together.
+
+Source matters beyond tier composition. LoRA reaches MRR $0.775$ on the CodeNet
+portion of the test split against $0.663$ on the xCodeEval portion. The two
+portions have slightly different tier mixes, but reweighting each to the other's
+mix accounts for only $26\%$ of that gap: Codeforces problems are genuinely
+harder to match than AtCoder ones, beyond what the difficulty tier captures.
 
 \section{Use Cases}
 \label{sec:usecases}

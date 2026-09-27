@@ -4,19 +4,53 @@ Finetunes [`microsoft/unixcoder-base`](https://github.com/microsoft/CodeBERT/tre
 
 ## Results
 
+Measured on the 187-pair test split of the 1857-pair dataset, on GPU at Labic.
+Each C implementation queries the pool of all 187 Rust implementations.
+
+| Model | MRR | MRR@10 | R@1 | R@5 | R@10 |
+|-------|-----|--------|-----|-----|------|
+| Chance | 0.031 | 0.016 | 0.005 | 0.027 | 0.053 |
+| UniXcoder, zero-shot | 0.189 | 0.170 | 0.134 | 0.203 | 0.283 |
+| UniXcoder + LoRA | **0.713** | **0.708** | **0.610** | **0.824** | **0.909** |
+| UniXcoder, full finetune | *not run yet* | | | | |
+
+**3.8× over zero-shot on MRR, 4.2× on MRR@10.**
+
+MRR by difficulty tier — same 187-candidate pool, only the queries partitioned:
+
+| Model | Easy (47) | Medium (93) | Hard (47) |
+|---|---|---|---|
+| UniXcoder, zero-shot | 0.328 | 0.186 | 0.053 |
+| UniXcoder + LoRA | 0.947 | 0.760 | 0.386 |
+| LoRA gain | 2.9× | 4.1× | 7.3× |
+
+Retrieval is monotone in tier for both models. Since the tiers were cut with
+SFR and these models are UniXcoder-based, that ordering is a property of the
+pairs rather than of the encoder that defined it. Zero-shot on the hard tier is
+0.053 — 1.7× chance, with exactly one of 47 pairs at rank 1.
+
+By origin (LoRA, test): CodeNet 0.775, xCodeEval 0.663. Reweighting for the
+tier mix of each accounts for only 26% of that gap, so Codeforces problems are
+genuinely harder to match than AtCoder ones beyond what the tier captures.
+
+<details>
+<summary>Superseded numbers from the pre-cleaning dataset</summary>
+
 | Model | "MRR@10" | R@1 | R@5 |
 |-------|--------|-----|-----|
 | UniXcoder baseline (zero-shot) | 0.136 | 0.100 | 0.180 |
 | UniXcoder + LoRA | 0.725 | 0.643 | 0.827 |
 | UniXcoder + Full finetune | **0.770** | **0.693** | **0.880** |
 
-5× improvement over zero-shot. LoRA achieves 94% of full finetune performance with 0.23% of parameters updated.
+Kept for anyone who cited them. They are not comparable to the table above:
+different dataset, different test pool size, and the column labelled "MRR@10"
+was the untruncated mean.
+</details>
 
-> **These numbers are stale and need to be regenerated before publication.** They were reported against a 300-pair test set. The old seed-42 split applied to the 1886-pair dataset yields only 185 test pairs, so they were produced from a different input — most likely the 2013-pair pre-cleaning dataset, which is large enough for the 1500/200/300 split. The dataset now ships a stratified 1508/187/**191** split instead. Since MRR@10 and R@k depend on the size of the candidate pool, none of the numbers above is comparable to a result computed on this release. See `PUBLICATION_PLAN.md` (B6).
->
-> The column is quoted above because **that number is not MRR@10.** `evaluate.py` computed `mean(1/rank)` with no cutoff and labelled it `MRR@10`; a real MRR@10 scores zero when the positive ranks below 10. The two coincide when nearly every positive lands in the top 10, which holds for the finetuned rows but *not* for the zero-shot row — which is the denominator of the "5× improvement" claim. That claim was therefore overstated by an unknown amount. Both metrics are now computed and reported separately.
->
-> The evaluation also now reports a **breakdown by difficulty tier and by origin**, which the split was stratified to make valid. Per-tier numbers rank against the full candidate pool and partition only the queries — restricting the pool per tier would give each tier a different pool size (47/93/47) and retrieval scores are not comparable across pool sizes.
+LoRA updates 0.23% of the parameters (295K of 126M).
+
+Full results, including validation splits and the by-origin breakdown, are in
+`outputs/results_baseline.json` and `outputs/results_lora.json`.
 
 ## Setup
 
