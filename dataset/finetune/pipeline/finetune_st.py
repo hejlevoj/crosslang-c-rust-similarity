@@ -82,7 +82,9 @@ def encode_split(data, tokenizer, model, device, batch_size=16):
 
 def load_split(split):
     """Rows for one frozen split, keyed the way this pipeline expects."""
-    return [{"problem_id": r["problem_id"], "c": r["c_code"], "rust": r["rust_code"]}
+    return [{"problem_id": r["problem_id"], "c": r["c_code"],
+             "rust": r["rust_code"], "difficulty": r["difficulty"],
+             "origin": r["origin"]}
             for r in load(split=split)]
 
 
@@ -138,7 +140,9 @@ def main():
         print(f"Epoch {epoch} done. avg_loss={avg_loss:.4f}  time={time.time()-t0:.0f}s")
 
         c_embs, r_embs = encode_split(val_data, tokenizer, model, device)
-        val_res = evaluate_embeddings(c_embs, r_embs, split_name=f"st_val_epoch{epoch}")
+        val_res = evaluate_embeddings(
+            c_embs, r_embs, split_name=f"st_val_epoch{epoch}",
+            difficulties=[d["difficulty"] for d in val_data])
         print_results(val_res)
 
         if val_res["MRR@10"] > best_val_mrr:
@@ -152,7 +156,10 @@ def main():
     results_all = {}
     for split, data in [("val", val_data), ("test", test_data)]:
         c_embs, r_embs = encode_split(data, tokenizer, model_best, device)
-        res = evaluate_embeddings(c_embs, r_embs, split_name=f"st_{split}")
+        res = evaluate_embeddings(
+            c_embs, r_embs, split_name=f"st_{split}",
+            difficulties=[d["difficulty"] for d in data],
+            origins=[d["origin"] for d in data])
         print_results(res)
         results_all[split] = res
 

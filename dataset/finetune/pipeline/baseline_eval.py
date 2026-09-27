@@ -12,7 +12,7 @@ from evaluate import evaluate_embeddings, print_results
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 sys.path.insert(0, os.path.join(ROOT, ".."))
-from common.load import load_pairs  # noqa: E402
+from common.load import load  # noqa: E402
 from common.runtime import get_device, env_int  # noqa: E402
 
 MODEL_NAME = "microsoft/unixcoder-base"
@@ -45,8 +45,11 @@ def encode(texts, tokenizer, model, device, batch_size=BATCH_SIZE):
 
 
 def load_split(split):
-    c_texts, rust_texts, _ = load_pairs(split=split)
-    return c_texts, rust_texts
+    rows = load(split=split)
+    return ([r["c_code"] for r in rows],
+            [r["rust_code"] for r in rows],
+            [r["difficulty"] for r in rows],
+            [r["origin"] for r in rows])
 
 
 def main():
@@ -58,13 +61,15 @@ def main():
 
     results_all = {}
     for split in ["val", "test"]:
-        c_texts, rust_texts = load_split(split)
+        c_texts, rust_texts, diffs, origins = load_split(split)
         print(f"\nEncoding {split} C ({len(c_texts)} samples)...")
         c_embs = encode(c_texts, tokenizer, model, device)
         print(f"Encoding {split} Rust ({len(rust_texts)} samples)...")
         rust_embs = encode(rust_texts, tokenizer, model, device)
 
-        res = evaluate_embeddings(c_embs, rust_embs, split_name=f"baseline_{split}")
+        res = evaluate_embeddings(c_embs, rust_embs,
+                                  split_name=f"baseline_{split}",
+                                  difficulties=diffs, origins=origins)
         print_results(res)
         results_all[split] = res
 

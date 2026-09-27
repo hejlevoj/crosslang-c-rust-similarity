@@ -220,18 +220,46 @@ within 0.3 percentage points by source and 0.6 by tier.
 \section{Baselines}
 \label{sec:baselines}
 
-% ~0.5 page, one table. Zero-shot UniXcoder vs LoRA vs full finetune,
-% MRR@10 / R@1 / R@5, overall and per tier.
-% Frame as evidence of utility, NOT as the contribution.
+% ~0.5 page, two tables. Frame as evidence of utility, NOT as the
+% contribution.
+%
+% Report MRR and MRR@10 side by side. They diverge most for the zero-shot
+% baseline, where many positives fall outside the top 10, and that baseline is
+% the denominator of the improvement claim - quoting the untruncated mean as
+% "MRR@10" would inflate it.
+
+Retrieval is C-to-Rust: each C implementation queries the pool of all 187 Rust
+implementations in the test split, and the target is the one solving the same
+problem. Chance is $\mathrm{MRR}=0.031$ and $\mathrm{MRR@10}=0.016$ at this
+pool size.
 
 \begin{table}[t]
 \caption{Cross-language retrieval on the 187-pair test set.
-\pending{All numbers pending re-run against the current split.}}
+\pending{Pending the cluster re-run.}}
 \label{tab:baselines}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Model & MRR & MRR@10 & R@1 & R@5 & R@10 \\
+\midrule
+Chance                 & 0.031 & 0.016 & 0.005 & 0.027 & 0.053 \\
+\midrule
+UniXcoder, zero-shot   & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder + LoRA       & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\caption{MRR by difficulty tier. Every tier is scored against the same
+187-candidate pool; only the queries are partitioned.
+\pending{Pending the cluster re-run.}}
+\label{tab:bytier}
 \centering
 \begin{tabular}{lccc}
 \toprule
-Model & MRR@10 & R@1 & R@5 \\
+Model & Easy (47) & Medium (93) & Hard (47) \\
 \midrule
 UniXcoder, zero-shot   & \pending{--} & \pending{--} & \pending{--} \\
 UniXcoder + LoRA       & \pending{--} & \pending{--} & \pending{--} \\
@@ -239,6 +267,17 @@ UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+% The per-tier table is the one that earns the difficulty stratification its
+% place in the paper. Two outcomes are worth writing differently:
+%   - easy >> hard: the SFR-derived tiers transfer to a different model family,
+%     so they measure something about the pairs rather than about SFR.
+%   - easy ~ hard: they do not transfer, and the tiers should be presented as
+%     an SFR-specific annotation rather than a difficulty axis. Say so.
+
+Note that the tiers are cut by SFR similarity while the models evaluated here
+are UniXcoder-based, so a per-tier gap is evidence that the tiers capture
+something about the pairs themselves rather than an artefact of one encoder.
 
 \section{Use Cases}
 \label{sec:usecases}
