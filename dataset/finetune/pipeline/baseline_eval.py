@@ -15,6 +15,7 @@ sys.path.insert(0, os.path.join(ROOT, ".."))
 from common.load import load  # noqa: E402
 from common.runtime import get_device, env_int  # noqa: E402
 
+RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME = "microsoft/unixcoder-base"
 MAX_LEN = 512
 BATCH_SIZE = env_int("EVAL_BATCH_SIZE", 16)
@@ -53,6 +54,12 @@ def load_split(split):
 
 
 def main():
+    # Create the results directory up front, not at the end. A LoRA run once
+    # trained, evaluated, and then died on the final write because this did not
+    # exist - hours of GPU time with nothing saved. Anything that can fail
+    # about the output path should fail in the first second.
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+
     device = get_device()
     print(f"Loading model {MODEL_NAME} ...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -73,7 +80,7 @@ def main():
         print_results(res)
         results_all[split] = res
 
-    with open(os.path.join(ROOT, "outputs", "results_baseline.json"), "w") as f:
+    with open(os.path.join(RESULTS_DIR, "results_baseline.json"), "w") as f:
         json.dump(results_all, f, indent=2)
     print("Saved results_baseline.json")
 

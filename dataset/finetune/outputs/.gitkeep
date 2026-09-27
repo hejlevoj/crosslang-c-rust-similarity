@@ -1,0 +1,2 @@
+Results land here: results_baseline.json, results_lora.json, results_st.json.
+Tracked so the directory exists on a fresh clone; the scripts also create it.
