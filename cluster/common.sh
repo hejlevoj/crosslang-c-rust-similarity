@@ -161,3 +161,28 @@ result_file_for_job() {
 
   echo "$REPO_DIR/dataset/finetune/outputs/results_${stem}${tag}.json"
 }
+
+# ------------------------------------------------- experiment hyperparameters
+#
+# These are properties of the EXPERIMENT, not of the machine, and they live
+# here rather than in the per-host configs on purpose. The training loss is
+# InfoNCE over in-batch negatives, so batch size changes how many negatives
+# each step sees and therefore the training signal itself. A host with more
+# GPU memory running a bigger batch would produce a number that cannot be
+# compared with the others - and would silently confound the seed runs, whose
+# whole purpose is to measure variance.
+#
+# Change them for the whole matrix or not at all, and report the value used.
+export BATCH_SIZE="${BATCH_SIZE:-32}"
+export EVAL_BATCH_SIZE="${EVAL_BATCH_SIZE:-64}"
+export EPOCHS="${EPOCHS:-5}"
+
+warn_hyperparameter_override() {
+  local f="$1"
+  if grep -qE '^\s*export\s+(BATCH_SIZE|EPOCHS|EVAL_BATCH_SIZE)=' "$f" 2>/dev/null; then
+    echo
+    echo "WARNING: $f overrides a training hyperparameter."
+    echo "         Runs from this host will not be comparable with the others."
+    echo
+  fi
+}

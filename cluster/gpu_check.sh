@@ -56,7 +56,9 @@ for i in range(torch.cuda.device_count()):
         print(f"{line}  UNUSABLE - {type(e).__name__}")
         print(f"     {str(e).splitlines()[0]}")
         if cap[0] >= 12:
-            print(f"     Device is newer than this build. Try TORCH_CUDA=cu128.")
+            print(f"     Device is newer than this build. sm_120 (Blackwell) needs")
+            print(f"     a CUDA 13 wheel - TORCH_CUDA=cu130. Follow the indexes")
+            print(f"     torch names in the warning above; they are version-specific.")
         else:
             print(f"     Device is older than this build. Try TORCH_CUDA=cu118.")
             print(f"     If cu118 also fails, this GPU predates the torch>=2.6")

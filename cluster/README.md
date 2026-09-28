@@ -48,7 +48,9 @@ The trap is that the CUDA index caps the torch version, quietly:
 | `cu121` | 2.5.1 | **too old — never use** |
 | `cu124` | 2.6.0 | ok, only just |
 | `cu126` | 2.14.0 | preferred, the default |
-| `cu128` | 2.11.0 | ok |
+| `cu128` | 2.11.0 | older torch, avoid unless a device needs it |
+| `cu130` | 2.14.0 | CUDA 13 — **required for Blackwell `sm_120`** |
+| `cu132` | 2.14.0 | CUDA 13.2 |
 
 `setup.sh` now installs `torch>=2.6` explicitly, so an index that cannot
 satisfy it fails at install time with a resolver error rather than an hour
@@ -149,8 +151,10 @@ Check a machine before giving it work:
 It prints the device's compute capability, the architectures the wheel was
 built for, and the result of actually multiplying two matrices on the device.
 If they do not intersect, set `TORCH_CUDA` for that host and re-run
-`setup.sh` — `cu128` for a device newer than the build, `cu118` for an older
-one. A GPU too old for torch 2.6 cannot run these jobs at all, since
+`setup.sh`. The index caps both the torch version *and* the GPU
+architectures: `cu126` carries the newest torch but only `sm_50`–`sm_90`, so a
+Blackwell `sm_120` card needs `cu130` even though `cu126` is newer-looking.
+Older devices need `cu118`. A GPU too old for torch 2.6 cannot run these jobs at all, since
 `transformers` requires that version to load `unixcoder-base`.
 
 `worker.sh` runs the same check before claiming anything and refuses to start

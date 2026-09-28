@@ -42,9 +42,13 @@ def _assert_cuda_usable():
             f"  torch:     {torch.__version__}\n"
             f"  built for: {' '.join(torch.cuda.get_arch_list())}\n"
             f"  error:     {type(e).__name__}: {str(e).splitlines()[0]}\n"
-            f"This wheel has no kernels for this GPU. Set TORCH_CUDA in "
-            f"cluster/config/<hostname>.env and re-run cluster/setup.sh - "
-            f"cu128 for a newer device, cu118 for an older one."
+            f"This wheel has no kernels for this GPU. torch usually prints "
+            f"the exact wheel indexes to use just above this, for your torch "
+            f"version; follow those. Set TORCH_CUDA in "
+            f"cluster/config/<hostname>.env and re-run cluster/setup.sh. "
+            f"As a guide: Blackwell (sm_120) needs a CUDA 13 build such as "
+            f"cu130, and a pre-Pascal device needs cu118 - but note the index "
+            f"also caps the torch version, and this project needs >=2.6."
         ) from e
 
 

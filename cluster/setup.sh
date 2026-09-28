@@ -54,11 +54,13 @@ else
 The $TORCH_CUDA index cannot provide torch>=2.6.
 
 Highest torch per index, as of writing:
-  cu118  2.7.1
-  cu121  2.5.1   <- too old, do not use
+  cu118  2.7.1    pre-Pascal devices
+  cu121  2.5.1    <- too old, do not use
   cu124  2.6.0
-  cu126  2.14.0  <- default
+  cu126  2.14.0   <- default, but sm_50..sm_90 only
   cu128  2.11.0
+  cu130  2.14.0   <- CUDA 13, needed for Blackwell sm_120
+  cu132  2.14.0
 
 Pick an index that has >=2.6 and that your driver supports, set TORCH_CUDA in
 the host config, and re-run. CUDA 12.x drivers are minor-version compatible, so
@@ -85,7 +87,7 @@ if (major, minor) < (2, 6):
     print("  transformers will refuse to load microsoft/unixcoder-base, which")
     print("  ships only pytorch_model.bin, because torch.load is unsafe before")
     print("  2.6 (CVE-2025-32434). Set TORCH_CUDA to an index carrying >=2.6")
-    print("  (cu124, cu126, cu128 or cu118 - not cu121) and re-run setup.sh.")
+    print("  (cu124, cu126, cu130, cu132 or cu118 - not cu121) and re-run setup.sh.")
     sys.exit(1)
 print(f"cuda available: {torch.cuda.is_available()}")
 if torch.cuda.is_available():
@@ -111,7 +113,8 @@ if torch.cuda.is_available():
             print(f"       FAILS: {type(e).__name__}: {str(e).splitlines()[0]}")
             print(f"       This wheel has no kernels for {sm}.")
             if cap[0] >= 12:
-                print(f"       {p.name} is newer than this build - try TORCH_CUDA=cu128.")
+                print(f"       {p.name} is newer than this build. sm_120 (Blackwell)")
+            print(f"       needs a CUDA 13 wheel - TORCH_CUDA=cu130.")
             else:
                 print(f"       {p.name} is older than this build - try TORCH_CUDA=cu118,")
                 print(f"       and if that still fails the GPU predates the torch>=2.6")
