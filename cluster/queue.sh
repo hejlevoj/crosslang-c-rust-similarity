@@ -98,17 +98,25 @@ case "$ACTION" in
     ;;
 
   requeue)
-    job="${1:?usage: queue.sh requeue <job>}"
     init_dirs
-    for spec in "${JOB_SPECS[@]}"; do
-      if [[ "${spec%%|*}" == "$job" ]]; then
-        rm -rf "$Q/claimed/$job" "$Q/failed/$job" "$Q/done/$job"
-        printf '%s\n' "$spec" > "$Q/pending/$job"
-        echo "Requeued $job"
-        exit 0
-      fi
+    targets=()
+    if [[ "${1:-}" == "--failed" ]]; then
+      # A host with an unusable GPU can fail a run of jobs in seconds before
+      # anyone notices, so putting them all back needs to be one command.
+      for f in "$Q"/failed/*; do
+        [[ -e "$f" ]] && targets+=("$(basename "$f")")
+      done
+      (( ${#targets[@]} )) || { echo "Nothing in failed/"; exit 0; }
+    else
+      targets=("${1:?usage: queue.sh requeue <job> | --failed}")
+    fi
+
+    for job in "${targets[@]}"; do
+      spec="$(job_spec "$job")" || die "unknown job '$job'"
+      rm -rf "$Q/claimed/$job" "$Q/failed/$job" "$Q/done/$job"
+      printf '%s\n' "$spec" > "$Q/pending/$job"
+      echo "Requeued $job"
     done
-    die "unknown job '$job'"
     ;;
 
   reset)

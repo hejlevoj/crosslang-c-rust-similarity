@@ -89,9 +89,36 @@ if (major, minor) < (2, 6):
     sys.exit(1)
 print(f"cuda available: {torch.cuda.is_available()}")
 if torch.cuda.is_available():
+    print(f"built for:      {' '.join(torch.cuda.get_arch_list())}")
+    ok = True
     for i in range(torch.cuda.device_count()):
         p = torch.cuda.get_device_properties(i)
-        print(f"  [{i}] {p.name}, {p.total_memory / 1024**3:.1f} GiB")
+        cap = torch.cuda.get_device_capability(i)
+        sm = f"sm_{cap[0]}{cap[1]}"
+        print(f"  [{i}] {p.name}, {p.total_memory / 1024**3:.1f} GiB, {sm}")
+
+        # torch.cuda.is_available() only says a driver and a device exist. It
+        # returns True when the installed wheel has no kernels compiled for
+        # this GPU's architecture, and the job then dies hours later with
+        # "no kernel image is available for execution on the device". The only
+        # honest check is to run something on the device.
+        try:
+            x = torch.randn(64, 64, device=f"cuda:{i}")
+            float((x @ x).sum().item())
+            print(f"       matmul OK")
+        except Exception as e:
+            ok = False
+            print(f"       FAILS: {type(e).__name__}: {str(e).splitlines()[0]}")
+            print(f"       This wheel has no kernels for {sm}.")
+            if cap[0] >= 12:
+                print(f"       {p.name} is newer than this build - try TORCH_CUDA=cu128.")
+            else:
+                print(f"       {p.name} is older than this build - try TORCH_CUDA=cu118,")
+                print(f"       and if that still fails the GPU predates the torch>=2.6")
+                print(f"       that transformers requires, so this host cannot run the job.")
+    if not ok:
+        print("\n  Set TORCH_CUDA in cluster/config/$(hostname -s).env and re-run setup.sh.")
+        sys.exit(1)
 else:
     print("  WARNING: no GPU visible to torch.")
     if "+cpu" in torch.__version__:

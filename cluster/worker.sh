@@ -67,6 +67,33 @@ if [[ -z "$GPU_LIST" ]]; then
 fi
 IFS=',' read -r -a GPUS <<< "$GPU_LIST"
 
+# Preflight before claiming anything. A host whose torch has no kernels for
+# its GPU fails every job in milliseconds, and a worker that claims first and
+# checks later would march through the entire queue marking it all failed -
+# taking work away from the machines that could have run it.
+echo
+echo "Checking this host can actually run a job ..."
+if ! python - <<'PY'
+import sys, torch
+if not torch.cuda.is_available():
+    print("  torch sees no CUDA device"); sys.exit(1)
+try:
+    x = torch.randn(64, 64, device="cuda")
+    float((x @ x).sum().item())
+except Exception as e:
+    cap = torch.cuda.get_device_capability(0)
+    print(f"  {torch.cuda.get_device_name(0)} is sm_{cap[0]}{cap[1]}, but this "
+          f"torch was built for {' '.join(torch.cuda.get_arch_list())}")
+    print(f"  {type(e).__name__}: {str(e).splitlines()[0]}")
+    sys.exit(1)
+print("  ok")
+PY
+then
+  die "this host cannot run GPU jobs, so it will not claim any.
+  Diagnose with ./cluster/gpu_check.sh, set TORCH_CUDA in
+  cluster/config/$HOST.env, and re-run ./cluster/setup.sh."
+fi
+
 cd "$REPO_DIR"
 LOGDIR="$WORKDIR/logs"; mkdir -p "$LOGDIR"
 PIPE_REL="dataset/finetune/pipeline"

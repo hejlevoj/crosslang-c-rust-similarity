@@ -132,6 +132,40 @@ nothing would let two machines run the same job and overwrite each other's
 results. Directory creation is atomic on NFS by specification. Verified with
 eight concurrent claimers over 40 jobs: 40 claims, no duplicates.
 
+### When a machine cannot run the jobs
+
+`torch.cuda.is_available()` reports a driver and a device, not whether the
+installed wheel has kernels this GPU can execute. A mismatched build passes
+that check and then dies at the first forward pass with
+
+    CUDA error: no kernel image is available for execution on the device
+
+Check a machine before giving it work:
+
+```bash
+./cluster/gpu_check.sh
+```
+
+It prints the device's compute capability, the architectures the wheel was
+built for, and the result of actually multiplying two matrices on the device.
+If they do not intersect, set `TORCH_CUDA` for that host and re-run
+`setup.sh` — `cu128` for a device newer than the build, `cu118` for an older
+one. A GPU too old for torch 2.6 cannot run these jobs at all, since
+`transformers` requires that version to load `unixcoder-base`.
+
+`worker.sh` runs the same check before claiming anything and refuses to start
+if it fails. That matters more than it looks: a host that fails every job in
+milliseconds would otherwise march through the whole queue marking it failed,
+taking work away from the machines that could have run it.
+
+To put those jobs back:
+
+```bash
+./cluster/queue.sh requeue --failed
+```
+
+---
+
 ### Per-host configuration
 
 A config named after the machine wins over the site config, so hosts with

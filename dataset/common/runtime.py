@@ -20,6 +20,34 @@ import os
 import torch
 
 
+def _assert_cuda_usable():
+    """Run something on the GPU before trusting it.
+
+    torch.cuda.is_available() checks for a driver and a device, not for
+    kernels this GPU can execute. A wheel built without support for the
+    device's compute capability passes that check and then fails at the first
+    forward pass with "no kernel image is available for execution on the
+    device" - which on a training job means hours later, on a shared machine,
+    with nothing to show. One 64x64 matmul settles it in milliseconds.
+    """
+    try:
+        x = torch.randn(64, 64, device="cuda")
+        float((x @ x).sum().item())
+    except Exception as e:
+        cap = torch.cuda.get_device_capability(0)
+        name = torch.cuda.get_device_name(0)
+        raise RuntimeError(
+            f"CUDA is present but unusable on this host.\n"
+            f"  device:    {name} (sm_{cap[0]}{cap[1]})\n"
+            f"  torch:     {torch.__version__}\n"
+            f"  built for: {' '.join(torch.cuda.get_arch_list())}\n"
+            f"  error:     {type(e).__name__}: {str(e).splitlines()[0]}\n"
+            f"This wheel has no kernels for this GPU. Set TORCH_CUDA in "
+            f"cluster/config/<hostname>.env and re-run cluster/setup.sh - "
+            f"cu128 for a newer device, cu118 for an older one."
+        ) from e
+
+
 def get_device(announce=True):
     """Pick the device, honouring a DEVICE override."""
     requested = os.environ.get("DEVICE", "auto").lower()
@@ -40,11 +68,15 @@ def get_device(announce=True):
     else:
         raise ValueError(f"DEVICE must be auto, cuda or cpu; got {requested!r}")
 
+    if device.type == "cuda":
+        _assert_cuda_usable()
+
     if announce:
         if device.type == "cuda":
             name = torch.cuda.get_device_name(0)
             total = torch.cuda.get_device_properties(0).total_memory / 1024 ** 3
-            print(f"Device: cuda - {name}, {total:.1f} GiB")
+            cap = torch.cuda.get_device_capability(0)
+            print(f"Device: cuda - {name}, {total:.1f} GiB, sm_{cap[0]}{cap[1]}")
         else:
             print(f"Device: cpu (torch {torch.__version__})")
             if requested == "auto" and "+cpu" in torch.__version__:
