@@ -52,8 +52,14 @@ case "$ACTION" in
         # repository and so is visible from every machine even if WORKDIR is
         # misconfigured. Without the second check, a queue on a non-shared
         # WORKDIR makes every init re-run the entire matrix.
-        if [[ -e "$Q/done/$name" || -d "$Q/claimed/$name" ]]; then
-          skipped+=("$name(queued/done)"); continue
+        if [[ -e "$Q/pending/$name" ]]; then
+          skipped+=("$name(already pending)"); continue
+        fi
+        if [[ -d "$Q/claimed/$name" ]]; then
+          skipped+=("$name(running)"); continue
+        fi
+        if [[ -e "$Q/done/$name" ]]; then
+          skipped+=("$name(done)"); continue
         fi
         rf="$(result_file_for_job "$spec" || true)"
         if [[ -n "$rf" && -s "$rf" ]]; then
