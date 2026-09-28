@@ -28,7 +28,9 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 sys.path.insert(0, os.path.join(ROOT, ".."))
 from common.load import load  # noqa: E402
-from common.runtime import get_device, env_int  # noqa: E402
+from common.runtime import (  # noqa: E402
+    get_device, env_int, set_seed, anonymize_enabled, run_tag)
+from common.anonymize import anonymize_rows  # noqa: E402
 
 RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME   = "microsoft/unixcoder-base"
@@ -102,12 +104,20 @@ def encode_dataset(data, tokenizer, model, device, batch_size=16):
 
 
 
+def _rows(split):
+    """Rows for one split, with the identifier ablation applied if requested."""
+    rows = load(split=split)
+    if anonymize_enabled():
+        rows = anonymize_rows(rows)
+    return rows
+
+
 def load_split(split):
     """Rows for one frozen split, keyed the way this pipeline expects."""
     return [{"problem_id": r["problem_id"], "c": r["c_code"],
              "rust": r["rust_code"], "difficulty": r["difficulty"],
              "origin": r["origin"]}
-            for r in load(split=split)]
+            for r in _rows(split)]
 
 
 def main():
@@ -116,6 +126,7 @@ def main():
     # exist - hours of GPU time with nothing saved. Anything that can fail
     # about the output path should fail in the first second.
     os.makedirs(RESULTS_DIR, exist_ok=True)
+    set_seed()
 
     device = get_device()
 
@@ -208,7 +219,7 @@ def main():
         print_results(res)
         results_all[split] = res
 
-    with open(os.path.join(RESULTS_DIR, "results_lora.json"), "w") as f:
+    with open(os.path.join(RESULTS_DIR, f"results_lora{run_tag()}.json"), "w") as f:
         json.dump(results_all, f, indent=2)
     print("Saved results_lora.json")
 

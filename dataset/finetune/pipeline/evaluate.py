@@ -75,16 +75,24 @@ def evaluate_embeddings(c_embs, rust_embs, split_name="test",
     pos = sim[np.arange(n), np.arange(n)]
     neg = sim[~np.eye(n, dtype=bool)]
 
+    # Both retrieval directions come off the same matrix: querying with C
+    # against the Rust pool reads along rows, querying with Rust against the C
+    # pool reads down columns. They are not the same number - the two
+    # languages have different amounts of surface to match on - so reporting
+    # only one direction leaves an obvious question open.
     ranks = _ranks(sim)
+    ranks_rev = _ranks(sim.T)
 
     results = {
         "split": split_name,
         "n": n,
+        "direction": "c2rust",
         "mean_pos_sim": round(float(pos.mean()), 4),
         "mean_neg_sim": round(float(neg.mean()), 4),
         "sim_gap": round(float(pos.mean() - neg.mean()), 4),
         **_metrics(ranks),
     }
+    results["reverse"] = {"direction": "rust2c", **_metrics(ranks_rev)}
 
     for field, labels, order in (
         ("by_difficulty", difficulties, ("easy", "medium", "hard")),
@@ -97,13 +105,15 @@ def evaluate_embeddings(c_embs, rust_embs, split_name="test",
                 f"{field}: got {len(labels)} labels for {n} pairs")
         keys = order if order else sorted(set(labels))
         labels = np.asarray(labels)
-        breakdown = {}
+        breakdown, breakdown_rev = {}, {}
         for key in keys:
             sel = labels == key
             if not sel.any():
                 continue
             breakdown[key] = {"n": int(sel.sum()), **_metrics(ranks[sel])}
+            breakdown_rev[key] = {"n": int(sel.sum()), **_metrics(ranks_rev[sel])}
         results[field] = breakdown
+        results["reverse"][field] = breakdown_rev
 
     return results
 
@@ -116,7 +126,8 @@ def print_results(results: dict):
     print(f"  mean pos similarity : {results['mean_pos_sim']:.4f}")
     print(f"  mean neg similarity : {results['mean_neg_sim']:.4f}")
     print(f"  similarity gap      : {results['sim_gap']:.4f}")
-    print(f"  MRR                 : {results['MRR']:.4f}")
+    print(f"  MRR   C->Rust       : {results['MRR']:.4f}")
+    print(f"  MRR   Rust->C       : {results['reverse']['MRR']:.4f}")
     print(f"  MRR@10              : {results['MRR@10']:.4f}")
     print(f"  R@1 / R@5 / R@10    : {results['R@1']:.4f} / "
           f"{results['R@5']:.4f} / {results['R@10']:.4f}")

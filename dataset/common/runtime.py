@@ -65,3 +65,50 @@ def env_int(name, default):
     if value < 1:
         raise ValueError(f"{name} must be >= 1; got {value}")
     return value
+
+
+def set_seed(default=42):
+    """Seed python, numpy and torch from SEED; return the value used.
+
+    Without this the finetuning runs were not reproducible and, worse, could
+    not be repeated to estimate variance - every reported number was a single
+    draw with no error bar.
+    """
+    import random
+
+    seed = env_int("SEED", default)
+    random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    try:
+        import numpy as np
+        np.random.seed(seed)
+    except ImportError:
+        pass
+    print(f"Seed: {seed}")
+    return seed
+
+
+def anonymize_enabled():
+    """True when ANONYMIZE_IDENTIFIERS is set to something truthy."""
+    return os.environ.get("ANONYMIZE_IDENTIFIERS", "").lower() in (
+        "1", "true", "yes", "on")
+
+
+def run_tag():
+    """Suffix distinguishing this run's output files.
+
+    Set RUN_TAG explicitly, or let it be derived from the ablation and seed so
+    that a matrix of runs cannot silently overwrite one another's results.
+    """
+    explicit = os.environ.get("RUN_TAG")
+    if explicit:
+        return explicit if explicit.startswith(("-", "_")) else "-" + explicit
+    parts = []
+    if anonymize_enabled():
+        parts.append("anon")
+    seed = os.environ.get("SEED")
+    if seed and seed != "42":
+        parts.append(f"seed{seed}")
+    return ("-" + "-".join(parts)) if parts else ""

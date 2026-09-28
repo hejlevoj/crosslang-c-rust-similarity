@@ -82,6 +82,43 @@ CLUSTER=cdi ./cluster/run.sh categorize     # then, once it is done:
 CLUSTER=cdi ./cluster/run.sh all
 ```
 
+## Running the whole matrix in parallel
+
+`run_parallel.sh` spreads the experiment matrix across the GPUs on the host,
+one job per GPU at a time, pulling from a shared queue so a slow job does not
+idle the others. Each job gets its own `CUDA_VISIBLE_DEVICES`, its own log, and
+a `RUN_TAG` derived from its configuration so results files cannot collide.
+
+```bash
+CLUSTER=labic ./cluster/run_parallel.sh --list      # what is in the matrix
+CLUSTER=labic ./cluster/run_parallel.sh --dry-run   # what it would do
+CLUSTER=labic ./cluster/run_parallel.sh             # run it
+```
+
+Narrow it with `--jobs lora,lora-anon` or restrict the hardware with
+`--gpus 0,2`. Jobs are queued longest-first so the tail is not one full
+finetune running alone on an otherwise idle machine.
+
+The matrix covers three questions the single-run results left open:
+
+| Jobs | Question |
+|---|---|
+| `lora`, `lora-seed43/44/45` | How much of the reported number is seed noise? Everything so far is a single draw with no error bar. |
+| `*-anon` | How much of the performance is identifier overlap rather than structure? |
+| `lexical`, `lexical-anon` | Does a model beat plain name matching? Zero-shot UniXcoder does not. |
+
+Collect everything afterwards:
+
+```bash
+python dataset/scripts/summarize_results.py
+python dataset/scripts/summarize_results.py --latex   # rows for the paper
+```
+
+The summariser folds `-seedNN` variants of a configuration together and reports
+mean ± standard deviation across them.
+
+---
+
 Add `--fg` to keep a job in the foreground — worth doing for the first run on a
 new host, so a misconfiguration surfaces immediately instead of in a log.
 

@@ -13,7 +13,9 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 sys.path.insert(0, os.path.join(ROOT, ".."))
 from common.load import load  # noqa: E402
-from common.runtime import get_device, env_int  # noqa: E402
+from common.runtime import (  # noqa: E402
+    get_device, env_int, set_seed, anonymize_enabled, run_tag)
+from common.anonymize import anonymize_rows  # noqa: E402
 
 RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME = "microsoft/unixcoder-base"
@@ -45,8 +47,16 @@ def encode(texts, tokenizer, model, device, batch_size=BATCH_SIZE):
 
 
 
-def load_split(split):
+def _rows(split):
+    """Rows for one split, with the identifier ablation applied if requested."""
     rows = load(split=split)
+    if anonymize_enabled():
+        rows = anonymize_rows(rows)
+    return rows
+
+
+def load_split(split):
+    rows = _rows(split)
     return ([r["c_code"] for r in rows],
             [r["rust_code"] for r in rows],
             [r["difficulty"] for r in rows],
@@ -80,7 +90,7 @@ def main():
         print_results(res)
         results_all[split] = res
 
-    with open(os.path.join(RESULTS_DIR, "results_baseline.json"), "w") as f:
+    with open(os.path.join(RESULTS_DIR, f"results_baseline{run_tag()}.json"), "w") as f:
         json.dump(results_all, f, indent=2)
     print("Saved results_baseline.json")
 
