@@ -42,12 +42,39 @@ python -m pip install --upgrade pip wheel >/dev/null
 # resolver error naming the index, instead of at model load an hour later.
 TORCH_SPEC="torch>=2.6"
 
+# pip resolves "torch>=2.6" against the version alone and ignores the build
+# variant, so an installed 2.14.0+cu126 satisfies it and pip does nothing -
+# even when the config now asks for cu130. Changing TORCH_CUDA would then have
+# no effect at all, which is exactly what happened on the Blackwell host.
+# Compare the installed local tag with the wanted one and force the reinstall
+# when they differ.
+HAVE="$(python - <<'PY' 2>/dev/null || echo none
+try:
+    import torch
+    v = torch.__version__
+    print(v.split("+", 1)[1] if "+" in v else "cpu")
+except Exception:
+    print("none")
+PY
+)"
+WANT="$TORCH_CUDA"
+FORCE=()
+if [[ "$HAVE" == "none" ]]; then
+  echo "torch:    not installed yet"
+elif [[ "$HAVE" == "$WANT" ]]; then
+  echo "torch:    already $HAVE, leaving it alone"
+else
+  echo "torch:    installed build is $HAVE but this host wants $WANT - reinstalling"
+  FORCE=(--force-reinstall --no-cache-dir)
+fi
+
 if [[ "$TORCH_CUDA" == "cpu" ]]; then
   echo "Installing $TORCH_SPEC (CPU build)"
-  python -m pip install "$TORCH_SPEC" --index-url https://download.pytorch.org/whl/cpu
+  python -m pip install ${FORCE[@]+"${FORCE[@]}"} "$TORCH_SPEC" \
+    --index-url https://download.pytorch.org/whl/cpu
 else
   echo "Installing $TORCH_SPEC (CUDA $TORCH_CUDA)"
-  if ! python -m pip install "$TORCH_SPEC" \
+  if ! python -m pip install ${FORCE[@]+"${FORCE[@]}"} "$TORCH_SPEC" \
        --index-url "https://download.pytorch.org/whl/$TORCH_CUDA"; then
     cat >&2 <<EOF
 
@@ -76,10 +103,21 @@ python -m pip install -r "$REPO_DIR/dataset/finetune/requirements.txt"
 
 echo
 echo "--- verification ---"
-python - <<'PY'
+TORCH_CUDA="$TORCH_CUDA" python - <<'PY'
 import torch, transformers, sys
 print(f"torch        {torch.__version__}")
 print(f"transformers {transformers.__version__}")
+
+import os
+want = os.environ.get("TORCH_CUDA", "")
+have = torch.__version__.split("+", 1)[1] if "+" in torch.__version__ else "cpu"
+if want and have != want:
+    print(f"  ERROR: wanted a {want} build, got {have}.")
+    print(f"  pip treats 'torch>=2.6' as satisfied by any build of a new enough")
+    print(f"  version, so it will not swap cu126 for cu130 on its own. Try:")
+    print(f"    pip install --force-reinstall --no-cache-dir torch=={torch.__version__.split('+')[0]} \\")
+    print(f"      --index-url https://download.pytorch.org/whl/{want}")
+    sys.exit(1)
 
 major, minor = (int(x) for x in torch.__version__.split(".")[:2])
 if (major, minor) < (2, 6):
