@@ -41,10 +41,11 @@ archives, normalised, deduplicated, and stratified into difficulty tiers by
 zero-shot cross-language embedding similarity, with per-record provenance and
 licensing. Cross-language retrieval is hard on this data: a generic code model
 reaches MRR $0.19$ zero-shot, and only $0.05$ on the hardest quarter, which is
-$1.7	imes$ chance. LoRA finetuning lifts the overall figure to $0.71$ and the
-hardest quarter by $7.3	imes$. The difficulty tiers are cut with one encoder
-family and hold under another, so they index a property of the pairs rather
-than of the model that defined them.
+$1.7\times$ chance. Finetuning lifts this to $0.80$, and the hardest quarter by
+$10.4\times$. The difficulty tiers are cut with one encoder family and hold
+under another, so they index a property of the pairs rather than of the model
+that defined them; they also separate LoRA from full finetuning, which agree to
+within $3\%$ on easy pairs but differ by $30\%$ on hard ones.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -249,8 +250,8 @@ Model & MRR & MRR@10 & R@1 & R@5 & R@10 \\
 Chance                 & 0.031 & 0.016 & 0.005 & 0.027 & 0.053 \\
 \midrule
 UniXcoder, zero-shot   & 0.189 & 0.170 & 0.134 & 0.203 & 0.283 \\
-UniXcoder + LoRA       & \textbf{0.713} & \textbf{0.708} & \textbf{0.610} & \textbf{0.824} & \textbf{0.909} \\
-UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder + LoRA       & 0.713 & 0.708 & 0.610 & 0.824 & 0.909 \\
+UniXcoder, full        & \textbf{0.803} & \textbf{0.801} & \textbf{0.727} & \textbf{0.898} & \textbf{0.952} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -266,40 +267,54 @@ Model & Easy (47) & Medium (93) & Hard (47) \\
 \midrule
 UniXcoder, zero-shot   & 0.328 & 0.186 & 0.053 \\
 UniXcoder + LoRA       & 0.947 & 0.760 & 0.386 \\
-UniXcoder, full        & \pending{--} & \pending{--} & \pending{--} \\
+UniXcoder, full        & 0.979 & 0.841 & 0.552 \\
 \midrule
-LoRA gain              & 2.9$\times$ & 4.1$\times$ & 7.3$\times$ \\
+gain, full over zero-shot & 3.0$\times$ & 4.5$\times$ & 10.4$\times$ \\
+LoRA as \% of full     & 96.7\% & 90.4\% & 70.0\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-LoRA moves MRR from $0.189$ to $0.713$, a factor of $3.8$ ($4.2$ on
-MRR@10), against a chance level of $0.031$. The two ratios differ because many
-zero-shot positives fall outside the top ten, which is exactly the regime where
-MRR and MRR@10 come apart.
+Finetuning moves MRR from $0.189$ to $0.713$ with LoRA and $0.803$ with full
+finetuning, factors of $3.8$ and $4.3$ ($4.2$ and $4.7$ on MRR@10), against a
+chance level of $0.031$. Each pair of ratios differs because many zero-shot
+positives fall outside the top ten, which is exactly the regime where MRR and
+MRR@10 come apart.
 
 Table~\ref{tab:bytier} is the result that earns the difficulty tiers their
-place. Retrieval is monotone in tier for \emph{both} models, and the tiers were
-cut with SFR while the models here are UniXcoder-based --- so the ordering is a
-property of the pairs, not an artefact of the encoder that defined it. Two
-figures are worth stating plainly. Zero-shot UniXcoder reaches $0.053$ on the
-hard tier, $1.7\times$ chance, and places exactly one of the 47 hard pairs at
-rank 1: a generic code model effectively cannot solve a quarter of this
-dataset. And finetuning helps most where it is needed most, lifting the hard
-tier by $7.3\times$ against $2.9\times$ for easy.
+place. Retrieval is monotone in tier for \emph{all three} settings, and the
+tiers were cut with SFR while the models here are UniXcoder-based --- so the
+ordering is a property of the pairs, not an artefact of the encoder that
+defined it. Zero-shot UniXcoder reaches $0.053$ on the hard tier, $1.7\times$
+chance, and places exactly one of the 47 hard pairs at rank 1: a generic code
+model effectively cannot solve a quarter of this dataset. Finetuning helps most
+where it is needed most, lifting that tier $10.4\times$ against $3.0\times$ for
+easy.
+
+The tiers also separate the two finetuning methods in a way an aggregate score
+hides. LoRA reaches $88.8\%$ of full finetuning overall while updating $0.23\%$
+of the parameters, which invites the usual conclusion that the adapter is
+almost free. Per tier the picture is different: LoRA recovers $96.7\%$ of full
+performance on easy pairs, $90.4\%$ on medium, and only $70.0\%$ on hard. The
+parameter budget binds precisely where the cross-language remapping is
+non-trivial, and a single headline ratio would have concealed that.
 
 The mechanism is visible in the similarity statistics. The positive/negative
-gap widens from $0.079$ to $0.461$, but mean positive similarity in fact
-\emph{falls} slightly, from $0.622$ to $0.573$, while mean negative similarity
-collapses from $0.544$ to $0.112$. The contrastive objective buys its
-separation by pushing negatives apart rather than by pulling positives
-together.
+gap widens from $0.079$ zero-shot to $0.461$ under LoRA and $0.557$ under full
+finetuning, and in both cases almost all of it comes from the negative side:
+mean negative similarity collapses from $0.544$ to $0.112$ and $0.047$, while
+mean positive similarity barely moves and under LoRA actually \emph{falls},
+from $0.622$ to $0.573$. The contrastive objective buys separation by pushing
+negatives apart rather than by pulling positives together.
 
-Source matters beyond tier composition. LoRA reaches MRR $0.775$ on the CodeNet
-portion of the test split against $0.663$ on the xCodeEval portion. The two
-portions have slightly different tier mixes, but reweighting each to the other's
-mix accounts for only $26\%$ of that gap: Codeforces problems are genuinely
-harder to match than AtCoder ones, beyond what the difficulty tier captures.
+Source affects retrieval too, but only for the smaller model. Under LoRA the
+CodeNet portion of the test split reaches MRR $0.775$ against $0.663$ for
+xCodeEval, and reweighting for the two portions' different tier mixes accounts
+for just $26\%$ of that gap --- Codeforces problems are genuinely harder to
+match. Full finetuning nearly erases the difference ($0.819$ against $0.790$),
+and $75\%$ of what remains is tier composition. Whatever distinguishes the two
+sources is learnable given enough capacity, and is not an intrinsic property of
+the data.
 
 \section{Use Cases}
 \label{sec:usecases}
