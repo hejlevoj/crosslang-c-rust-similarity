@@ -18,22 +18,6 @@ source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
 PIPE_REL="dataset/finetune/pipeline"
 
-# name | extra env | command
-# Ordered longest-first: the queue is greedy, so starting with the full
-# finetunes keeps the tail from being one long job running alone.
-JOB_SPECS=(
-  "full|                                             |python finetune_st.py"
-  "full-anon|ANONYMIZE_IDENTIFIERS=1                 |python finetune_st.py"
-  "lora|                                             |python finetune_lora.py"
-  "lora-anon|ANONYMIZE_IDENTIFIERS=1                 |python finetune_lora.py"
-  "lora-seed43|SEED=43                               |python finetune_lora.py"
-  "lora-seed44|SEED=44                               |python finetune_lora.py"
-  "lora-seed45|SEED=45                               |python finetune_lora.py"
-  "baseline|                                         |python baseline_eval.py"
-  "baseline-anon|ANONYMIZE_IDENTIFIERS=1             |python baseline_eval.py"
-  "lexical|                                          |python lexical_baseline.py"
-  "lexical-anon|ANONYMIZE_IDENTIFIERS=1              |python lexical_baseline.py"
-)
 
 DRY=0
 WANTED=""

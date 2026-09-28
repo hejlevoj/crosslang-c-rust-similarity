@@ -82,22 +82,81 @@ CLUSTER=cdi ./cluster/run.sh categorize     # then, once it is done:
 CLUSTER=cdi ./cluster/run.sh all
 ```
 
-## Running the whole matrix in parallel
+## Running the matrix across several machines
 
-`run_parallel.sh` spreads the experiment matrix across the GPUs on the host,
-one job per GPU at a time, pulling from a shared queue so a slow job does not
-idle the others. Each job gets its own `CUDA_VISIBLE_DEVICES`, its own log, and
-a `RUN_TAG` derived from its configuration so results files cannot collide.
+The GPUs at Labic live on machines other than the access host, SSH between
+them asks for a password, and `$WORKDIR` is shared over NFS. That rules out
+an orchestrator that drives the other machines — but it makes the shared
+filesystem itself the coordination channel, which is simpler and needs no
+credentials.
+
+**Once, from anywhere:**
 
 ```bash
-CLUSTER=labic ./cluster/run_parallel.sh --list      # what is in the matrix
-CLUSTER=labic ./cluster/run_parallel.sh --dry-run   # what it would do
-CLUSTER=labic ./cluster/run_parallel.sh             # run it
+./cluster/queue.sh init
 ```
 
-Narrow it with `--jobs lora,lora-anon` or restrict the hardware with
-`--gpus 0,2`. Jobs are queued longest-first so the tail is not one full
-finetune running alone on an otherwise idle machine.
+**Then on each GPU machine**, after logging in:
+
+```bash
+cd <repo> && ./cluster/setup.sh && ./cluster/worker.sh
+```
+
+A worker claims jobs from the shared queue until it is empty, then exits.
+Machines join and leave freely; starting another worker later picks up
+whatever has been added since. Watch progress from anywhere with
+`./cluster/queue.sh status`.
+
+```bash
+./cluster/worker.sh --slots 2    # two concurrent jobs per GPU
+./cluster/worker.sh --gpus 1,3   # only these GPUs
+./cluster/worker.sh --once       # take one job and stop
+```
+
+Jobs are ordered longest-first, so the tail is not one full finetune running
+alone while everything else sits idle.
+
+### Two details this setup forces
+
+**The venv is per host, the model cache is not.** `setup.sh` builds
+`$WORKDIR/venv-<hostname>`. The machines carry different GPUs and CUDA
+versions, so they need different torch builds, and a single shared venv would
+leave whichever host ran `setup.sh` last silently deciding what every other
+host runs. The Hugging Face cache under `$WORKDIR/hf` *is* shared on purpose —
+the weights are identical everywhere, so the first machine to run pays the
+download for all of them.
+
+**Claiming uses `mkdir`, not `flock`.** `flock` over NFS depends on the
+server, the client and the mount options, and a lock that silently does
+nothing would let two machines run the same job and overwrite each other's
+results. Directory creation is atomic on NFS by specification. Verified with
+eight concurrent claimers over 40 jobs: 40 claims, no duplicates.
+
+### Per-host configuration
+
+A config named after the machine wins over the site config, so hosts with
+different hardware can differ:
+
+```bash
+cp cluster/config/labic.env cluster/config/$(hostname -s).env
+# then edit MODULES, TORCH_CUDA and BATCH_SIZE for that machine
+```
+
+`worker.sh` prints which config and which venv it picked at startup.
+
+### Single machine with several GPUs
+
+`run_parallel.sh` is the older, simpler runner for that case: no queue, no
+shared state, just the matrix spread over local GPUs.
+
+```bash
+CLUSTER=labic ./cluster/run_parallel.sh --list
+CLUSTER=labic ./cluster/run_parallel.sh --dry-run
+CLUSTER=labic ./cluster/run_parallel.sh --jobs lora,lora-anon
+```
+
+Both runners read the same `JOB_SPECS` from `common.sh`, so the matrix cannot
+drift between them.
 
 The matrix covers three questions the single-run results left open:
 

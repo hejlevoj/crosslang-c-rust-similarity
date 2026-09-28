@@ -14,15 +14,24 @@ die() { echo "error: $*" >&2; exit 1; }
 # Order: explicit $CLUSTER, else guess from the hostname, else fail loudly.
 # Guessing silently wrong would send a job to the wrong filesystem, so an
 # unrecognised host is an error rather than a default.
+HOST="$(hostname -s 2>/dev/null || echo unknown)"
+
+# A config named after this exact host wins, so machines with different GPUs or
+# CUDA versions can each carry their own settings; otherwise fall back to the
+# site config.
 pick_cluster() {
+  if [[ -f "$CLUSTER_DIR/config/$HOST.env" ]]; then
+    echo "$HOST"; return
+  fi
   if [[ -n "${CLUSTER:-}" ]]; then
     echo "$CLUSTER"; return
   fi
-  case "$(hostname -s 2>/dev/null || echo unknown)" in
+  case "$HOST" in
     *labic*) echo labic ;;
     *cdi*)   echo cdi ;;
-    *) die "cannot tell which cluster this is from the hostname.
+    *) die "cannot tell which cluster this is from the hostname '$HOST'.
   Set it explicitly:  CLUSTER=labic $0 ...   (or CLUSTER=cdi)
+  Or add a per-host config at cluster/config/$HOST.env
   Configs available:  $(cd "$CLUSTER_DIR/config" && ls *.env | tr '\n' ' ')" ;;
   esac
 }
@@ -62,7 +71,11 @@ load_modules() {
   done
 }
 
-VENV_DIR() { echo "$WORKDIR/venv"; }
+# One venv per host, even though WORKDIR is shared over NFS. The machines
+# carry different GPUs and CUDA versions, so they need different torch builds;
+# a single shared venv would have whichever host ran setup.sh last silently
+# deciding what every other host runs.
+VENV_DIR() { echo "$WORKDIR/venv-$HOST"; }
 
 activate_venv() {
   local venv; venv="$(VENV_DIR)"
@@ -73,7 +86,9 @@ activate_venv() {
 }
 
 # Keep the model cache out of $HOME: it holds several GB per model and home
-# quotas on shared machines are routinely smaller than that.
+# quotas on shared machines are routinely smaller than that. Unlike the venv,
+# this one is deliberately shared across hosts - the weights are identical
+# everywhere, so the first machine to run pays the download for all of them.
 export_caches() {
   export HF_HOME="$WORKDIR/hf"
   export TRANSFORMERS_CACHE="$HF_HOME/transformers"
@@ -82,6 +97,8 @@ export_caches() {
   echo "HF_HOME:  $HF_HOME"
 }
 
+QUEUE_DIR() { echo "$WORKDIR/queue"; }
+
 report_gpu() {
   if command -v nvidia-smi >/dev/null 2>&1; then
     nvidia-smi --query-gpu=index,name,memory.total,memory.used \
@@ -89,4 +106,32 @@ report_gpu() {
   else
     echo "GPU:      no nvidia-smi on this host"
   fi
+}
+
+# ----------------------------------------------------------------- job matrix
+#
+# name | extra env | command, run from dataset/finetune/pipeline.
+# Defined here so queue.sh and run_parallel.sh cannot drift apart.
+# Ordered longest-first: both runners are greedy, so starting with the full
+# finetunes keeps the tail from being one long job running alone.
+JOB_SPECS=(
+  "full|                                  |python finetune_st.py"
+  "full-anon|ANONYMIZE_IDENTIFIERS=1      |python finetune_st.py"
+  "lora|                                  |python finetune_lora.py"
+  "lora-anon|ANONYMIZE_IDENTIFIERS=1      |python finetune_lora.py"
+  "lora-seed43|SEED=43                    |python finetune_lora.py"
+  "lora-seed44|SEED=44                    |python finetune_lora.py"
+  "lora-seed45|SEED=45                    |python finetune_lora.py"
+  "baseline|                              |python baseline_eval.py"
+  "baseline-anon|ANONYMIZE_IDENTIFIERS=1  |python baseline_eval.py"
+  "lexical|                               |python lexical_baseline.py"
+  "lexical-anon|ANONYMIZE_IDENTIFIERS=1   |python lexical_baseline.py"
+)
+
+job_spec() {
+  local want="$1" spec
+  for spec in "${JOB_SPECS[@]}"; do
+    [[ "${spec%%|*}" == "$want" ]] && { printf '%s\n' "$spec"; return 0; }
+  done
+  return 1
 }
