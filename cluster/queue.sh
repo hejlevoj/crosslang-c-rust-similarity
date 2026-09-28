@@ -23,30 +23,56 @@ ACTION="${1:-status}"; shift || true
 load_config >/dev/null
 Q="$(QUEUE_DIR)"
 
-init_dirs() { mkdir -p "$Q/pending" "$Q/claimed" "$Q/done" "$Q/failed"; }
+init_dirs() {
+  mkdir -p "$Q/pending" "$Q/claimed" "$Q/done" "$Q/failed"
+  [[ -e "$Q/.created" ]] || echo "$HOST $(date -Is)" > "$Q/.created"
+}
 
 case "$ACTION" in
 
   init)
-    WANTED=""
-    [[ "${1:-}" == "--jobs" ]] && { WANTED="$2"; shift 2; }
+    WANTED=""; FORCE=0
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --jobs)  WANTED="$2"; shift 2 ;;
+        --force) FORCE=1; shift ;;
+        *) die "usage: queue.sh init [--jobs a,b] [--force]" ;;
+      esac
+    done
     init_dirs
-    n=0
+    n=0; skipped=()
     for spec in "${JOB_SPECS[@]}"; do
       name="${spec%%|*}"
       if [[ -n "$WANTED" ]] && ! grep -qw "$name" <<< "${WANTED//,/ }"; then
         continue
       fi
-      # Skip anything already finished, so re-running init tops the queue up
-      # rather than redoing work.
-      [[ -e "$Q/done/$name" || -d "$Q/claimed/$name" ]] && continue
+      if (( ! FORCE )); then
+        # Two independent reasons to skip. The queue's own bookkeeping, and -
+        # more reliably - the presence of the results file, which lives in the
+        # repository and so is visible from every machine even if WORKDIR is
+        # misconfigured. Without the second check, a queue on a non-shared
+        # WORKDIR makes every init re-run the entire matrix.
+        if [[ -e "$Q/done/$name" || -d "$Q/claimed/$name" ]]; then
+          skipped+=("$name(queued/done)"); continue
+        fi
+        rf="$(result_file_for_job "$spec" || true)"
+        if [[ -n "$rf" && -s "$rf" ]]; then
+          skipped+=("$name(has $(basename "$rf"))"); continue
+        fi
+      fi
       printf '%s\n' "$spec" > "$Q/pending/$name"
       n=$((n + 1))
     done
-    echo "Queued $n job(s) in $Q/pending"
+
+    echo "Queue:    $Q"
+    echo "Queued:   $n job(s)"
+    if (( ${#skipped[@]} )); then
+      echo "Skipped:  ${skipped[*]}"
+      echo "          (pass --force to run them again anyway)"
+    fi
     echo
     echo "Now, on each GPU machine:"
-    echo "  cd $REPO_DIR && ./cluster/worker.sh"
+    echo "  cd $REPO_DIR && ./cluster/setup.sh && ./cluster/worker.sh"
     ;;
 
   status)

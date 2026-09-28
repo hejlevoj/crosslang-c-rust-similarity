@@ -37,7 +37,26 @@ export_caches
 report_gpu
 
 Q="$(QUEUE_DIR)"
-[[ -d "$Q/pending" ]] || die "no queue at $Q - run ./cluster/queue.sh init first"
+if [[ ! -d "$Q/pending" ]]; then
+  die "no queue at
+    $Q
+
+  WORKDIR is $WORKDIR.
+
+  If queue.sh init was already run on another machine, then that path is not
+  shared with this one - and running init again here would give this machine
+  its own queue and re-run the whole matrix. Check whether the path exists and
+  holds the same files from both machines before doing that.
+
+  WORKDIR must be one shared path, identical on every host. The default is a
+  sibling of the repository, which is shared by construction; \$HOME usually
+  is not. Override it in cluster/config/<host>.env or in the environment."
+fi
+
+# A marker written by init, so a worker can tell "the queue was created
+# somewhere I cannot see" from "the queue is genuinely finished".
+[[ -e "$Q/.created" ]] || echo "$HOST $(date -Is)" > "$Q/.created" 2>/dev/null || true
+echo "Queue:    $Q  (created: $(cat "$Q/.created" 2>/dev/null || echo unknown))"
 
 if [[ -z "$GPU_LIST" ]]; then
   if command -v nvidia-smi >/dev/null 2>&1; then

@@ -135,3 +135,29 @@ job_spec() {
   done
   return 1
 }
+
+# Results file a job will write, derived from its spec the same way
+# dataset/common/runtime.py:run_tag() derives it. Used by queue.sh to avoid
+# re-queueing work that is already done - a check that holds even when
+# WORKDIR is misconfigured, because the results live in the repository, which
+# every machine reads from by definition.
+result_file_for_job() {
+  local spec="$1" cmd env_extra stem tag=""
+  cmd="$(cut -d'|' -f3 <<< "$spec")"
+  env_extra="$(cut -d'|' -f2 <<< "$spec")"
+
+  case "$cmd" in
+    *finetune_st.py*)     stem=st ;;
+    *finetune_lora.py*)   stem=lora ;;
+    *baseline_eval.py*)   stem=baseline ;;
+    *lexical_baseline.py*) stem=lexical ;;
+    *) return 1 ;;
+  esac
+
+  [[ "$env_extra" == *ANONYMIZE_IDENTIFIERS=1* ]] && tag="-anon"
+  if [[ "$env_extra" =~ SEED=([0-9]+) ]]; then
+    [[ "${BASH_REMATCH[1]}" != "42" ]] && tag="$tag-seed${BASH_REMATCH[1]}"
+  fi
+
+  echo "$REPO_DIR/dataset/finetune/outputs/results_${stem}${tag}.json"
+}
