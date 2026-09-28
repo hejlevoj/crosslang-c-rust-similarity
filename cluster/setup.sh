@@ -114,7 +114,7 @@ if torch.cuda.is_available():
             print(f"       This wheel has no kernels for {sm}.")
             if cap[0] >= 12:
                 print(f"       {p.name} is newer than this build. sm_120 (Blackwell)")
-            print(f"       needs a CUDA 13 wheel - TORCH_CUDA=cu130.")
+                print(f"       needs a CUDA 13 wheel - TORCH_CUDA=cu130.")
             else:
                 print(f"       {p.name} is older than this build - try TORCH_CUDA=cu118,")
                 print(f"       and if that still fails the GPU predates the torch>=2.6")

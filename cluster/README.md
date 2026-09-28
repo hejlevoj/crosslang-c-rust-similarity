@@ -16,6 +16,20 @@ job never silently lands on the wrong filesystem.
 
 ---
 
+## Before taking changes to a cluster
+
+```bash
+./cluster/selftest.sh
+```
+
+`bash -n` validates the shell but says nothing about the Python embedded in
+heredocs, which is where the verification and preflight logic lives — a
+SyntaxError there only surfaces on the machine it was meant to protect, after
+a login and a module load. `selftest.sh` extracts every such block and
+compiles it, alongside the shell and config syntax.
+
+---
+
 ## First: fill in the host config
 
 `config/labic.env` and `config/cdi.env` ship with `TODO` markers, because
