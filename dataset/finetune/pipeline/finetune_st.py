@@ -30,7 +30,13 @@ from common.anonymize import anonymize_rows  # noqa: E402
 
 RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME   = "microsoft/unixcoder-base"
-OUTPUT_DIR   = os.path.join(ROOT, "model_st")
+# The run tag has to be in the checkpoint path, not just in the results
+# filename. Every variant of this script writes a checkpoint and then
+# reloads it for the final evaluation, so a shared directory lets two
+# concurrent runs evaluate each other's adapter and report it under the
+# wrong tag. Verified not to have happened in the matrix run - the four
+# LoRA seeds came out distinct - but only by luck of scheduling.
+OUTPUT_DIR   = os.path.join(ROOT, f"model_st{run_tag()}")
 MAX_LEN      = 512
 BATCH_SIZE   = env_int("BATCH_SIZE", 8)
 EPOCHS       = env_int("EPOCHS", 5)

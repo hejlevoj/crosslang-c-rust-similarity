@@ -39,13 +39,15 @@ languages at the level of whole solutions to a shared problem. We present
 \dsname, 1857 C/Rust implementation pairs drawn from competitive programming
 archives, normalised, deduplicated, and stratified into difficulty tiers by
 zero-shot cross-language embedding similarity, with per-record provenance and
-licensing. Cross-language retrieval is hard on this data: a generic code model
-reaches MRR $0.19$ zero-shot, and only $0.05$ on the hardest quarter, which is
-$1.7\times$ chance. Finetuning lifts this to $0.80$, and the hardest quarter by
-$10.4\times$. The difficulty tiers are cut with one encoder family and hold
-under another, so they index a property of the pairs rather than of the model
-that defined them; they also separate LoRA from full finetuning, which agree to
-within $3\%$ on easy pairs but differ by $30\%$ on hard ones.
+licensing. Cross-language retrieval is hard on this data, and harder than a
+single baseline would suggest: TF-IDF over shared identifiers reaches
+MRR $0.21$ and so beats a pretrained code model at $0.19$, which on the
+hardest quarter of the data scores $1.7\times$ chance. Finetuning reaches
+$0.79$, and lifts that hardest quarter $10\times$. Renaming every user
+identifier settles what is being learned: the finetuned models keep 97\% of
+their accuracy without them, while the pretrained model keeps 66\% --- less
+than the lexical baseline does --- and on structurally divergent pairs the
+finetuned models are \emph{better} without identifiers than with them.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -225,96 +227,116 @@ within 0.3 percentage points by source and 0.6 by tier.
 \section{Baselines}
 \label{sec:baselines}
 
-% ~0.5 page, two tables. Frame as evidence of utility, NOT as the
-% contribution.
-%
-% Report MRR and MRR@10 side by side. They diverge most for the zero-shot
-% baseline, where many positives fall outside the top 10, and that baseline is
-% the denominator of the improvement claim - quoting the untruncated mean as
-% "MRR@10" would inflate it.
-
-Retrieval is C-to-Rust: each C implementation queries the pool of all 187 Rust
-implementations in the test split, and the target is the one solving the same
-problem. Chance is $\mathrm{MRR}=0.031$ and $\mathrm{MRR@10}=0.016$ at this
-pool size.
+Retrieval is C-to-Rust unless stated otherwise: each C implementation queries
+the pool of all 187 Rust implementations in the test split, and the target is
+the one solving the same problem. Chance is $\mathrm{MRR}=0.031$ at this pool
+size. LoRA figures are mean $\pm$ standard deviation over four seeds; the
+other rows are single runs.
 
 \begin{table}[t]
-\caption{Cross-language retrieval on the 187-pair test set. Each C
-implementation queries the pool of all 187 Rust implementations.}
+\caption{Cross-language retrieval on the 187-pair test set.}
 \label{tab:baselines}
 \centering
 \begin{tabular}{lccccc}
 \toprule
-Model & MRR & MRR@10 & R@1 & R@5 & R@10 \\
+Model & MRR & MRR@10 & R@1 & R@5 & R@10 \
 \midrule
-Chance                 & 0.031 & 0.016 & 0.005 & 0.027 & 0.053 \\
+Chance                 & 0.031 & 0.016 & 0.005 & 0.027 & 0.053 \
+Lexical TF-IDF         & 0.206 & 0.191 & 0.128 & 0.273 & 0.353 \
 \midrule
-UniXcoder, zero-shot   & 0.189 & 0.170 & 0.134 & 0.203 & 0.283 \\
-UniXcoder + LoRA       & 0.713 & 0.708 & 0.610 & 0.824 & 0.909 \\
-UniXcoder, full        & \textbf{0.803} & \textbf{0.801} & \textbf{0.727} & \textbf{0.898} & \textbf{0.952} \\
+UniXcoder, zero-shot   & 0.189 & 0.170 & 0.134 & 0.203 & 0.283 \
+UniXcoder + LoRA       & 0.724 & 0.720 & 0.624 & 0.836 & 0.913 \
+UniXcoder, full        & \textbf{0.792} & \textbf{0.791} & \textbf{0.706} & \textbf{0.909} & \textbf{0.952} \
 \bottomrule
 \end{tabular}
 \end{table}
+
+The lexical row is the one that fixes the frame. TF-IDF over shared
+identifiers, with no model at all, reaches $0.206$ and so \emph{beats}
+zero-shot UniXcoder at $0.189$. Competitive programmers reuse variable names
+across languages: \texttt{n} is shared by 85 of the 187 test pairs,
+\texttt{i} by 84, then \texttt{a}, \texttt{t}, \texttt{s}, \texttt{j}. The
+claim this dataset supports is therefore not that a generic code model finds
+the task hard, but the stronger one that \emph{neither} generic code
+embeddings \emph{nor} lexical matching solve it, and finetuning does ---
+$3.8\times$ over zero-shot for LoRA and $4.2\times$ for full finetuning
+($4.2\times$ and $4.7\times$ on MRR@10, which diverges from MRR because many
+zero-shot positives fall outside the top ten).
+
+\subsection{Difficulty tiers and the identifier ablation}
+
+Table~\ref{tab:bytier} reports MRR per tier, and repeats every configuration
+with user identifiers renamed to positional names independently in each
+language, which destroys cross-language name correspondence while leaving
+control flow, types, library calls and string literals intact.
 
 \begin{table}[t]
-\caption{MRR by difficulty tier. Every tier is scored against the same
-187-candidate pool; only the queries are partitioned.}
+\caption{MRR by difficulty tier, with and without user identifiers. Every
+tier is scored against the same 187-candidate pool; only the queries are
+partitioned. \emph{Ret.} is the anonymised MRR as a fraction of the normal
+one.}
 \label{tab:bytier}
 \centering
-\begin{tabular}{lccc}
+\begin{tabular}{llcccc}
 \toprule
-Model & Easy (47) & Medium (93) & Hard (47) \\
+Model & Ident. & Easy & Medium & Hard & Ret. \
 \midrule
-UniXcoder, zero-shot   & 0.328 & 0.186 & 0.053 \\
-UniXcoder + LoRA       & 0.947 & 0.760 & 0.386 \\
-UniXcoder, full        & 0.979 & 0.841 & 0.552 \\
+Lexical TF-IDF       & kept & 0.446 & 0.144 & 0.089 & \
+                     & anon & 0.355 & 0.094 & 0.080 & 76\% \
 \midrule
-gain, full over zero-shot & 3.0$\times$ & 4.5$\times$ & 10.4$\times$ \\
-LoRA as \% of full     & 96.7\% & 90.4\% & 70.0\% \\
+UniXcoder, zero-shot & kept & 0.328 & 0.186 & 0.053 & \
+                     & anon & 0.276 & 0.084 & 0.048 & 66\% \
+\midrule
+UniXcoder + LoRA     & kept & 0.957 & 0.776 & 0.388 & \
+                     & anon & 0.941 & 0.688 & \textbf{0.429} & 96\% \
+\midrule
+UniXcoder, full      & kept & 0.979 & 0.821 & 0.550 & \
+                     & anon & 0.951 & 0.756 & \textbf{0.611} & 97\% \
 \bottomrule
 \end{tabular}
 \end{table}
 
-Finetuning moves MRR from $0.189$ to $0.713$ with LoRA and $0.803$ with full
-finetuning, factors of $3.8$ and $4.3$ ($4.2$ and $4.7$ on MRR@10), against a
-chance level of $0.031$. Each pair of ratios differs because many zero-shot
-positives fall outside the top ten, which is exactly the regime where MRR and
-MRR@10 come apart.
+Three things follow, and together they are the strongest evidence that this
+dataset measures what it is meant to.
 
-Table~\ref{tab:bytier} is the result that earns the difficulty tiers their
-place. Retrieval is monotone in tier for \emph{all three} settings, and the
-tiers were cut with SFR while the models here are UniXcoder-based --- so the
-ordering is a property of the pairs, not an artefact of the encoder that
-defined it. Zero-shot UniXcoder reaches $0.053$ on the hard tier, $1.7\times$
-chance, and places exactly one of the 47 hard pairs at rank 1: a generic code
-model effectively cannot solve a quarter of this dataset. Finetuning helps most
-where it is needed most, lifting that tier $10.4\times$ against $3.0\times$ for
-easy.
+\textbf{Retrieval is monotone in tier for every configuration.} The tiers were
+cut with SFR while the models here are UniXcoder-based, so the ordering is a
+property of the pairs rather than an artefact of the encoder that defined it.
+Zero-shot UniXcoder reaches $0.053$ on the hard tier --- $1.7\times$ chance,
+with exactly one of the 47 hard pairs at rank 1. A generic code model
+effectively cannot solve a quarter of this dataset.
 
-The tiers also separate the two finetuning methods in a way an aggregate score
-hides. LoRA reaches $88.8\%$ of full finetuning overall while updating $0.23\%$
-of the parameters, which invites the usual conclusion that the adapter is
-almost free. Per tier the picture is different: LoRA recovers $96.7\%$ of full
-performance on easy pairs, $90.4\%$ on medium, and only $70.0\%$ on hard. The
-parameter budget binds precisely where the cross-language remapping is
-non-trivial, and a single headline ratio would have concealed that.
+\textbf{Finetuning learns structure, not names.} The finetuned models keep
+96--97\% of their MRR when identifiers are destroyed; zero-shot UniXcoder
+keeps 66\%, which is \emph{less} than the 76\% the lexical baseline keeps. A
+pretrained code model is more dependent on variable names than TF-IDF is.
+That inverts the natural reading of Table~\ref{tab:baselines}: zero-shot
+UniXcoder does not merely fail to beat lexical matching, it is doing a worse
+version of the same thing.
 
-The mechanism is visible in the similarity statistics. The positive/negative
-gap widens from $0.079$ zero-shot to $0.461$ under LoRA and $0.557$ under full
-finetuning, and in both cases almost all of it comes from the negative side:
-mean negative similarity collapses from $0.544$ to $0.112$ and $0.047$, while
-mean positive similarity barely moves and under LoRA actually \emph{falls},
-from $0.622$ to $0.573$. The contrastive objective buys separation by pushing
-negatives apart rather than by pulling positives together.
+\textbf{On hard pairs, identifiers are a liability.} Both finetuned models do
+\emph{better} without them --- LoRA from $0.388$ to $0.429$, full finetuning
+from $0.550$ to $0.611$, both about $+11\%$ --- while the lexical baseline and
+the zero-shot model get worse. Where implementations diverge structurally, a
+shared name is more often a coincidence than a signal, and a model trained
+without that cue learns the remapping instead of leaning on it.
 
-Source affects retrieval too, but only for the smaller model. Under LoRA the
-CodeNet portion of the test split reaches MRR $0.775$ against $0.663$ for
-xCodeEval, and reweighting for the two portions' different tier mixes accounts
-for just $26\%$ of that gap --- Codeforces problems are genuinely harder to
-match. Full finetuning nearly erases the difference ($0.819$ against $0.790$),
-and $75\%$ of what remains is tier composition. Whatever distinguishes the two
-sources is learnable given enough capacity, and is not an intrinsic property of
-the data.
+\subsection{Retrieval direction}
+
+Querying with Rust is consistently easier than querying with C: MRR rises from
+$0.189$ to $0.233$ zero-shot and from $0.792$ to $0.836$ with full
+finetuning. Under the ablation the asymmetry all but disappears for the
+finetuned models ($0.768$ against $0.773$), which locates its cause: the Rust
+side carries more of the identifier signal, not more of the structure.
+
+\subsection{Parameter efficiency depends on difficulty}
+
+LoRA reaches $91\%$ of full finetuning overall while updating $0.23\%$ of the
+parameters, which invites the conclusion that the adapter is nearly free. Per
+tier it is not: LoRA recovers $98\%$ of full performance on easy pairs,
+$95\%$ on medium, and $71\%$ on hard. The parameter budget binds precisely
+where the cross-language remapping is non-trivial, and a single aggregate
+ratio conceals that.
 
 \section{Use Cases}
 \label{sec:usecases}
@@ -346,6 +368,11 @@ transfer to systems code, which is where C-to-Rust migration actually matters.
 
 \textbf{Difficulty is a proxy.} The tiers measure embedding similarity, not
 algorithmic difficulty or translation effort.
+
+\textbf{Variance is measured for one configuration only.} The LoRA rows are
+means over four seeds; the zero-shot, full-finetune and lexical rows are single
+runs. The LoRA spread ($\sigma = 0.011$ on MRR) is the only direct evidence
+available for how much of any gap here is seed noise.
 
 \textbf{The original tier labels were not exactly reproducible.} An earlier
 release of this dataset shipped tier labels whose generating script had since

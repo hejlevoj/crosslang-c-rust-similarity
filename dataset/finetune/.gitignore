@@ -15,3 +15,9 @@ model_lora/merges.txt
 # all. The LoRA adapter is small enough to track and is the one people will
 # actually reuse.
 model_st/
+model_st-*/
+
+# Ablation and seed variants of the adapter. Only the headline model_lora/ is
+# tracked; the rest are reproducible from the scripts and would multiply the
+# repository size by the number of runs.
+model_lora-*/
