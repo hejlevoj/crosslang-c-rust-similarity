@@ -1,0 +1,16 @@
+# LaTeX build artefacts. main.pdf is deliberately NOT ignored: a reviewer or
+# co-author should be able to read the current paper from the repository
+# without a TeX installation.
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+p1.log
+p2.log
+p3.log
+bib.log

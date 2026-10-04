@@ -1,10 +1,15 @@
 % Bibliography for the MSR 2027 Data and Tool Showcase submission.
 %
-% EVERY ENTRY BELOW IS MARKED "% VERIFY" AND MUST BE CHECKED AGAINST THE
-% PUBLISHED RECORD BEFORE SUBMISSION. They were written from recall of the
-% literature, not copied from the venues' own citation exports, so authors,
-% venues, years, volume and page numbers may be wrong or incomplete. Pull each
-% one from DBLP or the ACM/IEEE digital library and replace it wholesale.
+% EVERY ENTRY BELOW MUST BE CHECKED AGAINST THE PUBLISHED RECORD BEFORE
+% SUBMISSION. They were written from recall of the literature, not copied from
+% the venues' own citation exports, so authors, venues, years, volume and page
+% numbers may be wrong or incomplete. Pull each one from DBLP or the ACM/IEEE
+% digital library and replace it wholesale.
+%
+% Note on comments: BibTeX does not accept % comments INSIDE an entry - it
+% reads the line as a field name and discards the entry silently, which is
+% how this file came to produce an empty bibliography. Keep notes between
+% entries, as below.
 %
 % Still to add (see main.tex Sec. II):
 %   - XLCoST
@@ -15,8 +20,8 @@
 %   - a memory-safety / Rust-migration policy reference for the introduction
 %   - the SFR-Embedding-Code model card or report
 
+% VERIFY: venue and full author list.
 @inproceedings{puri2021codenet,
-  % VERIFY
   title     = {{CodeNet}: A Large-Scale {AI} for Code Dataset for Learning a
                Diversity of Coding Tasks},
   author    = {Puri, Ruchir and Kung, David S. and Janssen, Geert and Zhang,
@@ -30,32 +35,30 @@
   year      = {2021}
 }
 
+% VERIFY: this appeared as an arXiv preprint and later at a conference. Do not
+% guess which - look it up and set booktitle accordingly.
 @inproceedings{khan2023xcodeeval,
-  % VERIFY
   title     = {{xCodeEval}: An Execution-based Large Scale Multilingual
                Multitask Benchmark for Code Understanding, Generation,
                Translation and Retrieval},
   author    = {Khan, Mohammad Abdullah Matin and Bari, M. Saiful and Long, Do
                Xuan and Wang, Weishi and Parvez, Md Rizwan and Joty, Shafiq},
+  booktitle = {TODO},
   year      = {2023}
-  % VERIFY venue: appeared as an arXiv preprint and later at a conference.
-  % Do not guess - look it up.
 }
 
+% VERIFY: the author list here is the least reliable in this file.
 @inproceedings{guo2022unixcoder,
-  % VERIFY
   title     = {{UniXcoder}: Unified Cross-Modal Pre-training for Code
                Representation},
-  author    = {Guo, Daya and Lu, Shuai and Duan, Nan and Xin, Yanlin and Liu,
-               Ming and Jiang, Daxin},
+  author    = {Guo, Daya and Lu, Shuai and Duan, Nan and Yin, Jian and Jiang,
+               Daxin and Zhou, Ming},
   booktitle = {Proceedings of the 60th Annual Meeting of the Association for
                Computational Linguistics},
   year      = {2022}
-  % VERIFY the author list in particular - it is likely incomplete/garbled.
 }
 
 @inproceedings{hu2022lora,
-  % VERIFY
   title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
   author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and
                Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu
