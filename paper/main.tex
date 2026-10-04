@@ -84,6 +84,8 @@ dataset, cross-language, code similarity, Rust, C, code retrieval
 % Cover: CodeNet, xCodeEval, XLCoST, CoST, AVATAR, CodeXGLUE/POJ-104.
 % Say explicitly what each does and where it stops.
 
+Table~\ref{tab:related} places \dsname{} among them.
+
 \begin{table}[t]
 \caption{Cross-language code corpora. \dsname{} is the only one pairing C with
 Rust at solution granularity. TODO: verify every cell.}
@@ -155,7 +157,8 @@ generic code model already embeds close together are near-literal translations;
 pairs it separates diverge structurally and demand a real cross-language
 remapping.
 
-The choice of SFR rather than UniXcoder is deliberate. Defining the tiers with
+The choice of SFR rather than UniXcoder~\cite{guo2022unixcoder} is
+deliberate. Defining the tiers with
 the same model family that is later finetuned would make hard pairs hard by
 construction, and any reported per-tier improvement would be circular. SFR is
 trained on a different corpus, so the tiers remain an independent axis. The
@@ -191,6 +194,7 @@ Rust, lines       & 31.4 & & & \\
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:sizes} gives the size of each side.
 The Rust side is about $1.5\times$ longer than the C side in characters
 (median ratio $1.50$) while being \emph{shorter} in lines (31.4 against 33.6):
 Rust solutions pack more into each line. This is worth stating because it means
@@ -213,6 +217,7 @@ Total                 & 465 & 928 & 464 & 1857 \\
 \end{tabular}
 \end{table}
 
+Table~\ref{tab:composition} breaks the dataset down by both axes.
 Source and difficulty are not independent: the CodeNet portion skews easy while
 the xCodeEval portion skews hard. Reporting a per-tier result therefore
 requires a split that controls for both.
@@ -253,13 +258,14 @@ UniXcoder, full        & \textbf{0.792} & \textbf{0.791} & \textbf{0.706} & \tex
 
 The lexical row is the one that fixes the frame. TF-IDF over shared
 identifiers, with no model at all, reaches $0.206$ and so \emph{beats}
-zero-shot UniXcoder at $0.189$. Competitive programmers reuse variable names
+zero-shot UniXcoder~\cite{guo2022unixcoder} at $0.189$. Competitive programmers reuse variable names
 across languages: \texttt{n} is shared by 85 of the 187 test pairs,
 \texttt{i} by 84, then \texttt{a}, \texttt{t}, \texttt{s}, \texttt{j}. The
 claim this dataset supports is therefore not that a generic code model finds
 the task hard, but the stronger one that \emph{neither} generic code
 embeddings \emph{nor} lexical matching solve it, and finetuning does ---
-$3.8\times$ over zero-shot for LoRA and $4.2\times$ for full finetuning
+$3.8\times$ over zero-shot for LoRA~\cite{hu2022lora} and $4.2\times$ for
+full finetuning
 ($4.2\times$ and $4.7\times$ on MRR@10, which diverges from MRR because many
 zero-shot positives fall outside the top ten).
 
