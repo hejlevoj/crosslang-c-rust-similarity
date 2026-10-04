@@ -98,4 +98,29 @@ echo "=== result ==="
 tr -d '\n' < $MAIN_LOG | grep -oE "\([0-9]+ pages, [0-9]+ bytes" \
   || echo "no PDF produced"
 echo
-echo "MSR limit is 4 pages plus 1 of references."
+# The limit is on the BODY, not the file: 4 pages of paper plus one further
+# page that holds only references. A 5-page PDF is fine if the bibliography
+# starts on page 4 or earlier; it is over if body text runs onto page 5. The
+# page count alone cannot tell those apart, so find where the bibliography
+# starts.
+if command -v pdftotext >/dev/null 2>&1 && [[ -f $MAIN.pdf ]]; then
+  total=$(tr -d '\n' < $MAIN_LOG | grep -oE "\([0-9]+ pages" | grep -oE "[0-9]+")
+  refpage=""
+  for ((n = 1; n <= ${total:-0}; n++)); do
+    if pdftotext -f $n -l $n $MAIN.pdf - 2>/dev/null | grep -qE "R ?EFERENCES"; then
+      refpage=$n; break
+    fi
+  done
+  if [[ -n "$refpage" ]]; then
+    echo "body ends on page $refpage (bibliography starts there), $total pages total"
+    if (( refpage <= 4 )); then
+      echo "WITHIN the MSR limit: 4 body pages plus 1 reference page."
+    else
+      echo "OVER the MSR limit: body text runs past page 4."
+    fi
+  else
+    echo "$total pages; could not locate the bibliography to check the limit."
+  fi
+else
+  echo "MSR limit is 4 body pages plus 1 further page of references."
+fi

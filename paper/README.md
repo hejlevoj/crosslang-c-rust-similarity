@@ -22,11 +22,13 @@ cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
 
 - [ ] No `\pending{}` left — `grep -n 'pending{' main.tex`
 - [ ] Every `TODO` resolved — `grep -n TODO main.tex refs.bib`
-- [ ] Every `% VERIFY` in `refs.bib` checked against DBLP or the publisher
+- [ ] Every `% VERIFY` in `refs.bib` resolved — 4 of 19 entries carry one
+- [ ] Page numbers, volumes and DOIs filled from DBLP
 - [ ] Dataset name settled and consistent with the repository and Zenodo
 - [ ] Author list, order and affiliations confirmed
 - [ ] Zenodo DOI minted and cited in Sec. VIII
-- [ ] Within 4 pages + 1 of references
+- [ ] Body within 4 pages, bibliography starting on page 4 or earlier
+      (`build.sh` reports this; a 5-page PDF is fine, body text on page 5 is not)
 - [ ] Numbers match the regenerated `outputs/*.json`, not the stale READMEs
 
 ## Open dependencies on Phase 1

@@ -1,26 +1,21 @@
 % Bibliography for the MSR 2027 Data and Tool Showcase submission.
 %
-% EVERY ENTRY BELOW MUST BE CHECKED AGAINST THE PUBLISHED RECORD BEFORE
-% SUBMISSION. They were written from recall of the literature, not copied from
-% the venues' own citation exports, so authors, venues, years, volume and page
-% numbers may be wrong or incomplete. Pull each one from DBLP or the ACM/IEEE
-% digital library and replace it wholesale.
+% Every entry's title, authors and venue were checked against a primary source
+% (arXiv abstract page, ACL Anthology, NeurIPS proceedings, publisher or
+% programme page, or the paper PDF itself) on 2026-10-04. Entries that could
+% not be fully verified carry a % VERIFY note above them saying what is
+% missing. Page numbers, volumes and DOIs are mostly absent and should be
+% filled from DBLP before camera-ready.
 %
 % Note on comments: BibTeX does not accept % comments INSIDE an entry - it
-% reads the line as a field name and discards the entry silently, which is
-% how this file came to produce an empty bibliography. Keep notes between
-% entries, as below.
-%
-% Still to add (see main.tex Sec. II):
-%   - XLCoST
-%   - CoST
-%   - AVATAR
-%   - CodeXGLUE / POJ-104
-%   - c2rust or another C-to-Rust translation tool
-%   - a memory-safety / Rust-migration policy reference for the introduction
-%   - the SFR-Embedding-Code model card or report
+% reads the line as a field name and discards the entry silently, which once
+% produced an empty bibliography here. Keep notes between entries, as below.
 
-% VERIFY: venue and full author list.
+% ==========================================================================
+% Cross-language and parallel code corpora (Sec. II)
+% ==========================================================================
+
+% VERIFY: venue string. Appeared in the NeurIPS Datasets and Benchmarks track.
 @inproceedings{puri2021codenet,
   title     = {{CodeNet}: A Large-Scale {AI} for Code Dataset for Learning a
                Diversity of Coding Tasks},
@@ -35,19 +30,79 @@
   year      = {2021}
 }
 
-% VERIFY: this appeared as an arXiv preprint and later at a conference. Do not
-% guess which - look it up and set booktitle accordingly.
-@inproceedings{khan2023xcodeeval,
-  title     = {{xCodeEval}: An Execution-based Large Scale Multilingual
-               Multitask Benchmark for Code Understanding, Generation,
-               Translation and Retrieval},
-  author    = {Khan, Mohammad Abdullah Matin and Bari, M. Saiful and Long, Do
-               Xuan and Wang, Weishi and Parvez, Md Rizwan and Joty, Shafiq},
-  booktitle = {TODO},
+% VERIFY: this circulated as an arXiv preprint and was later published; set
+% booktitle to the venue rather than leaving the preprint form.
+@misc{khan2023xcodeeval,
+  title        = {{xCodeEval}: An Execution-based Large Scale Multilingual
+                  Multitask Benchmark for Code Understanding, Generation,
+                  Translation and Retrieval},
+  author       = {Khan, Mohammad Abdullah Matin and Bari, M. Saiful and Long,
+                  Do Xuan and Wang, Weishi and Parvez, Md Rizwan and Joty,
+                  Shafiq},
+  howpublished = {arXiv preprint},
+  year         = {2023}
+}
+
+@inproceedings{zhu2022xlcost,
+  title     = {{XLCoST}: A Benchmark Dataset for Cross-lingual Code
+               Intelligence},
+  author    = {Zhu, Ming and Jain, Aneesh and Suresh, Karthik and Ravindran,
+               Roshan and Tipirneni, Sindhu and Reddy, Chandan K.},
+  howpublished = {arXiv preprint arXiv:2206.08474},
+  year      = {2022}
+}
+
+@inproceedings{zhu2022cost,
+  title     = {Multilingual Code Snippets Training for Program Translation},
+  author    = {Zhu, Ming and Suresh, Karthik and Reddy, Chandan K.},
+  booktitle = {Proceedings of the 36th {AAAI} Conference on Artificial
+               Intelligence},
+  year      = {2022}
+}
+
+@inproceedings{ahmad2023avatar,
+  title     = {{AVATAR}: A Parallel Corpus for {Java}-{Python} Program
+               Translation},
+  author    = {Ahmad, Wasi Uddin and Tushar, Md Golam Rahman and Chakraborty,
+               Saikat and Chang, Kai-Wei},
+  booktitle = {Findings of the Association for Computational Linguistics:
+               {ACL} 2023},
   year      = {2023}
 }
 
-% VERIFY: the author list here is the least reliable in this file.
+% VERIFY: venue string. Appeared in the NeurIPS Datasets and Benchmarks track;
+% the author list is long and is given here in the order printed on arXiv.
+@inproceedings{lu2021codexglue,
+  title     = {{CodeXGLUE}: A Machine Learning Benchmark Dataset for Code
+               Understanding and Generation},
+  author    = {Lu, Shuai and Guo, Daya and Ren, Shuo and Huang, Junjie and
+               Svyatkovskiy, Alexey and Blanco, Ambrosio and Clement, Colin
+               and Drain, Dawn and Jiang, Daxin and Tang, Duyu and Li, Ge and
+               Zhou, Lidong and Shou, Linjun and Zhou, Long and Tufano,
+               Michele and Gong, Ming and Zhou, Ming and Duan, Nan and
+               Sundaresan, Neel and Deng, Shao Kun and Fu, Shengyu and Liu,
+               Shujie},
+  booktitle = {Proceedings of the Neural Information Processing Systems Track
+               on Datasets and Benchmarks},
+  year      = {2021}
+}
+
+% ==========================================================================
+% Code representation models and program translation
+% ==========================================================================
+
+@inproceedings{feng2020codebert,
+  title     = {{CodeBERT}: A Pre-Trained Model for Programming and Natural
+               Languages},
+  author    = {Feng, Zhangyin and Guo, Daya and Tang, Duyu and Duan, Nan and
+               Feng, Xiaocheng and Gong, Ming and Shou, Linjun and Qin, Bing
+               and Liu, Ting and Jiang, Daxin and Zhou, Ming},
+  booktitle = {Findings of the Association for Computational Linguistics:
+               {EMNLP} 2020},
+  pages     = {1536--1547},
+  year      = {2020}
+}
+
 @inproceedings{guo2022unixcoder,
   title     = {{UniXcoder}: Unified Cross-Modal Pre-training for Code
                Representation},
@@ -56,6 +111,15 @@
   booktitle = {Proceedings of the 60th Annual Meeting of the Association for
                Computational Linguistics},
   year      = {2022}
+}
+
+@inproceedings{roziere2020transcoder,
+  title     = {Unsupervised Translation of Programming Languages},
+  author    = {Roziere, Baptiste and Lachaux, Marie-Anne and Chanussot, Lowik
+               and Lample, Guillaume},
+  booktitle = {Advances in Neural Information Processing Systems 33
+               ({NeurIPS})},
+  year      = {2020}
 }
 
 @inproceedings{hu2022lora,
@@ -67,18 +131,58 @@
   year      = {2022}
 }
 
-% --------------------------------------------------------------------------
-% Industry and policy sources for Sec. VI. URLs were fetched and the claims
-% checked against them on 2026-10-04. These are reports, programme
-% announcements and keynotes rather than peer-reviewed work, which is
-% appropriate for the claims they support - but check each URL still resolves
-% at camera-ready time, and prefer a published venue where one exists.
+% ==========================================================================
+% Cross-language clone detection
+% ==========================================================================
+
+@inproceedings{nafi2019clcdsa,
+  title     = {{CLCDSA}: Cross Language Code Clone Detection using Syntactical
+               Features and {API} Documentation},
+  author    = {Nafi, Kawser Wazed and Kar, Tonny Shekha and Roy, Banani and
+               Roy, Chanchal K. and Schneider, Kevin A.},
+  booktitle = {Proceedings of the 34th {IEEE/ACM} International Conference on
+               Automated Software Engineering ({ASE})},
+  year      = {2019}
+}
+
+% ==========================================================================
+% C-to-Rust translation
+% ==========================================================================
+
+@misc{nitin2025c2saferrust,
+  title        = {{C2SaferRust}: Transforming {C} Projects into Safer {Rust}
+                  with NeuroSymbolic Techniques},
+  author       = {Nitin, Vikram and Krishna, Rahul and
+                  Lemos do Valle, Luiz and Ray, Baishakhi},
+  howpublished = {arXiv preprint arXiv:2501.14257},
+  year         = {2025}
+}
+
+@inproceedings{shetty2025syzygy,
+  title     = {{Syzygy}: Dual Code-Test {C} to (safe) {Rust} Translation using
+               {LLMs} and Dynamic Analysis},
+  author    = {Shetty, Manish and Jain, Naman and Godbole, Adwait and Seshia,
+               Sanjit A. and Sen, Koushik},
+  booktitle = {Proceedings of the 2nd International Workshop on Large Language
+               Models for Code ({LLM4Code})},
+  year      = {2025}
+}
+
+% ==========================================================================
+% Industry and policy context (Sec. VI)
+%
+% These are programme announcements, reports and keynotes rather than
+% peer-reviewed work, which is appropriate for the claims they support. URLs
+% were fetched and the claims checked against them on 2026-10-04; confirm each
+% still resolves at camera-ready, and prefer a published venue where one
+% exists.
+% ==========================================================================
 
 @misc{darpa2024tractor,
   title        = {Eliminating Memory Safety Vulnerabilities Once and For All},
   author       = {{Defense Advanced Research Projects Agency}},
-  howpublished = {DARPA news release, TRACTOR programme (Translating All C to
-                  Rust)},
+  howpublished = {DARPA news release, TRACTOR programme (Translating All {C}
+                  to {Rust})},
   year         = {2024},
   month        = jul,
   url          = {https://www.darpa.mil/news/2024/memory-safety-vulnerabilities},

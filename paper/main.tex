@@ -79,12 +79,50 @@ dataset, cross-language, code similarity, Rust, C, code retrieval
 \section{Related Datasets}
 \label{sec:related}
 
-% ~0.5 page. The positioning table is the argument: a "covers Rust?" column
-% with a column of No.
-% Cover: CodeNet, xCodeEval, XLCoST, CoST, AVATAR, CodeXGLUE/POJ-104.
-% Say explicitly what each does and where it stops.
+Parallel code corpora divide by what they align and how many languages they
+span, and Table~\ref{tab:related} places \dsname{} among them.
 
-Table~\ref{tab:related} places \dsname{} among them.
+The largest are not parallel at all. CodeNet~\cite{puri2021codenet} collects
+roughly 14 million submissions across 55 languages from AtCoder and AIZU, and
+POJ-104, distributed as part of CodeXGLUE~\cite{lu2021codexglue}, holds student
+C++ submissions to 104 problems. Both group solutions by problem, so pairs can
+be derived, but neither ships an aligned bilingual corpus and both are
+dominated by C, C++, Java and Python.
+
+Among the explicitly parallel corpora, xCodeEval~\cite{khan2023xcodeeval} is
+the broadest, with 25 million Codeforces examples over 17 languages and
+execution-based evaluation through unit tests.
+XLCoST~\cite{zhu2022xlcost} and CoST~\cite{zhu2022cost} align at the finer
+granularity of code snippets rather than whole programs, across 7 languages
+drawn from GeeksForGeeks; the alignment is what makes them valuable and also
+what restricts them to the languages that site covers.
+AVATAR~\cite{ahmad2023avatar} takes the opposite tack and goes deep on one
+pair, 9{,}515 Java/Python problems with unit tests for a 250-example subset.
+
+None of them includes Rust. That is the gap \dsname{} fills, and the reason it
+is a single language pair rather than a broad matrix: the pair that matters for
+the migration pressure described in Section~\ref{sec:usecases} is C to Rust
+specifically, and no existing corpus aligns those two at the level of whole
+solutions to a shared problem.
+
+The modelling literature this dataset is meant to serve is correspondingly
+single-pair-poor. Unsupervised program translation was established on
+C++/Java/Python by TransCoder~\cite{roziere2020transcoder}, and the pretrained
+code encoders that cross-language retrieval is built
+on---CodeBERT~\cite{feng2020codebert} and
+UniXcoder~\cite{guo2022unixcoder}---were pretrained on corpora in which Rust is
+marginal or absent. Cross-language clone detection has the same shape:
+CLCDSA~\cite{nafi2019clcdsa} detects type-4 clones across Java, C\# and Python
+using syntactic features and API-call similarity, and its evaluation, like the
+corpora above, stops short of Rust.
+
+On the C-to-Rust side specifically, the recent work is on \emph{producing}
+Rust rather than on judging whether the result corresponds to its source.
+C2SaferRust~\cite{nitin2025c2saferrust} decomposes C2Rust's unsafe output into
+slices an LLM rewrites more safely, and Syzygy~\cite{shetty2025syzygy} pairs
+LLM translation with dynamic analysis to keep code and tests consistent. Both
+are evaluated by compilation and test-passing, which is the criterion
+Section~\ref{sec:usecases} argues is necessary and not sufficient.
 
 \begin{table}[t]
 \caption{Cross-language code corpora. \dsname{} is the only one pairing C with
@@ -95,11 +133,12 @@ Rust at solution granularity. TODO: verify every cell.}
 \toprule
 Dataset & Languages & Paired & Rust \\
 \midrule
-CodeNet        & 55  & no  & no \\
-xCodeEval      & 17  & yes & no \\
-XLCoST         & 7   & yes & no \\
-CoST           & 7   & yes & no \\
-AVATAR         & 2   & yes & no \\
+CodeNet~\cite{puri2021codenet}        & 55  & no  & no \\
+xCodeEval~\cite{khan2023xcodeeval}    & 17  & yes & no \\
+XLCoST~\cite{zhu2022xlcost}           & 7   & yes & no \\
+CoST~\cite{zhu2022cost}               & 7   & yes & no \\
+AVATAR~\cite{ahmad2023avatar}         & 2   & yes & no \\
+POJ-104~\cite{lu2021codexglue}        & 1   & n/a & no \\
 \midrule
 \dsname{}      & 2   & yes & yes \\
 \bottomrule
