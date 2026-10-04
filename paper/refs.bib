@@ -66,3 +66,72 @@
   booktitle = {International Conference on Learning Representations},
   year      = {2022}
 }
+
+% --------------------------------------------------------------------------
+% Industry and policy sources for Sec. VI. URLs were fetched and the claims
+% checked against them on 2026-10-04. These are reports, programme
+% announcements and keynotes rather than peer-reviewed work, which is
+% appropriate for the claims they support - but check each URL still resolves
+% at camera-ready time, and prefer a published venue where one exists.
+
+@misc{darpa2024tractor,
+  title        = {Eliminating Memory Safety Vulnerabilities Once and For All},
+  author       = {{Defense Advanced Research Projects Agency}},
+  howpublished = {DARPA news release, TRACTOR programme (Translating All C to
+                  Rust)},
+  year         = {2024},
+  month        = jul,
+  url          = {https://www.darpa.mil/news/2024/memory-safety-vulnerabilities},
+  urldate      = {2026-10-04}
+}
+
+@misc{llnl2024tractorbench,
+  title        = {Translating All {C} to {Rust} ({TRACTOR}) Benchmarks},
+  author       = {{MIT Lincoln Laboratory}},
+  howpublished = {Project page},
+  url          = {https://www.ll.mit.edu/r-d/projects/translating-all-c-rust-tractor-benchmarks},
+  urldate      = {2026-10-04}
+}
+
+% VERIFY: cited for the ~70% figure, which MSRC has reported for two decades
+% and Russinovich restated in a RustConf 2025 keynote. Prefer citing an MSRC
+% publication directly if one states the figure in a citable form.
+@misc{russinovich2025rustconf,
+  title        = {Keynote},
+  author       = {Russinovich, Mark},
+  howpublished = {RustConf},
+  year         = {2025},
+  note         = {Reports that roughly 70\% of Windows CVEs are
+                  memory-safety issues},
+  urldate      = {2026-10-04}
+}
+
+% VERIFY: Google has published several Android memory-safety posts; pin the
+% exact one carrying the 2024 figure and the 1000x density comparison.
+@misc{google2025android,
+  title        = {Rust in {Android}: Move Fast and Fix Things},
+  author       = {{Google}},
+  howpublished = {Google Security Blog},
+  year         = {2025},
+  note         = {Android memory-safety vulnerabilities fell from 223 in 2019
+                  to under 50 in 2024, below 20\% of the total},
+  urldate      = {2026-10-04}
+}
+
+@misc{cisa2023roadmaps,
+  title        = {The Case for Memory Safe Roadmaps},
+  author       = {{Cybersecurity and Infrastructure Security Agency}},
+  year         = {2023},
+  month        = dec,
+  urldate      = {2026-10-04}
+}
+
+@misc{oncd2024memory,
+  title        = {Back to the Building Blocks: A Path Toward Secure and
+                  Measurable Software},
+  author       = {{Office of the National Cyber Director}},
+  howpublished = {The White House},
+  year         = {2024},
+  month        = feb,
+  urldate      = {2026-10-04}
+}

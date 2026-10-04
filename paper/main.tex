@@ -347,12 +347,81 @@ ratio conceals that.
 \section{Use Cases}
 \label{sec:usecases}
 
-% ~0.25 page:
-%  - evaluating C-to-Rust translators (c2rust, LLM-based) against real pairs
-%  - cross-language code search and clone detection (type-4, across languages)
-%  - training cross-language retrieval models
-%  - studying how idiom differs between a systems language with and without
-%    ownership
+\subsection{Why C-to-Rust is under pressure}
+
+Memory-safety defects are the dominant vulnerability class in C codebases of
+record. Microsoft's Security Response Center has for two decades put roughly
+$70\%$ of the company's CVE-assigned vulnerabilities in that class, a figure
+its Azure CTO restated in 2025~\cite{russinovich2025rustconf}; Microsoft has
+been rewriting core Windows libraries in Rust since 2023 and designated Rust a
+first-class internal language in 2026. Android gives the clearest evidence
+that the substitution works: annual memory-safety vulnerabilities fell from
+223 in 2019 to under 50 in 2024 and dropped below $20\%$ of Android's total
+for the first time, with Google reporting roughly a $1000\times$ lower
+memory-safety defect density in its Rust code than in its C and
+C++~\cite{google2025android}. Policy has followed the evidence, through CISA's
+memory-safe roadmaps~\cite{cisa2023roadmaps} and the US Office of the National
+Cyber Director's 2024 call to adopt memory-safe
+languages~\cite{oncd2024memory}.
+
+The resulting problem is translation at scale, and it is explicitly a research
+programme rather than an engineering task. DARPA's TRACTOR --- Translating All
+C to Rust --- launched in July 2024 to automate the conversion of legacy C to
+idiomatic Rust, on the premise that two decades of bug-finding tools have not
+been enough and that the Department of Defense's C-based systems are too large
+to port by hand~\cite{darpa2024tractor}.
+
+\subsection{What a paired corpus contributes}
+
+Translation tools are evaluated almost entirely on whether their output
+compiles and passes the original tests. TRACTOR's own benchmark is a battery of
+150 C programs scored for correctness and safety~\cite{llnl2024tractorbench}.
+That is the right primary criterion and an incomplete one: a translation can
+pass every test and still be an unfaithful or unidiomatic rendering of the
+source, and a test suite is exactly what legacy C most often lacks. The
+complementary question --- \emph{are these two programs, in two languages, the
+same program?} --- is a similarity judgement, and it is the one \dsname{}
+supplies supervision for.
+
+Four concrete uses follow.
+
+\textbf{Scoring translator output without tests.} A model finetuned on
+\dsname{} assigns a cross-language similarity to a (C, Rust) pair. Applied to a
+translator's input and output it gives a test-free signal that flags
+translations drifting from their source --- usable as a regression check across
+tool versions, or to rank candidates when a tool emits several. The per-tier
+results in Section~\ref{sec:baselines} matter here: the usable range of such a
+score is set by how well a model does on \emph{structurally divergent} pairs,
+which is where the hard tier shows the current ceiling is $0.55$ MRR, not the
+$0.98$ the easy tier would suggest.
+
+\textbf{Finding an existing port.} Migrating a C codebase rarely starts from
+nothing: equivalent functionality often already exists in Rust, in a crate or
+in a sibling project. Locating it is cross-language retrieval over whole
+implementations, which is the task this dataset measures directly.
+
+\textbf{Cross-language clone and vulnerability tracking.} When a CVE is filed
+against a C implementation, the question of whether a Rust port inherits the
+defect --- or whether a Rust crate is a translation of vulnerable C --- is a
+type-4 clone problem across languages. Type-4 clone corpora are overwhelmingly
+single-language; a paired C/Rust corpus gives the cross-language case
+supervision it has lacked.
+
+\textbf{Studying what ownership changes.} Each pair is two solutions to one
+problem, one written with a borrow checker and one without. The dataset is
+therefore a controlled sample for asking how ownership and lifetimes reshape an
+implementation --- a question the difficulty tiers already index, since the
+hard tier is precisely the subset where the two languages' solutions diverge
+structurally rather than translating line for line.
+
+\subsection{What it does not support}
+
+The pairs are competitive programming solutions: short, single-file,
+I/O-driven, and free of the allocation patterns, pointer aliasing and
+concurrency that make real C hard to port. Results here should be read as a
+measurement on a clean proxy for the cross-language matching problem, not as
+evidence about systems code, which is where the migration pressure described
+above actually sits. Section~\ref{sec:limitations} returns to this.
 
 \section{Limitations}
 \label{sec:limitations}
