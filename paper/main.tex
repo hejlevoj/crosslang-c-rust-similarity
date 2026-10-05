@@ -273,9 +273,20 @@ within 0.3 percentage points by source and 0.6 by tier.
 
 Retrieval is C-to-Rust unless stated otherwise: each C implementation queries
 the pool of all 187 Rust implementations in the test split, and the target is
-the one solving the same problem. Chance is $\mathrm{MRR}=0.031$ at this pool
-size. LoRA figures are mean $\pm$ standard deviation over four seeds; the
-other rows are single runs.
+the one solving the same problem.
+
+We report mean reciprocal rank, introduced for the TREC-8 question answering
+track~\cite{voorhees1999trec8} and the standard measure for code search since
+CodeSearchNet~\cite{husain2019codesearchnet} and
+CodeXGLUE~\cite{lu2021codexglue}: each query contributes the reciprocal of the
+rank at which its correct counterpart appears, so the score is dominated by
+whether the answer lands at the top rather than merely somewhere in the list.
+MRR@10 is the same quantity truncated, contributing zero when the rank exceeds
+ten. Both are given because they diverge exactly where many positives fall
+outside the top ten, which is the zero-shot regime and therefore the
+denominator of every improvement ratio below. Chance at this pool size is
+$\mathrm{MRR}=0.031$. LoRA figures are mean $\pm$ standard deviation over four
+seeds; the other rows are single runs.
 
 \begin{table}[t]
 \caption{Cross-language retrieval on the 187-pair test set.}
