@@ -57,13 +57,49 @@ dataset, cross-language, code similarity, Rust, C, code retrieval
 \section{Introduction}
 \label{sec:intro}
 
-% ~0.5 page. Why C<->Rust specifically:
-%  - memory-safety driven migration is an active agenda, including public-sector
-%    pushes; C-to-Rust translation tools (c2rust, LLM-based) are proliferating
-%  - evaluating them needs paired ground truth, which does not exist at the
-%    level of whole solutions to a shared problem
-%  - existing cross-language corpora stop short of Rust (see Sec. II)
-% Close with the contribution list.
+Memory-safety defects remain the dominant vulnerability class in C. Microsoft
+has for two decades attributed roughly $70\%$ of its CVEs to that
+class~\cite{russinovich2025rustconf}, and Android shows the substitution
+works: its annual memory-safety vulnerabilities fell from 223 in 2019 to under
+50 in 2024 as Rust adoption grew, with roughly $1000\times$ lower defect
+density in Rust than in C and C++~\cite{google2025android}. Policy has
+followed, through CISA's memory-safe roadmaps~\cite{cisa2023roadmaps} and the
+US cyber director's call to adopt memory-safe
+languages~\cite{oncd2024memory}; DARPA's TRACTOR
+programme~\cite{darpa2024tractor} funds the automated translation of legacy C
+to Rust outright, on the premise that the codebases that matter are too large
+to port by hand.
+
+Translation tools are consequently proliferating, and they are evaluated almost
+entirely on whether their output compiles and passes the original test
+suite~\cite{nitin2025c2saferrust,shetty2025syzygy}. That is the right primary
+criterion. It is also incomplete --- a translation can pass every test and
+still be an unfaithful rendering of its source --- and it is unavailable
+precisely where it is most needed, since legacy C is what most often lacks
+tests. The complementary question, \emph{are these two programs, in two
+languages, the same program?}, is a similarity judgement rather than an
+execution one, and answering it with a learned model requires paired
+supervision.
+
+No such corpus exists for this language pair. The parallel code datasets either
+span many languages at snippet
+granularity~\cite{zhu2022xlcost,zhu2022cost} or go deep on a single pair that
+is not this one~\cite{ahmad2023avatar}, and the largest collections are
+grouped by problem rather than aligned across
+languages~\cite{puri2021codenet,lu2021codexglue}. None of them includes Rust.
+
+We present \dsname, 1857 pairs of C and Rust implementations of the same
+competitive programming problem, each with its statement, normalised entry
+points, per-record provenance and licence, a difficulty tier derived from
+zero-shot cross-language embedding similarity, and a frozen stratified split.
+
+Measuring on it reframes what the task requires. A lexical baseline---TF-IDF
+over shared identifiers, no model---beats a pretrained code model zero-shot,
+because competitive programmers reuse variable names across languages. Renaming
+every user identifier separates the regimes: the pretrained model loses a third
+of its accuracy, more than the lexical baseline does, while finetuned models
+lose almost nothing. Cross-language matching here is learnable, but not from
+identifiers.
 
 \noindent\textbf{Contributions.}
 \begin{itemize}
@@ -71,9 +107,103 @@ dataset, cross-language, code similarity, Rust, C, code retrieval
         normalised entry points, per-record provenance and licensing.
   \item A difficulty stratification derived from zero-shot cross-language
         embedding similarity, independent of the model family used in
-        evaluation.
-  \item Retrieval baselines, per difficulty tier, over a frozen stratified
-        split.
+        evaluation, which we show transfers to a different family.
+  \item Retrieval baselines per difficulty tier over a frozen stratified
+        split, including a lexical baseline and an identifier ablation that
+        together establish what the task does and does not reduce to.
+\end{itemize}
+
+\section{Related Datasets}
+\label{sec:related}
+
+Parallel code corpora divide by what they align and how many languages they
+span (Table~\ref{tab:related}). The largest are not parallel at all:
+CodeNet~\cite{puri2021codenet} and POJ-104, distributed with
+CodeXGLUE~\cite{lu2021codexglue}, group solutions by problem without
+shipping an aligned bilingual corpus. Of the parallel ones,
+xCodeEval~\cite{khan2023xcodeeval} is broadest at 17 languages;
+XLCoST~\cite{zhu2022xlcost} and CoST~\cite{zhu2022cost} align snippets
+rather than whole programs across the 7 languages GeeksForGeeks covers; and
+AVATAR~\cite{ahmad2023avatar} goes deep on Java/Python instead. None includes
+Rust, which is the gap \dsname{} fills and the reason it is one language pair
+rather than a matrix. We present
+\dsname, 1857 C/Rust implementation pairs drawn from competitive programming
+archives, normalised, deduplicated, and stratified into difficulty tiers by
+zero-shot cross-language embedding similarity, with per-record provenance and
+licensing. Cross-language retrieval is hard on this data, and harder than a
+single baseline would suggest: TF-IDF over shared identifiers reaches
+MRR $0.21$ and so beats a pretrained code model at $0.19$, which on the
+hardest quarter of the data scores $1.7\times$ chance. Finetuning reaches
+$0.79$, and lifts that hardest quarter $10\times$. Renaming every user
+identifier settles what is being learned: the finetuned models keep 97\% of
+their accuracy without them, while the pretrained model keeps 66\% --- less
+than the lexical baseline does --- and on structurally divergent pairs the
+finetuned models are \emph{better} without identifiers than with them.
+\end{abstract}
+
+\begin{IEEEkeywords}
+dataset, cross-language, code similarity, Rust, C, code retrieval
+\end{IEEEkeywords}
+
+\section{Introduction}
+\label{sec:intro}
+
+Memory-safety defects remain the dominant vulnerability class in C. Microsoft
+has for two decades attributed roughly $70\%$ of its CVEs to that
+class~\cite{russinovich2025rustconf}, and Android shows the substitution
+works: its annual memory-safety vulnerabilities fell from 223 in 2019 to under
+50 in 2024 as Rust adoption grew, with roughly $1000\times$ lower defect
+density in Rust than in C and C++~\cite{google2025android}. Policy has
+followed, through CISA's memory-safe roadmaps~\cite{cisa2023roadmaps} and the
+US cyber director's call to adopt memory-safe
+languages~\cite{oncd2024memory}; DARPA's TRACTOR
+programme~\cite{darpa2024tractor} funds the automated translation of legacy C
+to Rust outright, on the premise that the codebases that matter are too large
+to port by hand.
+
+Translation tools are consequently proliferating, and they are evaluated almost
+entirely on whether their output compiles and passes the original test
+suite~\cite{nitin2025c2saferrust,shetty2025syzygy}. That is the right primary
+criterion. It is also incomplete --- a translation can pass every test and
+still be an unfaithful rendering of its source --- and it is unavailable
+precisely where it is most needed, since legacy C is what most often lacks
+tests. The complementary question, \emph{are these two programs, in two
+languages, the same program?}, is a similarity judgement rather than an
+execution one, and answering it with a learned model requires paired
+supervision.
+
+No such corpus exists for this language pair. The parallel code datasets either
+span many languages at snippet
+granularity~\cite{zhu2022xlcost,zhu2022cost} or go deep on a single pair that
+is not this one~\cite{ahmad2023avatar}, and the largest collections are
+grouped by problem rather than aligned across
+languages~\cite{puri2021codenet,lu2021codexglue}. None of them includes Rust.
+
+We present \dsname, 1857 pairs of C and Rust implementations of the same
+competitive programming problem, each with its statement, normalised entry
+points, per-record provenance and licence, a difficulty tier derived from
+zero-shot cross-language embedding similarity, and a frozen stratified split.
+
+Measuring on it produces a result that reframes what the task requires. A
+lexical baseline --- TF-IDF over shared identifiers, no model --- beats a
+pretrained code model zero-shot, because competitive programmers reuse variable
+names across languages. Renaming every user identifier separates the two
+regimes cleanly: the pretrained model loses a third of its accuracy, more than
+the lexical baseline loses, while finetuned models lose almost nothing and on
+structurally divergent pairs do \emph{better} without names than with them.
+Cross-language matching here is learnable, but not from identifiers, and the
+dataset is what makes that distinction measurable.
+
+\noindent\textbf{Contributions.}
+\begin{itemize}
+  \item \dsname, 1857 C/Rust solution pairs with problem statements,
+        normalised entry points, per-record provenance and licensing.
+  \item A difficulty stratification derived from zero-shot cross-language
+        embedding similarity, independent of the model family used in
+        evaluation, which we show transfers to a different family.
+  \item Retrieval baselines per difficulty tier over a frozen stratified
+        split, including a lexical baseline and an identifier ablation that
+        together establish what the task does and does not reduce to.
 \end{itemize}
 
 \section{Related Datasets}
@@ -124,7 +254,7 @@ LLM translation with dynamic analysis to keep code and tests consistent. Both
 are evaluated by compilation and test-passing, which is the criterion
 Section~\ref{sec:usecases} argues is necessary and not sufficient.
 
-\begin{table}[t]
+\begin{table}[tbp]
 \caption{Cross-language code corpora. \dsname{} is the only one pairing C with
 Rust at solution granularity. TODO: verify every cell.}
 \label{tab:related}
@@ -159,30 +289,25 @@ submissions, so the two implementations of a pair are known to have passed the
 same official tests. A pair is one problem, one accepted C submission, and one
 accepted Rust submission.
 
-\subsection{Normalisation}
+\subsection{Normalisation and cleaning}
 
 Both sides pass through a static analysis pipeline that strips comments,
 removes unused functions and macros, normalises encoding, and applies the
-language's standard formatter (\texttt{clang-format}, \texttt{rustfmt}). Entry
-points are renamed to \texttt{solution} in both languages so that the function
-name carries no signal. One consequence, discussed in
-Section~\ref{sec:limitations}, is that the distributed code is no longer a
-standalone compilable program.
+language's standard formatter. Entry points are renamed to \texttt{solution} in
+both languages so the function name carries no signal---which also means the
+distributed code no longer compiles standalone
+(Section~\ref{sec:limitations}).
 
-\subsection{Cleaning}
 
 From an initial 2013 pairs, 127 were removed: 2 confirmed mis-pairs, 69 AtCoder
-easy/hard variants whose statements were near-identical (description embedding
-similarity $>0.90$), 54 further suspicious pairs ($0.80$--$0.90$), 1 length
-ratio outlier, and 1 case of genuine implementation divergence. Near-duplicate
-detection used OpenAI \texttt{text-embedding-3-large} over the raw statements.
-
-A further 29 pairs, a set of textbook reference implementations, were dropped
-for two converging reasons. They carried the dataset's only copyleft content
-and were its only records whose two halves were under different licences
-(Section~\ref{sec:availability}); and they were structurally unlike the rest,
-having no problem statement and functions taking arguments rather than reading
-standard input. This leaves 1857 pairs.
+easy/hard variants with near-identical statements (description embedding
+similarity $>0.90$), 54 further suspicious pairs ($0.80$--$0.90$) found the same
+way with OpenAI \texttt{text-embedding-3-large}, 1 length-ratio outlier and 1
+case of genuine implementation divergence. A further 29 textbook reference
+implementations were dropped: they carried the only copyleft content and the
+only records whose halves were under different licences
+(Section~\ref{sec:availability}), and had no problem statement. This leaves
+1857 pairs.
 
 \subsection{Difficulty stratification}
 
@@ -209,55 +334,57 @@ difficulty ratings on incompatible scales, so upstream ratings are not used.
 
 \subsection{Schema}
 
-% TODO: schema table. Fields: problem_id, origin, license,
-% problem_description, problem_description_format, c_code, rust_code,
-% difficulty, difficulty_score, split.
+\dsname{} is a single 5.9\,MB JSON Lines file, one object per pair, with the
+fields in Table~\ref{tab:schema}. Nothing is split across files and no field
+needs to be joined from elsewhere.
+
+\begin{table}[tbp]
+\caption{Schema. One JSON object per line of \texttt{dataset.jsonl}; all
+fields are strings except \texttt{difficulty\_score}.}
+\label{tab:schema}
+\centering
+\footnotesize
+\begin{tabular}{@{}l@{~~}p{4.3cm}@{}}
+\toprule
+Field & Values \\
+\midrule
+\texttt{problem\_id} & \texttt{0001}--\texttt{1886}, inherited \\
+\texttt{origin} & \texttt{codenet} (839), \texttt{xcodeeval} (1018) \\
+\texttt{license} & SPDX expression; follows \texttt{origin} \\
+\texttt{problem\_description} & upstream statement, verbatim \\
+\texttt{...\_format} & \texttt{html} (839), \texttt{text} (1018) \\
+\texttt{c\_code} & entry point renamed \texttt{solution} \\
+\texttt{rust\_code} & entry point renamed \texttt{solution} \\
+\texttt{difficulty} & \texttt{easy} (465), \texttt{medium} (928),
+                      \texttt{hard} (464) \\
+\texttt{difficulty\_score} & raw SFR cosine similarity (float) \\
+\texttt{split} & \texttt{train} (1485), \texttt{val} (185),
+                 \texttt{test} (187) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fifth row is \texttt{problem\_description\_format}, abbreviated to
+fit; \texttt{problem\_id} runs to 1886 over 1857 records, keeping an
+earlier release's numbering. Two choices are worth naming. \texttt{license} is
+per record, because the sources differ (Section~\ref{sec:availability}), so
+filtering on \texttt{origin} is the only way to extract a commercially usable
+subset. And \texttt{difficulty\_score} ships the raw similarity beside the
+tier, so the quantile cuts can be redrawn without re-running the model.
 
 \subsection{Statistics}
 
-\begin{table}[t]
-\caption{Size of the two sides, in characters and lines.}
-\label{tab:sizes}
-\centering
-\begin{tabular}{lrrrr}
-\toprule
- & Mean & Median & p90 & Max \\
-\midrule
-C, characters     & 616  & 516  & 1046 & 16460 \\
-Rust, characters  & 851  & 749  & 1424 & 4888 \\
-Statement, chars  & 1459 & 1231 & 2717 & 7368 \\
-\midrule
-C, lines          & 33.6 & & & \\
-Rust, lines       & 31.4 & & & \\
-\bottomrule
-\end{tabular}
-\end{table}
+Solutions are short: a median of 516 characters of C and 749 of Rust, with
+problem statements at a median of 1231. The Rust side runs about $1.5\times$
+longer in characters (median ratio $1.50$) while being \emph{shorter} in lines
+---31.4 against 33.6 on average---so Rust solutions pack more into each line.
+A length-based heuristic therefore does not separate the two languages the way
+the character counts alone would suggest.
 
-Table~\ref{tab:sizes} gives the size of each side.
-The Rust side is about $1.5\times$ longer than the C side in characters
-(median ratio $1.50$) while being \emph{shorter} in lines (31.4 against 33.6):
-Rust solutions pack more into each line. This is worth stating because it means
-a length-based heuristic does not separate the two languages the way a naive
-reading of the character counts would suggest.
 
-\begin{table}[t]
-\caption{Composition by source and difficulty tier.}
-\label{tab:composition}
-\centering
-\begin{tabular}{lrrrr}
-\toprule
-Source & Easy & Medium & Hard & Total \\
-\midrule
-CodeNet (AtCoder)     & 241 & 408 & 190 & 839 \\
-xCodeEval (Codeforces)& 224 & 520 & 274 & 1018 \\
-\midrule
-Total                 & 465 & 928 & 464 & 1857 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Table~\ref{tab:composition} breaks the dataset down by both axes.
-Source and difficulty are not independent: the CodeNet portion skews easy while
+Source and difficulty are not independent. CodeNet contributes 241 easy, 408
+medium and 190 hard pairs; xCodeEval 224, 520 and 274. The CodeNet portion
+skews easy while
 the xCodeEval portion skews hard. Reporting a per-tier result therefore
 requires a split that controls for both.
 
@@ -288,7 +415,7 @@ denominator of every improvement ratio below. Chance at this pool size is
 $\mathrm{MRR}=0.031$. LoRA figures are mean $\pm$ standard deviation over four
 seeds; the other rows are single runs.
 
-\begin{table}[t]
+\begin{table}[tbp]
 \caption{Cross-language retrieval on the 187-pair test set.}
 \label{tab:baselines}
 \centering
@@ -326,7 +453,7 @@ with user identifiers renamed to positional names independently in each
 language, which destroys cross-language name correspondence while leaving
 control flow, types, library calls and string literals intact.
 
-\begin{table}[t]
+\begin{table}[tbp]
 \caption{MRR by difficulty tier, with and without user identifiers. Every
 tier is scored against the same 187-candidate pool; only the queries are
 partitioned. \emph{Ret.} is the anonymised MRR as a fraction of the normal
@@ -377,49 +504,21 @@ the zero-shot model get worse. Where implementations diverge structurally, a
 shared name is more often a coincidence than a signal, and a model trained
 without that cue learns the remapping instead of leaning on it.
 
-\subsection{Retrieval direction}
+\subsection{Direction and parameter efficiency}
 
-Querying with Rust is consistently easier than querying with C: MRR rises from
-$0.189$ to $0.233$ zero-shot and from $0.792$ to $0.836$ with full
-finetuning. Under the ablation the asymmetry all but disappears for the
-finetuned models ($0.768$ against $0.773$), which locates its cause: the Rust
-side carries more of the identifier signal, not more of the structure.
-
-\subsection{Parameter efficiency depends on difficulty}
-
-LoRA reaches $91\%$ of full finetuning overall while updating $0.23\%$ of the
-parameters, which invites the conclusion that the adapter is nearly free. Per
-tier it is not: LoRA recovers $98\%$ of full performance on easy pairs,
-$95\%$ on medium, and $71\%$ on hard. The parameter budget binds precisely
-where the cross-language remapping is non-trivial, and a single aggregate
-ratio conceals that.
+Querying with Rust beats querying with C (MRR $0.189$ to $0.233$ zero-shot,
+$0.792$ to $0.836$ full), and the asymmetry nearly vanishes under the ablation
+($0.768$ against $0.773$), locating it in identifiers rather than structure.
+LoRA reaches $91\%$ of full finetuning overall with $0.23\%$ of the parameters,
+but $98\%$ on easy pairs against $71\%$ on hard: the budget binds where the
+remapping is non-trivial, and the aggregate ratio conceals it.
 
 \section{Use Cases}
 \label{sec:usecases}
 
-\subsection{Why C-to-Rust is under pressure}
-
-Memory-safety defects are the dominant vulnerability class in C codebases of
-record. Microsoft's Security Response Center has for two decades put roughly
-$70\%$ of the company's CVE-assigned vulnerabilities in that class, a figure
-its Azure CTO restated in 2025~\cite{russinovich2025rustconf}; Microsoft has
-been rewriting core Windows libraries in Rust since 2023 and designated Rust a
-first-class internal language in 2026. Android gives the clearest evidence
-that the substitution works: annual memory-safety vulnerabilities fell from
-223 in 2019 to under 50 in 2024 and dropped below $20\%$ of Android's total
-for the first time, with Google reporting roughly a $1000\times$ lower
-memory-safety defect density in its Rust code than in its C and
-C++~\cite{google2025android}. Policy has followed the evidence, through CISA's
-memory-safe roadmaps~\cite{cisa2023roadmaps} and the US Office of the National
-Cyber Director's 2024 call to adopt memory-safe
-languages~\cite{oncd2024memory}.
-
-The resulting problem is translation at scale, and it is explicitly a research
-programme rather than an engineering task. DARPA's TRACTOR --- Translating All
-C to Rust --- launched in July 2024 to automate the conversion of legacy C to
-idiomatic Rust, on the premise that two decades of bug-finding tools have not
-been enough and that the Department of Defense's C-based systems are too large
-to port by hand~\cite{darpa2024tractor}.
+Section~\ref{sec:intro} set out why C-to-Rust translation is being
+funded rather than merely discussed. What follows is the gap between that
+effort and what it currently measures.
 
 \subsection{What a paired corpus contributes}
 
@@ -457,13 +556,6 @@ type-4 clone problem across languages. Type-4 clone corpora are overwhelmingly
 single-language; a paired C/Rust corpus gives the cross-language case
 supervision it has lacked.
 
-\textbf{Studying what ownership changes.} Each pair is two solutions to one
-problem, one written with a borrow checker and one without. The dataset is
-therefore a controlled sample for asking how ownership and lifetimes reshape an
-implementation --- a question the difficulty tiers already index, since the
-hard tier is precisely the subset where the two languages' solutions diverge
-structurally rather than translating line for line.
-
 \subsection{What it does not support}
 
 The pairs are competitive programming solutions: short, single-file,
@@ -476,40 +568,31 @@ above actually sits. Section~\ref{sec:limitations} returns to this.
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{Equivalence is inherited, not verified.} No test cases or expected I/O
+\textbf{Equivalence is inherited, not verified.} No tests or expected I/O
 are distributed. That both submissions were accepted upstream is evidence of
-functional equivalence, but this dataset does not itself execute anything, and
-the entry-point renaming means the distributed code does not compile as a
-standalone program. Execution-based verification is the clearest line of future
-work.
-
-\textbf{Upstream identifiers are absent.} The pairs cannot be traced back to
-the originating problem or submission, which limits attribution to the corpus
-level and prevents joining against upstream metadata.
+functional equivalence, not a check of it, and the entry-point renaming means
+the code does not compile standalone. Execution-based verification is the
+clearest line of future work.
 
 \textbf{Competitive programming is not production code.} Solutions are short,
-single-file, and I/O-driven. Conclusions drawn here should not be assumed to
-transfer to systems code, which is where C-to-Rust migration actually matters.
+single-file and I/O-driven; nothing here should be assumed to transfer to
+systems code, which is where the migration pressure actually sits.
 
-\textbf{Difficulty is a proxy.} The tiers measure embedding similarity, not
-algorithmic difficulty or translation effort.
+\textbf{Upstream identifiers are absent}, so pairs cannot be traced to the
+originating submission, and \textbf{difficulty is a proxy} for embedding
+similarity rather than algorithmic difficulty or translation effort.
 
-\textbf{Variance is measured for one configuration only.} The LoRA rows are
-means over four seeds; the zero-shot, full-finetune and lexical rows are single
-runs. The LoRA spread ($\sigma = 0.011$ on MRR) is the only direct evidence
-available for how much of any gap here is seed noise.
+\textbf{Variance is measured for one configuration.} The LoRA rows are means
+over four seeds ($\sigma = 0.011$ on MRR); the others are single runs, so that
+spread is the only direct evidence of how much of any gap is seed noise.
 
-\textbf{The original tier labels were not exactly reproducible.} An earlier
-release of this dataset shipped tier labels whose generating script had since
-diverged. Regenerating them reproduces the aggregate distribution closely
-(mean $0.826$ against a reported $0.823$) but agrees on only 89\% of individual
-pairs, with the disagreement spread symmetrically across adjacent tiers --- a
-pattern that threshold movement alone cannot produce, and that indicates the
-per-pair scores differed. The labels released here are the regenerated ones,
-and the raw scores are now distributed so that the question cannot recur.
-
-\textbf{Pre-training contamination is possible.} Both source archives are
-public and may appear in the pre-training corpora of the models evaluated here.
+\textbf{An earlier release's tier labels were not exactly reproducible.}
+Regenerating them matches the aggregate distribution (mean $0.826$ against a
+reported $0.823$) but only 89\% of individual labels, with disagreement spread
+symmetrically across adjacent tiers---a pattern threshold movement alone cannot
+produce. The labels released here are the regenerated ones, and the raw scores
+now ship alongside them. \textbf{Pre-training contamination is also possible},
+both archives being public.
 
 \section{Availability and Licensing}
 \label{sec:availability}
