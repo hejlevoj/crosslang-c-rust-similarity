@@ -5,6 +5,7 @@
 \documentclass[10pt,conference]{IEEEtran}
 
 \usepackage{booktabs}
+\setlength{\tabcolsep}{3.5pt}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{url}
@@ -117,7 +118,7 @@ identifiers.
 \label{sec:related}
 
 Parallel code corpora divide by what they align and how many languages they
-span (Table~\ref{tab:related}). The largest are not parallel at all:
+span. The largest are not parallel at all:
 CodeNet~\cite{puri2021codenet} and POJ-104, distributed with
 CodeXGLUE~\cite{lu2021codexglue}, group solutions by problem without
 shipping an aligned bilingual corpus. Of the parallel ones,
@@ -254,26 +255,6 @@ LLM translation with dynamic analysis to keep code and tests consistent. Both
 are evaluated by compilation and test-passing, which is the criterion
 Section~\ref{sec:usecases} argues is necessary and not sufficient.
 
-\begin{table}[tbp]
-\caption{Cross-language code corpora. \dsname{} is the only one pairing C with
-Rust at solution granularity. TODO: verify every cell.}
-\label{tab:related}
-\centering
-\begin{tabular}{lccc}
-\toprule
-Dataset & Languages & Paired & Rust \\
-\midrule
-CodeNet~\cite{puri2021codenet}        & 55  & no  & no \\
-xCodeEval~\cite{khan2023xcodeeval}    & 17  & yes & no \\
-XLCoST~\cite{zhu2022xlcost}           & 7   & yes & no \\
-CoST~\cite{zhu2022cost}               & 7   & yes & no \\
-AVATAR~\cite{ahmad2023avatar}         & 2   & yes & no \\
-POJ-104~\cite{lu2021codexglue}        & 1   & n/a & no \\
-\midrule
-\dsname{}      & 2   & yes & yes \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \section{Construction}
 \label{sec:construction}
@@ -321,13 +302,11 @@ generic code model already embeds close together are near-literal translations;
 pairs it separates diverge structurally and demand a real cross-language
 remapping.
 
-The choice of SFR rather than UniXcoder~\cite{guo2022unixcoder} is
-deliberate. Defining the tiers with
-the same model family that is later finetuned would make hard pairs hard by
-construction, and any reported per-tier improvement would be circular. SFR is
-trained on a different corpus, so the tiers remain an independent axis. The
-stratification is also origin-agnostic: AtCoder and Codeforces publish
-difficulty ratings on incompatible scales, so upstream ratings are not used.
+SFR rather than UniXcoder~\cite{guo2022unixcoder} on purpose: defining the
+tiers with the family that is later finetuned would make hard pairs hard by
+construction, and any per-tier improvement circular. The stratification is also
+origin-agnostic, since AtCoder and Codeforces rate difficulty on incompatible
+scales.
 
 \section{Dataset Description}
 \label{sec:description}
@@ -351,15 +330,12 @@ Field & Values \\
 \texttt{problem\_id} & \texttt{0001}--\texttt{1886}, inherited \\
 \texttt{origin} & \texttt{codenet} (839), \texttt{xcodeeval} (1018) \\
 \texttt{license} & SPDX expression; follows \texttt{origin} \\
-\texttt{problem\_description} & upstream statement, verbatim \\
-\texttt{...\_format} & \texttt{html} (839), \texttt{text} (1018) \\
-\texttt{c\_code} & entry point renamed \texttt{solution} \\
-\texttt{rust\_code} & entry point renamed \texttt{solution} \\
-\texttt{difficulty} & \texttt{easy} (465), \texttt{medium} (928),
-                      \texttt{hard} (464) \\
-\texttt{difficulty\_score} & raw SFR cosine similarity (float) \\
-\texttt{split} & \texttt{train} (1485), \texttt{val} (185),
-                 \texttt{test} (187) \\
+\texttt{problem\_description} & upstream statement, verbatim; \texttt{\_format} is
+  \texttt{html} (839) or \texttt{text} (1018) \\
+\texttt{c\_code}, \texttt{rust\_code} & entry points renamed \texttt{solution} \\
+\texttt{difficulty} & \texttt{easy} (465), \texttt{medium} (928), \texttt{hard}
+  (464); \texttt{\_score} is the raw similarity \\
+\texttt{split} & \texttt{train} (1485), \texttt{val} (185), \texttt{test} (187) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -403,17 +379,14 @@ the pool of all 187 Rust implementations in the test split, and the target is
 the one solving the same problem.
 
 We report mean reciprocal rank, introduced for the TREC-8 question answering
-track~\cite{voorhees1999trec8} and the standard measure for code search since
-CodeSearchNet~\cite{husain2019codesearchnet} and
-CodeXGLUE~\cite{lu2021codexglue}: each query contributes the reciprocal of the
-rank at which its correct counterpart appears, so the score is dominated by
-whether the answer lands at the top rather than merely somewhere in the list.
-MRR@10 is the same quantity truncated, contributing zero when the rank exceeds
-ten. Both are given because they diverge exactly where many positives fall
-outside the top ten, which is the zero-shot regime and therefore the
-denominator of every improvement ratio below. Chance at this pool size is
-$\mathrm{MRR}=0.031$. LoRA figures are mean $\pm$ standard deviation over four
-seeds; the other rows are single runs.
+track~\cite{voorhees1999trec8} and standard for code search since
+CodeSearchNet~\cite{husain2019codesearchnet} and CodeXGLUE~\cite{lu2021codexglue}:
+each query contributes the reciprocal of the rank of its counterpart, so the
+score turns on whether the answer lands at the top. MRR@10 truncates that,
+contributing zero beyond rank ten; both are given because they diverge in the
+zero-shot regime, which is the denominator of every ratio below. Chance is
+$\mathrm{MRR}=0.031$ at this pool size. LoRA figures are mean $\pm$ sd over
+four seeds; other rows are single runs.
 
 \begin{table}[tbp]
 \caption{Cross-language retrieval on the 187-pair test set.}
@@ -454,27 +427,19 @@ language, which destroys cross-language name correspondence while leaving
 control flow, types, library calls and string literals intact.
 
 \begin{table}[tbp]
-\caption{MRR by difficulty tier, with and without user identifiers. Every
-tier is scored against the same 187-candidate pool; only the queries are
-partitioned. \emph{Ret.} is the anonymised MRR as a fraction of the normal
-one.}
+\caption{MRR by difficulty tier, with identifiers kept $\to$ renamed. Every tier is
+scored against the same 187-candidate pool; only the queries are partitioned.
+\emph{Ret.} is the anonymised overall MRR as a fraction of the normal one.}
 \label{tab:bytier}
 \centering
-\begin{tabular}{llcccc}
+\begin{tabular}{@{}l@{~}cccc@{}}
 \toprule
-Model & Ident. & Easy & Medium & Hard & Ret. \\
+Model & Easy & Medium & Hard & Ret. \\
 \midrule
-Lexical TF-IDF       & kept & 0.446 & 0.144 & 0.089 & \\
-                     & anon & 0.355 & 0.094 & 0.080 & 76\% \\
-\midrule
-UniXcoder, zero-shot & kept & 0.328 & 0.186 & 0.053 & \\
-                     & anon & 0.276 & 0.084 & 0.048 & 66\% \\
-\midrule
-UniXcoder + LoRA     & kept & 0.957 & 0.776 & 0.388 & \\
-                     & anon & 0.941 & 0.688 & \textbf{0.429} & 96\% \\
-\midrule
-UniXcoder, full      & kept & 0.979 & 0.821 & 0.550 & \\
-                     & anon & 0.951 & 0.756 & \textbf{0.611} & 97\% \\
+Lexical TF-IDF       & .446$\to$.355 & .144$\to$.094 & .089$\to$.080 & 76\% \\
+UniXcoder zero-shot  & .328$\to$.276 & .186$\to$.084 & .053$\to$.048 & 66\% \\
+UniXcoder + LoRA     & .957$\to$.941 & .776$\to$.688 & .388$\to$\textbf{.429} & 96\% \\
+UniXcoder, full      & .979$\to$.951 & .821$\to$.756 & .550$\to$\textbf{.611} & 97\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -483,26 +448,23 @@ Three things follow, and together they are the strongest evidence that this
 dataset measures what it is meant to.
 
 \textbf{Retrieval is monotone in tier for every configuration.} The tiers were
-cut with SFR while the models here are UniXcoder-based, so the ordering is a
-property of the pairs rather than an artefact of the encoder that defined it.
-Zero-shot UniXcoder reaches $0.053$ on the hard tier --- $1.7\times$ chance,
-with exactly one of the 47 hard pairs at rank 1. A generic code model
-effectively cannot solve a quarter of this dataset.
+cut with SFR while these models are UniXcoder-based, so the ordering is a
+property of the pairs, not of the encoder that defined it. Zero-shot UniXcoder
+reaches $0.053$ on the hard tier---$1.7\times$ chance, with one of the 47 hard
+pairs at rank 1. A generic code model effectively cannot solve a quarter of
+this dataset.
 
 \textbf{Finetuning learns structure, not names.} The finetuned models keep
 96--97\% of their MRR when identifiers are destroyed; zero-shot UniXcoder
-keeps 66\%, which is \emph{less} than the 76\% the lexical baseline keeps. A
-pretrained code model is more dependent on variable names than TF-IDF is.
-That inverts the natural reading of Table~\ref{tab:baselines}: zero-shot
-UniXcoder does not merely fail to beat lexical matching, it is doing a worse
-version of the same thing.
+keeps 66\%, \emph{less} than the lexical baseline's 76\%. A pretrained code
+model is more name-dependent than TF-IDF, so it is not merely failing to beat
+lexical matching---it is doing a worse version of the same thing.
 
 \textbf{On hard pairs, identifiers are a liability.} Both finetuned models do
-\emph{better} without them --- LoRA from $0.388$ to $0.429$, full finetuning
-from $0.550$ to $0.611$, both about $+11\%$ --- while the lexical baseline and
-the zero-shot model get worse. Where implementations diverge structurally, a
-shared name is more often a coincidence than a signal, and a model trained
-without that cue learns the remapping instead of leaning on it.
+\emph{better} without them---LoRA $0.388$ to $0.429$, full finetuning $0.550$ to
+$0.611$, both about $+11\%$---while the lexical and zero-shot models get worse.
+Where implementations diverge structurally, a shared name is more often
+coincidence than signal.
 
 \subsection{Direction and parameter efficiency}
 
@@ -523,89 +485,55 @@ effort and what it currently measures.
 \subsection{What a paired corpus contributes}
 
 Translation tools are evaluated almost entirely on whether their output
-compiles and passes the original tests. TRACTOR's own benchmark is a battery of
-150 C programs scored for correctness and safety~\cite{llnl2024tractorbench}.
-That is the right primary criterion and an incomplete one: a translation can
-pass every test and still be an unfaithful or unidiomatic rendering of the
-source, and a test suite is exactly what legacy C most often lacks. The
-complementary question --- \emph{are these two programs, in two languages, the
-same program?} --- is a similarity judgement, and it is the one \dsname{}
-supplies supervision for.
+compiles and passes the original tests; TRACTOR's own benchmark is 150 C
+programs scored for correctness and safety~\cite{llnl2024tractorbench}. That
+is the right primary criterion and an incomplete one---a translation can pass
+every test and still render its source unfaithfully---and it is unavailable
+where it is most needed, since legacy C is what most often lacks tests. The
+complementary question, \emph{are these two programs the same program?}, is a
+similarity judgement, and it is the one \dsname{} supplies supervision for.
 
-Four concrete uses follow.
+Two uses follow. \textbf{Scoring translator output without tests}: a model
+finetuned on \dsname{} scores a (C, Rust) pair, flagging translations that
+drift from their source, with the per-tier results bounding its usable
+range---$0.55$ MRR on structurally divergent pairs, not the $0.98$ the easy
+tier suggests. \textbf{Finding an existing port}: equivalent functionality
+often already exists in a crate, and locating it is cross-language retrieval
+over whole implementations.
 
-\textbf{Scoring translator output without tests.} A model finetuned on
-\dsname{} assigns a cross-language similarity to a (C, Rust) pair. Applied to a
-translator's input and output it gives a test-free signal that flags
-translations drifting from their source --- usable as a regression check across
-tool versions, or to rank candidates when a tool emits several. The per-tier
-results in Section~\ref{sec:baselines} matter here: the usable range of such a
-score is set by how well a model does on \emph{structurally divergent} pairs,
-which is where the hard tier shows the current ceiling is $0.55$ MRR, not the
-$0.98$ the easy tier would suggest.
+These are competitive programming solutions, without the allocation patterns,
+aliasing and concurrency that make real C hard to port; read the results as a
+measurement on a clean proxy rather than evidence about systems code.
 
-\textbf{Finding an existing port.} Migrating a C codebase rarely starts from
-nothing: equivalent functionality often already exists in Rust, in a crate or
-in a sibling project. Locating it is cross-language retrieval over whole
-implementations, which is the task this dataset measures directly.
-
-\textbf{Cross-language clone and vulnerability tracking.} When a CVE is filed
-against a C implementation, the question of whether a Rust port inherits the
-defect --- or whether a Rust crate is a translation of vulnerable C --- is a
-type-4 clone problem across languages. Type-4 clone corpora are overwhelmingly
-single-language; a paired C/Rust corpus gives the cross-language case
-supervision it has lacked.
-
-\subsection{What it does not support}
-
-The pairs are competitive programming solutions: short, single-file,
-I/O-driven, and free of the allocation patterns, pointer aliasing and
-concurrency that make real C hard to port. Results here should be read as a
-measurement on a clean proxy for the cross-language matching problem, not as
-evidence about systems code, which is where the migration pressure described
-above actually sits. Section~\ref{sec:limitations} returns to this.
-
-\section{Limitations}
+\section{Limitations, Availability and Licensing}
 \label{sec:limitations}
-
-\textbf{Equivalence is inherited, not verified.} No tests or expected I/O
-are distributed. That both submissions were accepted upstream is evidence of
-functional equivalence, not a check of it, and the entry-point renaming means
-the code does not compile standalone. Execution-based verification is the
-clearest line of future work.
-
-\textbf{Competitive programming is not production code.} Solutions are short,
-single-file and I/O-driven; nothing here should be assumed to transfer to
-systems code, which is where the migration pressure actually sits.
-
-\textbf{Upstream identifiers are absent}, so pairs cannot be traced to the
-originating submission, and \textbf{difficulty is a proxy} for embedding
-similarity rather than algorithmic difficulty or translation effort.
-
-\textbf{Variance is measured for one configuration.} The LoRA rows are means
-over four seeds ($\sigma = 0.011$ on MRR); the others are single runs, so that
-spread is the only direct evidence of how much of any gap is seed noise.
-
-\textbf{An earlier release's tier labels were not exactly reproducible.}
-Regenerating them matches the aggregate distribution (mean $0.826$ against a
-reported $0.823$) but only 89\% of individual labels, with disagreement spread
-symmetrically across adjacent tiers---a pattern threshold movement alone cannot
-produce. The labels released here are the regenerated ones, and the raw scores
-now ship alongside them. \textbf{Pre-training contamination is also possible},
-both archives being public.
-
-\section{Availability and Licensing}
 \label{sec:availability}
 
-% TODO: Zenodo DOI (required at camera-ready; get it before submitting),
-% repository URL, Hugging Face URL.
+\textbf{Equivalence is inherited, not verified.} No tests or expected I/O are
+distributed; that both submissions were accepted upstream is evidence of
+functional equivalence, not a check of it, and the entry-point renaming means
+the code does not compile standalone. Execution-based verification is the
+clearest future work. Relatedly, upstream identifiers are absent, so pairs
+cannot be traced to the originating submission, and difficulty is a proxy for
+embedding similarity rather than algorithmic difficulty. These are also
+competitive programming solutions---short, single-file, I/O-driven---so nothing
+here should be assumed to transfer to systems code, and pre-training
+contamination is possible, both archives being public.
 
-\dsname{} aggregates two corpora under different licences, so it is not
-distributed under a single one; every record carries its own SPDX expression.
-The 1018 xCodeEval-derived pairs are CC BY-NC 4.0 and the 839 CodeNet-derived
-pairs are CDLA-Permissive-2.0. The aggregate is therefore non-commercial, and
-attribution to both upstream projects is required. Filtering to the CodeNet
-portion yields a 839-pair subset with no commercial restriction.
+\textbf{Variance is measured for one configuration.} The LoRA rows are means
+over four seeds ($\sigma = 0.011$ on MRR); the others are single runs.
+Separately, an earlier release's tier labels proved not exactly reproducible:
+regenerating them matches the aggregate distribution but only 89\% of individual
+labels, with disagreement spread symmetrically across adjacent tiers---which
+threshold movement alone cannot produce. The released labels are the
+regenerated ones, with raw scores alongside.
+
+\textbf{Licensing.} \dsname{} aggregates two corpora under different
+licences, so every record carries its own SPDX expression: the 1018
+xCodeEval-derived pairs are CC BY-NC 4.0 and the 839 CodeNet-derived pairs are
+CDLA-Permissive-2.0. The aggregate is therefore non-commercial and requires
+attribution to both projects; the CodeNet portion alone gives 839 pairs with no
+commercial restriction.
 
 \section*{Acknowledgements}
 TODO.
