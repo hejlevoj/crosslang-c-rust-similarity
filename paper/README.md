@@ -15,8 +15,20 @@ Submission: https://msr2027-data-tool.hotcrp.com/
 ## Build
 
 ```bash
-cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
+./paper/build.sh            # main.pdf, the 4-page MSR submission
+./paper/build.sh extended   # extended.pdf, the arXiv preprint
+./paper/build.sh --clean
 ```
+
+Two outputs, one source. `main.tex` and `extended.tex` are thin drivers that
+set `\ifextended` and then `\input body.tex`; everything they share is
+defined once, so the versions cannot drift apart. Extended-only material sits
+in `\ifextended ... i` blocks inside `body.tex`.
+
+The extended version carries what does not fit in four pages: the positioning
+table, the size and composition statistics, training hyper-parameters, the
+full per-tier metrics and the per-source breakdown, two further use cases, and
+the reproducibility analysis of the earlier tier labels in detail.
 
 ## Before submitting
 
@@ -40,8 +52,12 @@ MSR submission date rather than before — there is no benefit to posting early
 and it exposes a version that may still change.
 
 ```bash
-./paper/arxiv-package.sh      # builds arxiv-submission.tar.gz
+./paper/arxiv-package.sh      # builds arxiv-submission.tar.gz (extended)
 ```
+
+The tarball carries `extended.tex`, `body.tex`, `refs.bib` and
+`extended.bbl`. `extended.tex` is the top-level file; `body.tex` has to travel
+with it because arXiv compiles from the submission root.
 
 Upload that at https://arxiv.org/submit, choosing **tex** as the format.
 Primary category `cs.SE`, cross-list `cs.LG`. License CC BY 4.0 — that covers

@@ -11,10 +11,11 @@
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-MAIN=main
+MAIN=${1:-main}
+[[ "$MAIN" == "--clean" ]] && MAIN=main
 
 if [[ "${1:-}" == "--clean" ]]; then
-  rm -f $MAIN.aux $MAIN.bbl $MAIN.blg $MAIN.log $MAIN.out p?.log bib*.log paper-build.*
+  rm -f main.aux main.bbl main.blg main.log main.out extended.aux extended.bbl extended.blg extended.log extended.out p?.log bib*.log paper-build.*
   echo "cleaned"
   exit 0
 fi
@@ -98,6 +99,13 @@ echo "=== result ==="
 tr -d '\n' < $MAIN_LOG | grep -oE "\([0-9]+ pages, [0-9]+ bytes" \
   || echo "no PDF produced"
 echo
+# The page limit applies to the MSR submission only; arXiv has none, so the
+# extended build reports its size without judging it.
+if [[ "$MAIN" != "main" ]]; then
+  echo "extended version - arXiv imposes no page limit."
+  exit 0
+fi
+
 # The limit is on the BODY, not the file: 4 pages of paper plus one further
 # page that holds only references. A 5-page PDF is fine if the bibliography
 # starts on page 4 or earlier; it is over if body text runs onto page 5. The
