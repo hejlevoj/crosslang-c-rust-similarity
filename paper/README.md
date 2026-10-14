@@ -31,6 +31,46 @@ cd paper && pdflatex main && bibtex main && pdflatex main && pdflatex main
       (`build.sh` reports this; a 5-page PDF is fine, body text on page 5 is not)
 - [ ] Numbers match the regenerated `outputs/*.json`, not the stale READMEs
 
+
+## Posting to arXiv
+
+MSR's Data and Tool Showcase is single-anonymous, so a preprint before
+submission is allowed and does not break anonymity. Post it on or after the
+MSR submission date rather than before — there is no benefit to posting early
+and it exposes a version that may still change.
+
+```bash
+./paper/arxiv-package.sh      # builds arxiv-submission.tar.gz
+```
+
+Upload that at https://arxiv.org/submit, choosing **tex** as the format.
+Primary category `cs.SE`, cross-list `cs.LG`. License CC BY 4.0 — that covers
+the paper text only; the dataset keeps its own per-record terms
+(`DATA_LICENSES.md`).
+
+Three things that trip up a first submission:
+
+**Endorsement.** arXiv requires an endorsement before your first paper in a
+category. An institutional email speeds the process but does **not** exempt
+you. Start a submission, pick `cs.SE`, and arXiv emails you a link to pass to
+a prospective endorser — an advisor is the usual choice, or an author of a
+paper you cite (their abstract page has a "Which authors of this paper are
+endorsers?" link). Do this **weeks ahead**: the timeline is not under your
+control, and it is the single most common reason a planned preprint slips.
+
+**arXiv compiles the source, it does not take your PDF.** The upload is
+`.tex` + `.bib` + `.bbl`. Auxiliary files (`.aux`, `.log`, `.out`) and the
+built `.pdf` must not be included; the `.bbl` is the documented exception and
+its name must match the main `.tex`. `paper/.gitignore` excludes `*.bbl`, so
+it does not exist in a fresh clone — the script builds it.
+
+**Style files.** `IEEEtran.cls` and `IEEEtran.bst` are in TeX Live, so arXiv
+provides them and they stay out of the tarball.
+
+Before posting, settle what the preprint should contain that the 4-page
+submission cannot: the plan calls for an extended version carrying the full
+per-tier tables and hyperparameters, referenced from the paper as such.
+
 ## Open dependencies on Phase 1
 
 Two tables cannot be finalised yet, both marked `\pending`:
