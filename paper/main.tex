@@ -127,134 +127,16 @@ XLCoST~\cite{zhu2022xlcost} and CoST~\cite{zhu2022cost} align snippets
 rather than whole programs across the 7 languages GeeksForGeeks covers; and
 AVATAR~\cite{ahmad2023avatar} goes deep on Java/Python instead. None includes
 Rust, which is the gap \dsname{} fills and the reason it is one language pair
-rather than a matrix. We present
-\dsname, 1857 C/Rust implementation pairs drawn from competitive programming
-archives, normalised, deduplicated, and stratified into difficulty tiers by
-zero-shot cross-language embedding similarity, with per-record provenance and
-licensing. Cross-language retrieval is hard on this data, and harder than a
-single baseline would suggest: TF-IDF over shared identifiers reaches
-MRR $0.21$ and so beats a pretrained code model at $0.19$, which on the
-hardest quarter of the data scores $1.7\times$ chance. Finetuning reaches
-$0.79$, and lifts that hardest quarter $10\times$. Renaming every user
-identifier settles what is being learned: the finetuned models keep 97\% of
-their accuracy without them, while the pretrained model keeps 66\% --- less
-than the lexical baseline does --- and on structurally divergent pairs the
-finetuned models are \emph{better} without identifiers than with them.
-\end{abstract}
+rather than a matrix.
 
-\begin{IEEEkeywords}
-dataset, cross-language, code similarity, Rust, C, code retrieval
-\end{IEEEkeywords}
-
-\section{Introduction}
-\label{sec:intro}
-
-Memory-safety defects remain the dominant vulnerability class in C. Microsoft
-has for two decades attributed roughly $70\%$ of its CVEs to that
-class~\cite{russinovich2025rustconf}, and Android shows the substitution
-works: its annual memory-safety vulnerabilities fell from 223 in 2019 to under
-50 in 2024 as Rust adoption grew, with roughly $1000\times$ lower defect
-density in Rust than in C and C++~\cite{google2025android}. Policy has
-followed, through CISA's memory-safe roadmaps~\cite{cisa2023roadmaps} and the
-US cyber director's call to adopt memory-safe
-languages~\cite{oncd2024memory}; DARPA's TRACTOR
-programme~\cite{darpa2024tractor} funds the automated translation of legacy C
-to Rust outright, on the premise that the codebases that matter are too large
-to port by hand.
-
-Translation tools are consequently proliferating, and they are evaluated almost
-entirely on whether their output compiles and passes the original test
-suite~\cite{nitin2025c2saferrust,shetty2025syzygy}. That is the right primary
-criterion. It is also incomplete --- a translation can pass every test and
-still be an unfaithful rendering of its source --- and it is unavailable
-precisely where it is most needed, since legacy C is what most often lacks
-tests. The complementary question, \emph{are these two programs, in two
-languages, the same program?}, is a similarity judgement rather than an
-execution one, and answering it with a learned model requires paired
-supervision.
-
-No such corpus exists for this language pair. The parallel code datasets either
-span many languages at snippet
-granularity~\cite{zhu2022xlcost,zhu2022cost} or go deep on a single pair that
-is not this one~\cite{ahmad2023avatar}, and the largest collections are
-grouped by problem rather than aligned across
-languages~\cite{puri2021codenet,lu2021codexglue}. None of them includes Rust.
-
-We present \dsname, 1857 pairs of C and Rust implementations of the same
-competitive programming problem, each with its statement, normalised entry
-points, per-record provenance and licence, a difficulty tier derived from
-zero-shot cross-language embedding similarity, and a frozen stratified split.
-
-Measuring on it produces a result that reframes what the task requires. A
-lexical baseline --- TF-IDF over shared identifiers, no model --- beats a
-pretrained code model zero-shot, because competitive programmers reuse variable
-names across languages. Renaming every user identifier separates the two
-regimes cleanly: the pretrained model loses a third of its accuracy, more than
-the lexical baseline loses, while finetuned models lose almost nothing and on
-structurally divergent pairs do \emph{better} without names than with them.
-Cross-language matching here is learnable, but not from identifiers, and the
-dataset is what makes that distinction measurable.
-
-\noindent\textbf{Contributions.}
-\begin{itemize}
-  \item \dsname, 1857 C/Rust solution pairs with problem statements,
-        normalised entry points, per-record provenance and licensing.
-  \item A difficulty stratification derived from zero-shot cross-language
-        embedding similarity, independent of the model family used in
-        evaluation, which we show transfers to a different family.
-  \item Retrieval baselines per difficulty tier over a frozen stratified
-        split, including a lexical baseline and an identifier ablation that
-        together establish what the task does and does not reduce to.
-\end{itemize}
-
-\section{Related Datasets}
-\label{sec:related}
-
-Parallel code corpora divide by what they align and how many languages they
-span, and Table~\ref{tab:related} places \dsname{} among them.
-
-The largest are not parallel at all. CodeNet~\cite{puri2021codenet} collects
-roughly 14 million submissions across 55 languages from AtCoder and AIZU, and
-POJ-104, distributed as part of CodeXGLUE~\cite{lu2021codexglue}, holds student
-C++ submissions to 104 problems. Both group solutions by problem, so pairs can
-be derived, but neither ships an aligned bilingual corpus and both are
-dominated by C, C++, Java and Python.
-
-Among the explicitly parallel corpora, xCodeEval~\cite{khan2023xcodeeval} is
-the broadest, with 25 million Codeforces examples over 17 languages and
-execution-based evaluation through unit tests.
-XLCoST~\cite{zhu2022xlcost} and CoST~\cite{zhu2022cost} align at the finer
-granularity of code snippets rather than whole programs, across 7 languages
-drawn from GeeksForGeeks; the alignment is what makes them valuable and also
-what restricts them to the languages that site covers.
-AVATAR~\cite{ahmad2023avatar} takes the opposite tack and goes deep on one
-pair, 9{,}515 Java/Python problems with unit tests for a 250-example subset.
-
-None of them includes Rust. That is the gap \dsname{} fills, and the reason it
-is a single language pair rather than a broad matrix: the pair that matters for
-the migration pressure described in Section~\ref{sec:usecases} is C to Rust
-specifically, and no existing corpus aligns those two at the level of whole
-solutions to a shared problem.
-
-The modelling literature this dataset is meant to serve is correspondingly
-single-pair-poor. Unsupervised program translation was established on
-C++/Java/Python by TransCoder~\cite{roziere2020transcoder}, and the pretrained
-code encoders that cross-language retrieval is built
-on---CodeBERT~\cite{feng2020codebert} and
-UniXcoder~\cite{guo2022unixcoder}---were pretrained on corpora in which Rust is
-marginal or absent. Cross-language clone detection has the same shape:
-CLCDSA~\cite{nafi2019clcdsa} detects type-4 clones across Java, C\# and Python
-using syntactic features and API-call similarity, and its evaluation, like the
-corpora above, stops short of Rust.
-
-On the C-to-Rust side specifically, the recent work is on \emph{producing}
-Rust rather than on judging whether the result corresponds to its source.
-C2SaferRust~\cite{nitin2025c2saferrust} decomposes C2Rust's unsafe output into
-slices an LLM rewrites more safely, and Syzygy~\cite{shetty2025syzygy} pairs
-LLM translation with dynamic analysis to keep code and tests consistent. Both
-are evaluated by compilation and test-passing, which is the criterion
-Section~\ref{sec:usecases} argues is necessary and not sufficient.
-
+The modelling literature is correspondingly single-pair-poor. Unsupervised
+program translation was established on C++/Java/Python by
+TransCoder~\cite{roziere2020transcoder}, the pretrained encoders that
+cross-language retrieval builds on---CodeBERT~\cite{feng2020codebert} and
+UniXcoder~\cite{guo2022unixcoder}---saw little or no Rust in pretraining, and
+cross-language clone detection has the same shape:
+CLCDSA~\cite{nafi2019clcdsa} matches type-4 clones across Java, C\# and Python
+with syntactic features and API-call similarity, stopping short of Rust.
 
 \section{Construction}
 \label{sec:construction}
@@ -457,7 +339,8 @@ this dataset.
 \textbf{Finetuning learns structure, not names.} The finetuned models keep
 96--97\% of their MRR when identifiers are destroyed; zero-shot UniXcoder
 keeps 66\%, \emph{less} than the lexical baseline's 76\%. A pretrained code
-model is more name-dependent than TF-IDF, so it is not merely failing to beat
+model is more name-dependent than TF-IDF, so it inverts the natural reading of
+Table~\ref{tab:baselines}: zero-shot UniXcoder is not merely failing to beat
 lexical matching---it is doing a worse version of the same thing.
 
 \textbf{On hard pairs, identifiers are a liability.} Both finetuned models do
