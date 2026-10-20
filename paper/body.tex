@@ -58,14 +58,20 @@ dataset, cross-language, code similarity, Rust, C, code retrieval
 
 Memory-safety defects remain the dominant vulnerability class in C. Microsoft
 has for two decades attributed roughly $70\%$ of its CVEs to that
-class~\cite{russinovich2025rustconf}, and Android shows the substitution
-works: its annual memory-safety vulnerabilities fell from 223 in 2019 to under
-50 in 2024 as Rust adoption grew, with roughly $1000\times$ lower defect
-density in Rust than in C and C++~\cite{google2025android}. Policy has
-followed, through CISA's memory-safe roadmaps~\cite{cisa2023roadmaps} and the
-US cyber director's call to adopt memory-safe
-languages~\cite{oncd2024memory}; DARPA's TRACTOR
-programme~\cite{darpa2024tractor} funds the automated translation of legacy C
+class,\footnote{Reported by Microsoft's Security Response Centre for roughly
+two decades, and restated by its Azure CTO in a RustConf 2025 keynote.} and
+Android shows the substitution works: its annual memory-safety vulnerabilities
+fell from 223 in 2019 to under 50 in 2024 as Rust adoption grew, with roughly
+$1000\times$ lower defect density in Rust than in C and
+C++.\footnote{``Rust in Android: Move Fast and Fix Things,'' Google Security
+Blog, 2025.} Policy has followed, through CISA's memory-safe roadmaps and the
+US cyber director's call to adopt memory-safe languages;\footnote{CISA, ``The
+Case for Memory Safe Roadmaps,'' December 2023; Office of the National Cyber
+Director, ``Back to the Building Blocks: A Path Toward Secure and Measurable
+Software,'' February 2024.} DARPA's TRACTOR programme\footnote{``Eliminating
+Memory Safety Vulnerabilities Once and For All,'' DARPA, July 2024.
+\url{https://www.darpa.mil/news/2024/memory-safety-vulnerabilities}} funds the
+automated translation of legacy C
 to Rust outright, on the premise that the codebases that matter are too large
 to port by hand.
 
@@ -513,7 +519,9 @@ effort and what it currently measures.
 
 Translation tools are evaluated almost entirely on whether their output
 compiles and passes the original tests; TRACTOR's own benchmark is 150 C
-programs scored for correctness and safety~\cite{llnl2024tractorbench}. That
+programs scored for correctness and
+safety.\footnote{``Translating All C to Rust (TRACTOR) Benchmarks,'' MIT
+Lincoln Laboratory. \url{https://www.ll.mit.edu/r-d/projects/}} That
 is the right primary criterion and an incomplete one---a translation can pass
 every test and still render its source unfaithfully---and it is unavailable
 where it is most needed, since legacy C is what most often lacks tests. The
