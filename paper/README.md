@@ -34,8 +34,8 @@ the reproducibility analysis of the earlier tier labels in detail.
 
 - [ ] No `\pending{}` left — `grep -n 'pending{' main.tex`
 - [ ] Every `TODO` resolved — `grep -n TODO main.tex refs.bib`
-- [ ] Every `% VERIFY` in `refs.bib` resolved — 4 of 19 entries carry one
-- [ ] Page numbers, volumes and DOIs filled from DBLP
+- [x] Every entry checked against dblp (2026-10-21); no `% VERIFY` left
+- [ ] Re-check whether Syzygy LLM4Code 2025 proceedings have appeared
 - [ ] Dataset name settled and consistent with the repository and Zenodo
 - [ ] Author list, order and affiliations confirmed
 - [ ] Zenodo DOI minted and cited in Sec. VIII

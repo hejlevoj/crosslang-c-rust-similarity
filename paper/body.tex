@@ -77,7 +77,7 @@ to port by hand.
 
 Translation tools are consequently proliferating, and they are evaluated almost
 entirely on whether their output compiles and passes the original test
-suite~\cite{nitin2025c2saferrust,shetty2025syzygy}. That is the right primary
+suite~\cite{nitin2026c2saferrust,shetty2024syzygy}. That is the right primary
 criterion. It is also incomplete --- a translation can pass every test and
 still be an unfaithful rendering of its source --- and it is unavailable
 precisely where it is most needed, since legacy C is what most often lacks
@@ -126,7 +126,7 @@ span. The largest are not parallel at all:
 CodeNet~\cite{puri2021codenet} and POJ-104, distributed with
 CodeXGLUE~\cite{lu2021codexglue}, group solutions by problem without
 shipping an aligned bilingual corpus. Of the parallel ones,
-xCodeEval~\cite{khan2023xcodeeval} is broadest at 17 languages;
+xCodeEval~\cite{khan2024xcodeeval} is broadest at 17 languages;
 XLCoST~\cite{zhu2022xlcost} and CoST~\cite{zhu2022cost} align snippets
 rather than whole programs across the 7 languages GeeksForGeeks covers; and
 AVATAR~\cite{ahmad2023avatar} goes deep on Java/Python instead. None includes
@@ -145,7 +145,7 @@ Dataset & Languages & Paired & Rust \\
 \midrule
 CodeNet~\cite{puri2021codenet}         & 55  & no  & no \\
 POJ-104~\cite{lu2021codexglue}         & 1   & n/a & no \\
-xCodeEval~\cite{khan2023xcodeeval}     & 17  & yes & no \\
+xCodeEval~\cite{khan2024xcodeeval}     & 17  & yes & no \\
 XLCoST~\cite{zhu2022xlcost}            & 7   & yes & no \\
 CoST~\cite{zhu2022cost}                & 7   & yes & no \\
 AVATAR~\cite{ahmad2023avatar}          & 2   & yes & no \\
@@ -173,7 +173,7 @@ with syntactic features and API-call similarity, stopping short of Rust.
 \subsection{Sources and pairing}
 
 \dsname{} draws on two competitive programming archives: xCodeEval
-\cite{khan2023xcodeeval}, itself derived from Codeforces, and IBM Project
+\cite{khan2024xcodeeval}, itself derived from Codeforces, and IBM Project
 CodeNet \cite{puri2021codenet}, derived from AtCoder. Both distribute accepted
 submissions, so the two implementations of a pair are known to have passed the
 same official tests. A pair is one problem, one accepted C submission, and one
