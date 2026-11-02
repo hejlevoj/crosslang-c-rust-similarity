@@ -1,5 +1,12 @@
 # Depositing CRUSTPairs on Zenodo
 
+> **Status.** The DOI `10.5281/zenodo.23888785` is **reserved** and is now
+> cited throughout the repository and in the paper. It does **not resolve
+> yet** — Zenodo registers a DOI only when the record is published, and
+> `zenodo.org/records/23888785` currently returns 404. Steps 1 to 5 below are
+> done; step 6, Publish, is not. Do not delete the draft: that releases the
+> DOI and every reference to it becomes wrong.
+
 Step by step, with the exact values for this deposit. Checked against
 Zenodo's documentation on 2026-11-02.
 
@@ -148,12 +155,11 @@ Section VII of `paper/main.tex` currently reads:
 > The dataset will additionally be deposited in a persistent archive with a
 > DOI, cited here, for the camera-ready version.
 
-Replace that with the reserved DOI once you have it. That sentence is
-acceptable for the 10 November submission; it is **not** acceptable for the
-camera-ready, where the track requires the DOI.
+That has been done — it now cites `10.5281/zenodo.23888785` alongside the
+repository. `CITATION.cff` and `.zenodo.json` carry the DOI too.
 
-Also update `CITATION.cff`: set `date-released` to the publication day, and
-add a `doi:` field.
+What remains is `date-released` in `CITATION.cff`, which should be the day the
+record is actually published rather than the day the DOI was reserved.
 
 ---
 

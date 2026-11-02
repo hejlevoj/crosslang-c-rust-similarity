@@ -44,7 +44,9 @@ the reproducibility analysis of the earlier tier labels in detail.
 - [ ] Re-check whether Syzygy LLM4Code 2025 proceedings have appeared
 - [ ] Dataset name settled and consistent with the repository and Zenodo
 - [ ] Author list, order and affiliations confirmed
-- [ ] Zenodo DOI minted and cited in Sec. VIII
+- [x] Zenodo DOI cited in the availability section: `10.5281/zenodo.23888785`
+- [ ] **Publish the Zenodo record** — the DOI is reserved, not registered,
+      so it does not resolve yet
 - [ ] Body within 4 pages, bibliography starting on page 4 or earlier
       (`build.sh` reports this; a 5-page PDF is fine, body text on page 5 is not)
 - [ ] Numbers match the regenerated `outputs/*.json`, not the stale READMEs

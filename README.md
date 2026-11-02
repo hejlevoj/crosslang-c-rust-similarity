@@ -29,4 +29,6 @@ See the README in each subfolder for detailed instructions.
 
 ## Citation
 
-If you use this dataset or code, please cite this repository. For questions or collaboration, open an issue or pull request.
+The dataset is archived at <https://doi.org/10.5281/zenodo.23888785>; `CITATION.cff` has the
+full entry. Please cite both the deposit and the paper describing it. For
+questions or collaboration, open an issue or pull request.

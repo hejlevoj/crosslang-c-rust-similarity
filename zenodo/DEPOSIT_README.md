@@ -90,4 +90,7 @@ the derived fields and the split from the dataset itself.
 
 ## Citing
 
-See `CITATION.cff`. Please cite both this deposit and the paper describing it.
+This deposit: <https://doi.org/10.5281/zenodo.23888785>
+
+See `CITATION.cff` for the full entry. Please cite both the deposit and the
+paper describing it.

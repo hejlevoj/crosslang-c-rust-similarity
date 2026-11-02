@@ -4,6 +4,13 @@
 
 ---
 
+## Citing
+
+The dataset is archived at <https://doi.org/10.5281/zenodo.23888785>. See `CITATION.cff` for the
+full entry; please cite both the deposit and the paper describing it.
+
+---
+
 ## Schema (v1.0)
 
 Each entry in `dataset.jsonl` is a JSON object with the following fields:

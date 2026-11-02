@@ -3,10 +3,13 @@ message: "If you use this dataset, please cite both the dataset and the paper."
 title: "CRUSTPairs: A Cross-Language Dataset of Paired C and Rust Solutions"
 type: dataset
 version: 1.0.0
-# Set this to the day you publish the Zenodo record.
+# Set this to the day the Zenodo record is actually published. The DOI below
+# is reserved; it does not resolve until then.
 date-released: 2026-11-02
 license: CC-BY-NC-4.0
+doi: 10.5281/zenodo.23888785
 repository-code: "https://github.com/hejlevoj/crosslang-c-rust-similarity"
+url: "https://doi.org/10.5281/zenodo.23888785"
 
 # Order follows the paper. Add ORCIDs before publishing - Zenodo will link
 # the record to each author's profile, and reviewers can check affiliations.
