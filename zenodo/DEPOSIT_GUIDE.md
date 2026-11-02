@@ -5,23 +5,23 @@
 > `10.5281/zenodo.23888784` always points at the newest version. All six steps
 > below are done — but see the correction note immediately after.
 
-> **One correction still needed.** The record was published under
-> **CC BY 4.0**. It should be **CC BY-NC 4.0**: 1018 of the 1857 pairs derive
-> from xCodeEval, whose own README licenses it CC BY-NC 4.0, so the aggregate
-> cannot grant commercial use. As published, the record promises a permission
-> the upstream data does not give, and it contradicts the paper,
-> `DATA_LICENSES.md`, `CITATION.cff`, the per-record `license` field and the
-> README inside the archive — all of which say non-commercial.
+> **A licence correction, worth recording.** The record first went up under
+> **CC BY 4.0** and was corrected to **CC BY-NC 4.0** the same day. The fix was
+> a metadata edit — Edit, change the licence, Publish — so the DOI stayed the
+> same, the version stayed 1.0.0 and the archive's md5 never changed. That is
+> the general shape of a Zenodo correction: metadata is editable at any time
+> and only a change to the *files* needs a new version.
 >
-> Zenodo metadata is editable at any time and a licence change needs no new
-> version: open the record, **Edit**, change the licence to *Creative Commons
-> Attribution-NonCommercial 4.0 International*, **Publish** again. The DOI and
-> the files are untouched. Section 4 below explains why this licence is not a
-> free choice.
+> The licence matters here because 1018 of the 1857 pairs derive from
+> xCodeEval, whose own README licenses it CC BY-NC 4.0, so the aggregate cannot
+> grant commercial use. Under CC BY the landing page promised a permission the
+> upstream data does not give. Section 4 explains why this is not a free
+> choice.
 >
-> The likely cause is worth knowing: the xCodeEval **Hugging Face mirror** is
-> tagged `cc-by-4.0`, contradicting the project's own README. The README is the
-> authors' declaration and the more restrictive reading, so it governs.
+> The likely cause is worth knowing if you ever redeposit: the xCodeEval
+> **Hugging Face mirror** is tagged `cc-by-4.0`, contradicting the project's
+> own README. The README is the authors' declaration and the more restrictive
+> reading, so it governs.
 
 Step by step, with the exact values for this deposit. Checked against
 Zenodo's documentation on 2026-11-02.
