@@ -1,0 +1,49 @@
+{
+  "title": "CRUSTPairs: A Cross-Language Dataset of Paired C and Rust Solutions",
+  "upload_type": "dataset",
+  "version": "1.0.0",
+
+  "description": "<p>1857 pairs of C and Rust implementations of the same competitive programming problem, drawn from IBM Project CodeNet (839 pairs, AtCoder) and xCodeEval (1018 pairs, Codeforces). Both sides of a pair are accepted submissions to the same problem, so functional equivalence is inherited from provenance rather than verified by execution.</p><p>Each record carries the upstream problem statement with its format declared, both implementations with entry points normalised to <code>solution</code>, the source corpus, an SPDX licence expression, a difficulty tier with the raw cross-language embedding similarity it was cut from, and a frozen train/validation/test assignment stratified by source and tier.</p><p><strong>Licensing is per record, not per dataset.</strong> The aggregate is non-commercial because the xCodeEval-derived pairs are CC BY-NC 4.0; the CodeNet-derived pairs are CDLA-Permissive-2.0 and can be filtered out as a commercially usable 839-pair subset. The accompanying code is MIT. See DATA_LICENSES.md in the archive.</p><p>The deposit also contains the construction and evaluation scripts, the retrieval results reported in the paper, and the LoRA adapter trained on the dataset.</p>",
+
+  "creators": [
+    {
+      "name": "Hejlek, Vojtěch",
+      "affiliation": "Faculty of Information Technology in Prague"
+    },
+    {
+      "name": "Almeida, Leonardo Jesus",
+      "affiliation": "University of São Paulo"
+    },
+    {
+      "name": "Lopes, Alneu de Andrade",
+      "affiliation": "University of São Paulo"
+    }
+  ],
+
+  "license": "cc-by-nc-4.0",
+  "access_right": "open",
+
+  "keywords": [
+    "cross-language code similarity",
+    "code retrieval",
+    "C",
+    "Rust",
+    "program translation",
+    "memory safety",
+    "competitive programming",
+    "dataset"
+  ],
+
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/hejlevoj/crosslang-c-rust-similarity",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+
+  "doi": "10.5281/zenodo.23888785",
+
+  "notes": "Derived from IBM Project CodeNet (CDLA-Permissive-2.0) and xCodeEval (CC BY-NC 4.0). Attribution to both upstream projects is required. Before publishing, add isDerivedFrom entries pointing at the two source corpora, and an isSupplementTo entry for the paper once it has a DOI. No identifier is given here for either source because none was verified; a plausible-looking DOI that resolves to the wrong record is worse than none."
+}

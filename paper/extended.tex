@@ -1,0 +1,11 @@
+% Extended version, for arXiv. Same body as the MSR submission plus the
+% material that does not fit in four pages: the positioning table, the
+% size and composition statistics, the full per-tier and per-origin
+% results, training hyper-parameters, the third use case, and the
+% limitations as separate items rather than merged.
+%
+% Build: ./build.sh extended
+\documentclass[10pt,conference]{IEEEtran}
+\newif\ifextended
+\extendedtrue
+\input{body}

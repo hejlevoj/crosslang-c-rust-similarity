@@ -3,7 +3,7 @@ Baseline evaluation: zero-shot UniXcoder embeddings, no finetuning.
 Encodes all C and Rust functions and runs the evaluation metrics.
 """
 
-import json, os
+import json, os, sys
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModel
@@ -11,9 +11,16 @@ from evaluate import evaluate_embeddings, print_results
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load  # noqa: E402
+from common.runtime import (  # noqa: E402
+    get_device, env_int, set_seed, anonymize_enabled, run_tag)
+from common.anonymize import anonymize_rows  # noqa: E402
+
+RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME = "microsoft/unixcoder-base"
 MAX_LEN = 512
-BATCH_SIZE = 16
+BATCH_SIZE = env_int("EVAL_BATCH_SIZE", 16)
 
 
 def mean_pool(token_embeddings, attention_mask):
@@ -39,14 +46,31 @@ def encode(texts, tokenizer, model, device, batch_size=BATCH_SIZE):
     return np.vstack(all_embs)
 
 
-def load_split(path):
-    with open(path) as f:
-        data = json.load(f)
-    return [d["c"] for d in data], [d["rust"] for d in data]
+
+def _rows(split):
+    """Rows for one split, with the identifier ablation applied if requested."""
+    rows = load(split=split)
+    if anonymize_enabled():
+        rows = anonymize_rows(rows)
+    return rows
+
+
+def load_split(split):
+    rows = _rows(split)
+    return ([r["c_code"] for r in rows],
+            [r["rust_code"] for r in rows],
+            [r["difficulty"] for r in rows],
+            [r["origin"] for r in rows])
 
 
 def main():
-    device = torch.device("cpu")
+    # Create the results directory up front, not at the end. A LoRA run once
+    # trained, evaluated, and then died on the final write because this did not
+    # exist - hours of GPU time with nothing saved. Anything that can fail
+    # about the output path should fail in the first second.
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+
+    device = get_device()
     print(f"Loading model {MODEL_NAME} ...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModel.from_pretrained(MODEL_NAME).to(device)
@@ -54,17 +78,19 @@ def main():
 
     results_all = {}
     for split in ["val", "test"]:
-        c_texts, rust_texts = load_split(os.path.join(ROOT, "data", f"data_{split}.json"))
+        c_texts, rust_texts, diffs, origins = load_split(split)
         print(f"\nEncoding {split} C ({len(c_texts)} samples)...")
         c_embs = encode(c_texts, tokenizer, model, device)
         print(f"Encoding {split} Rust ({len(rust_texts)} samples)...")
         rust_embs = encode(rust_texts, tokenizer, model, device)
 
-        res = evaluate_embeddings(c_embs, rust_embs, split_name=f"baseline_{split}")
+        res = evaluate_embeddings(c_embs, rust_embs,
+                                  split_name=f"baseline_{split}",
+                                  difficulties=diffs, origins=origins)
         print_results(res)
         results_all[split] = res
 
-    with open(os.path.join(ROOT, "outputs", "results_baseline.json"), "w") as f:
+    with open(os.path.join(RESULTS_DIR, f"results_baseline{run_tag()}.json"), "w") as f:
         json.dump(results_all, f, indent=2)
     print("Saved results_baseline.json")
 

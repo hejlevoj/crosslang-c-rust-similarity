@@ -10,6 +10,7 @@ Expected CPU time: ~2-3h for 5 epochs over 1500 pairs at batch_size=8.
 
 import json
 import os
+import sys
 import time
 import numpy as np
 import torch
@@ -21,11 +22,24 @@ from evaluate import evaluate_embeddings, print_results
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
+sys.path.insert(0, os.path.join(ROOT, ".."))
+from common.load import load  # noqa: E402
+from common.runtime import (  # noqa: E402
+    get_device, env_int, set_seed, anonymize_enabled, run_tag)
+from common.anonymize import anonymize_rows  # noqa: E402
+
+RESULTS_DIR  = os.path.join(ROOT, "outputs")
 MODEL_NAME   = "microsoft/unixcoder-base"
-OUTPUT_DIR   = os.path.join(ROOT, "model_st")
+# The run tag has to be in the checkpoint path, not just in the results
+# filename. Every variant of this script writes a checkpoint and then
+# reloads it for the final evaluation, so a shared directory lets two
+# concurrent runs evaluate each other's adapter and report it under the
+# wrong tag. Verified not to have happened in the matrix run - the four
+# LoRA seeds came out distinct - but only by luck of scheduling.
+OUTPUT_DIR   = os.path.join(ROOT, f"model_st{run_tag()}")
 MAX_LEN      = 512
-BATCH_SIZE   = 8
-EPOCHS       = 5
+BATCH_SIZE   = env_int("BATCH_SIZE", 8)
+EPOCHS       = env_int("EPOCHS", 5)
 LR           = 1e-5       # lower LR than LoRA since we update all params
 WARMUP_RATIO = 0.1
 TEMPERATURE  = 0.07
@@ -57,7 +71,7 @@ def infonce_loss(c_emb, r_emb, temp=TEMPERATURE):
     c_emb = F.normalize(c_emb, dim=-1)
     r_emb = F.normalize(r_emb, dim=-1)
     logits = (c_emb @ r_emb.T) / temp
-    labels = torch.arange(len(c_emb))
+    labels = torch.arange(len(c_emb), device=c_emb.device)
     return (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels)) / 2
 
 
@@ -74,17 +88,36 @@ def encode_split(data, tokenizer, model, device, batch_size=16):
     return np.vstack(c_embs), np.vstack(r_embs)
 
 
-def load_split(path):
-    with open(path) as f:
-        return json.load(f)
+
+def _rows(split):
+    """Rows for one split, with the identifier ablation applied if requested."""
+    rows = load(split=split)
+    if anonymize_enabled():
+        rows = anonymize_rows(rows)
+    return rows
+
+
+def load_split(split):
+    """Rows for one frozen split, keyed the way this pipeline expects."""
+    return [{"problem_id": r["problem_id"], "c": r["c_code"],
+             "rust": r["rust_code"], "difficulty": r["difficulty"],
+             "origin": r["origin"]}
+            for r in _rows(split)]
 
 
 def main():
-    device = torch.device("cpu")
+    # Create the results directory up front, not at the end. A LoRA run once
+    # trained, evaluated, and then died on the final write because this did not
+    # exist - hours of GPU time with nothing saved. Anything that can fail
+    # about the output path should fail in the first second.
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    set_seed()
 
-    train_data = load_split(os.path.join(ROOT, "data", "data_train.json"))
-    val_data   = load_split(os.path.join(ROOT, "data", "data_val.json"))
-    test_data  = load_split(os.path.join(ROOT, "data", "data_test.json"))
+    device = get_device()
+
+    train_data = load_split("train")
+    val_data   = load_split("val")
+    test_data  = load_split("test")
 
     print(f"Loading model: {MODEL_NAME}")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -131,7 +164,9 @@ def main():
         print(f"Epoch {epoch} done. avg_loss={avg_loss:.4f}  time={time.time()-t0:.0f}s")
 
         c_embs, r_embs = encode_split(val_data, tokenizer, model, device)
-        val_res = evaluate_embeddings(c_embs, r_embs, split_name=f"st_val_epoch{epoch}")
+        val_res = evaluate_embeddings(
+            c_embs, r_embs, split_name=f"st_val_epoch{epoch}",
+            difficulties=[d["difficulty"] for d in val_data])
         print_results(val_res)
 
         if val_res["MRR@10"] > best_val_mrr:
@@ -145,11 +180,14 @@ def main():
     results_all = {}
     for split, data in [("val", val_data), ("test", test_data)]:
         c_embs, r_embs = encode_split(data, tokenizer, model_best, device)
-        res = evaluate_embeddings(c_embs, r_embs, split_name=f"st_{split}")
+        res = evaluate_embeddings(
+            c_embs, r_embs, split_name=f"st_{split}",
+            difficulties=[d["difficulty"] for d in data],
+            origins=[d["origin"] for d in data])
         print_results(res)
         results_all[split] = res
 
-    with open(os.path.join(ROOT, "outputs", "results_st.json"), "w") as f:
+    with open(os.path.join(RESULTS_DIR, f"results_st{run_tag()}.json"), "w") as f:
         json.dump(results_all, f, indent=2)
     print("Saved results_st.json")
 
