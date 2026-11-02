@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite both the dataset and the paper."
+title: "CRUSTPairs: A Cross-Language Dataset of Paired C and Rust Solutions"
+type: dataset
+version: 1.0.0
+# Set this to the day you publish the Zenodo record.
+date-released: 2026-11-02
+license: CC-BY-NC-4.0
+repository-code: "https://github.com/hejlevoj/crosslang-c-rust-similarity"
+
+# Order follows the paper. Add ORCIDs before publishing - Zenodo will link
+# the record to each author's profile, and reviewers can check affiliations.
+authors:
+  - family-names: "Hejlek"
+    given-names: "Vojtěch"
+    affiliation: "Faculty of Information Technology in Prague"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Almeida"
+    given-names: "Leonardo Jesus"
+    affiliation: "University of São Paulo"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Lopes"
+    given-names: "Alneu de Andrade"
+    affiliation: "University of São Paulo"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
+abstract: >-
+  1857 pairs of C and Rust implementations of the same competitive programming
+  problem, drawn from IBM Project CodeNet and xCodeEval, normalised,
+  deduplicated, and stratified into difficulty tiers by zero-shot
+  cross-language embedding similarity. Each record carries its problem
+  statement, provenance, SPDX licence expression, difficulty tier and raw
+  similarity score, and a frozen stratified train/validation/test split.
+
+keywords:
+  - cross-language code similarity
+  - code retrieval
+  - C
+  - Rust
+  - program translation
+  - memory safety
+  - dataset
+
+# The licence above is the one that governs the aggregate, because 1018 of the
+# 1857 pairs derive from xCodeEval under CC BY-NC 4.0. The 839 CodeNet-derived
+# pairs are CDLA-Permissive-2.0 and the accompanying code is MIT; every record
+# carries its own SPDX expression in the `license` field. See DATA_LICENSES.md.
