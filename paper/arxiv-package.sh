@@ -48,7 +48,12 @@ echo "Wrote $OUT:"
 tar -tzf "$OUT" | sed 's/^/  /'
 echo
 echo "Upload this at https://arxiv.org/submit - choose 'tex' as the format."
-echo "Primary category cs.SE, cross-list cs.LG, licence CC BY 4.0."
+echo "Primary category cs.SE, cross-list cs.LG."
+echo
+echo "Licence: 'arXiv.org perpetual, non-exclusive license 1.0'. The choice is"
+echo "irrevocable for the version it is made on, and MSR proceedings carry an"
+echo "IEEE copyright notice - see ARXIV_GUIDE.md section 2 before deciding"
+echo "otherwise. It covers the paper text only, never the dataset."
 echo
 echo "Note: $TARGET.tex is the top-level file. arXiv compiles from the"
 echo "submission root, and body.tex is \input from there, so both are included."

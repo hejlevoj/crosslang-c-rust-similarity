@@ -89,32 +89,26 @@ The tarball carries `extended.tex`, `body.tex`, `refs.bib` and
 with it because arXiv compiles from the submission root.
 
 Upload that at https://arxiv.org/submit, choosing **tex** as the format.
-Primary category `cs.SE`, cross-list `cs.LG`. License CC BY 4.0 — that covers
-the paper text only; the dataset keeps its own per-record terms
-(`DATA_LICENSES.md`).
+Primary category `cs.SE`, cross-list `cs.LG`.
 
-Three things that trip up a first submission:
+**See [`ARXIV_GUIDE.md`](ARXIV_GUIDE.md)** for the field-by-field walkthrough,
+with the abstract already converted to plain text. Two decisions in it are
+yours and are worth making before you open the form:
 
-**Endorsement.** arXiv requires an endorsement before your first paper in a
-category. An institutional email speeds the process but does **not** exempt
-you. Start a submission, pick `cs.SE`, and arXiv emails you a link to pass to
-a prospective endorser — an advisor is the usual choice, or an author of a
-paper you cite (their abstract page has a "Which authors of this paper are
-endorsers?" link). Do this **weeks ahead**: the timeline is not under your
-control, and it is the single most common reason a planned preprint slips.
+**Who submits.** Since 21 January 2026 an institutional email alone no longer
+earns endorsement. Alneu de Andrade Lopes already has papers in the `cs`
+endorsement domain, so he can either submit or endorse — which avoids waiting
+on a stranger. The prerequisite is claiming ownership of
+[arXiv:2508.14330](https://arxiv.org/abs/2508.14330); see the guide.
 
-**arXiv compiles the source, it does not take your PDF.** The upload is
-`.tex` + `.bib` + `.bbl`. Auxiliary files (`.aux`, `.log`, `.out`) and the
-built `.pdf` must not be included; the `.bbl` is the documented exception and
-its name must match the main `.tex`. `paper/.gitignore` excludes `*.bbl`, so
-it does not exist in a fresh clone — the script builds it.
+**The licence, which is irrevocable per version.** The guide recommends the
+`arXiv.org perpetual, non-exclusive license 1.0` rather than CC BY 4.0,
+because MSR proceedings carry an IEEE copyright notice and a CC BY grant on v1
+cannot be withdrawn. Either way it covers the paper text only — the dataset
+keeps its own per-record terms (`DATA_LICENSES.md`).
 
 **Style files.** `IEEEtran.cls` and `IEEEtran.bst` are in TeX Live, so arXiv
 provides them and they stay out of the tarball.
-
-Before posting, settle what the preprint should contain that the 4-page
-submission cannot: the plan calls for an extended version carrying the full
-per-tier tables and hyperparameters, referenced from the paper as such.
 
 ## Open dependencies on Phase 1
 
