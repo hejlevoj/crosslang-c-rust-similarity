@@ -20,7 +20,13 @@ Submission: https://msr2027-data-tool.hotcrp.com/
 ./paper/build.sh --clean
 ```
 
-Two outputs, one source. `main.tex` and `extended.tex` are thin drivers that
+**The two versions have diverged.** `main.tex` is now a standalone file: it
+is the authors' edited submission version, restored after the paper was desk
+rejected from the wrong track. `extended.tex` still builds from `body.tex`,
+which holds the pre-divergence text. Reconcile them before posting to arXiv -
+the extended version currently lacks the editorial changes in `main.tex`.
+
+Previously, and the state to return to: two outputs, one source. `main.tex` and `extended.tex` are thin drivers that
 set `\ifextended` and then `\input body.tex`; everything they share is
 defined once, so the versions cannot drift apart. Extended-only material sits
 in `\ifextended ... i` blocks inside `body.tex`.
