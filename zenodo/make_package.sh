@@ -9,8 +9,8 @@
 # versioned, and a naive copy would ship them.
 #
 # This builds the package. It does not upload: the deposit is created under
-# the authors' Zenodo account, and publishing is irreversible once a DOI is
-# minted.
+# the authors' Zenodo account. See DEPOSIT_GUIDE.md for the steps, including
+# reserving the DOI before publishing so it can go in the camera-ready.
 
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
@@ -99,6 +99,8 @@ Next, by hand:
   5. Reserve the DOI before publishing. Zenodo will show it while the deposit
      is still a draft, which is what lets you cite it in the camera-ready.
 
-Publishing is irreversible: a published record cannot be deleted, only a new
-version issued. Check the licence and the author list before you press it.
+After publishing, metadata stays editable but files are yours to change for
+only 45 days; after that, corrections go through a new version with its own
+DOI. Deleting a published record needs Zenodo support and leaves a tombstone.
+Check the licence and the author list before you press it.
 NEXT
