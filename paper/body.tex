@@ -9,25 +9,46 @@
 \usepackage{url}
 \usepackage{xcolor}
 
-% Numbers still being regenerated. Every \pending must be gone before
-% submission - grep for it.
+% \pending marks anything still to be filled in; it prints in red so it
+% cannot be missed. Nothing may remain at submission - grep for it.
 \newcommand{\pending}[1]{\textcolor{red}{#1}}
 
-\newcommand{\dsname}{CRUSTPairs}   % TODO: confirm the dataset name
+\newcommand{\dsname}{CRUSTPairs}
+
+% Two macros for text that differs between the versions, so that the
+% difference is visible at the point it happens rather than hidden in a
+% second copy of the paragraph.
+%
+%   \runin{...}        a run-in heading: bold where there is room, plain
+%                      text where there is not
+%   \variant{a}{b}     'a' in the extended version, 'b' in the four-page one
+%
+% Everything they guard is a concession to the page limit, not a difference
+% of substance. If a claim differs between the versions, that is a bug.
+\ifextended
+  \newcommand{\runin}[1]{\textbf{#1}}
+  \newcommand{\variant}[2]{#1}
+\else
+  \newcommand{\runin}[1]{#1}
+  \newcommand{\variant}[2]{#2}
+\fi
 
 \begin{document}
 
 \title{\dsname: A Cross-Language Dataset of Paired C and Rust Solutions}
 
 \author{
-\IEEEauthorblockN{Leonardo J. Almeida}
+\IEEEauthorblockN{Vojt\v{e}ch Hejlek}
+\IEEEauthorblockA{Faculty of Information Technology in Prague\\
+hejlevoj@fit.cvut.cz}
+\and
+\IEEEauthorblockN{Leonardo Jesus Almeida}
 \IEEEauthorblockA{University of S\~ao Paulo\\
 leonardo.j.almeida@usp.br}
 \and
-\IEEEauthorblockN{Vojt\v{e}ch Hejlek}
-\IEEEauthorblockA{TODO affiliation\\
-TODO email}
-% TODO: confirm author list, order, and the advisor's inclusion.
+\IEEEauthorblockN{Alneu de Andrade Lopes}
+\IEEEauthorblockA{University of S\~ao Paulo\\
+alneu@icmc.usp.br}
 }
 
 \maketitle
@@ -43,7 +64,7 @@ single baseline would suggest: TF-IDF over shared identifiers reaches
 MRR $0.21$ and so beats a pretrained code model at $0.19$, which on the
 hardest quarter of the data scores $1.7\times$ chance. Finetuning reaches
 $0.79$, and lifts that hardest quarter $10\times$. Renaming every user
-identifier settles what is being learned: the finetuned models keep 97\% of
+identifier settles what is being learned: the finetuned models keep 96--97\% of
 their accuracy without them, while the pretrained model keeps 66\% --- less
 than the lexical baseline does --- and on structurally divergent pairs the
 finetuned models are \emph{better} without identifiers than with them.
@@ -98,13 +119,14 @@ competitive programming problem, each with its statement, normalised entry
 points, per-record provenance and licence, a difficulty tier derived from
 zero-shot cross-language embedding similarity, and a frozen stratified split.
 
-Measuring on it reframes what the task requires. A lexical baseline---TF-IDF
-over shared identifiers, no model---beats a pretrained code model zero-shot,
+\variant{Measuring on it reframes what the task requires. A lexical
+baseline---TF-IDF over shared identifiers, no model---beats}{A lexical
+baseline beats} a pretrained code model zero-shot,
 because competitive programmers reuse variable names across languages. Renaming
 every user identifier separates the regimes: the pretrained model loses a third
 of its accuracy, more than the lexical baseline does, while finetuned models
-lose almost nothing. Cross-language matching here is learnable, but not from
-identifiers.
+lose almost nothing.\variant{ Cross-language matching here is learnable, but
+not from identifiers.}{}
 
 \noindent\textbf{Contributions.}
 \begin{itemize}
@@ -167,8 +189,6 @@ with syntactic features and API-call similarity, stopping short of Rust.
 
 \section{Construction}
 \label{sec:construction}
-
-% ~0.75 page. Figure 1 is the pipeline with counts at each stage.
 
 \subsection{Sources and pairing}
 
@@ -393,21 +413,21 @@ UniXcoder, full      & .979$\to$.951 & .821$\to$.756 & .550$\to$\textbf{.611} & 
 Three things follow, and together they are the strongest evidence that this
 dataset measures what it is meant to.
 
-\textbf{Retrieval is monotone in tier for every configuration.} The tiers were
+\variant{\textbf{Retrieval is monotone in tier for every configuration.} The}{The} tiers were
 cut with SFR while these models are UniXcoder-based, so the ordering is a
 property of the pairs, not of the encoder that defined it. Zero-shot UniXcoder
 reaches $0.053$ on the hard tier---$1.7\times$ chance, with one of the 47 hard
 pairs at rank 1. A generic code model effectively cannot solve a quarter of
 this dataset.
 
-\textbf{Finetuning learns structure, not names.} The finetuned models keep
+\variant{\textbf{Finetuning learns structure, not names.} The}{The} finetuned models keep
 96--97\% of their MRR when identifiers are destroyed; zero-shot UniXcoder
 keeps 66\%, \emph{less} than the lexical baseline's 76\%. A pretrained code
 model is more name-dependent than TF-IDF, so it inverts the natural reading of
 Table~\ref{tab:baselines}: zero-shot UniXcoder is not merely failing to beat
 lexical matching---it is doing a worse version of the same thing.
 
-\textbf{On hard pairs, identifiers are a liability.} Both finetuned models do
+\variant{\textbf{On hard pairs, identifiers are a liability.} Both}{Both} finetuned models do
 \emph{better} without them---LoRA $0.388$ to $0.429$, full finetuning $0.550$ to
 $0.611$, both about $+11\%$---while the lexical and zero-shot models get worse.
 Where implementations diverge structurally, a shared name is more often
@@ -528,11 +548,11 @@ where it is most needed, since legacy C is what most often lacks tests. The
 complementary question, \emph{are these two programs the same program?}, is a
 similarity judgement, and it is the one \dsname{} supplies supervision for.
 
-Two uses follow. \textbf{Scoring translator output without tests}: a model
+\variant{Two uses follow. \textbf{Scoring translator output without tests}: a}{A} model
 finetuned on \dsname{} scores a (C, Rust) pair, flagging translations that
 drift from their source, with the per-tier results bounding its usable
 range---$0.55$ MRR on structurally divergent pairs, not the $0.98$ the easy
-tier suggests. \textbf{Finding an existing port}: equivalent functionality
+tier suggests. \variant{\textbf{Finding an existing port}: equivalent}{Equivalent} functionality
 often already exists in a crate, and locating it is cross-language retrieval
 over whole implementations.
 
@@ -561,7 +581,7 @@ measurement on a clean proxy rather than evidence about systems code.
 \label{sec:limitations}
 \label{sec:availability}
 
-\textbf{Equivalence is inherited, not verified.} No tests or expected I/O are
+\runin{Equivalence is inherited, not verified.} No tests or expected I/O are
 distributed; that both submissions were accepted upstream is evidence of
 functional equivalence, not a check of it, and the entry-point renaming means
 the code does not compile standalone. Execution-based verification is the
@@ -572,7 +592,7 @@ competitive programming solutions---short, single-file, I/O-driven---so nothing
 here should be assumed to transfer to systems code, and pre-training
 contamination is possible, both archives being public.
 
-\textbf{Variance is measured for one configuration.} The LoRA rows are means
+\variant{\textbf{Variance is measured for one configuration.} }{}The LoRA rows are means
 over four seeds ($\sigma = 0.011$ on MRR); the others are single runs.
 Separately, an earlier release's tier labels proved not exactly reproducible:
 regenerating them matches the aggregate distribution but only 89\% of individual
@@ -598,15 +618,17 @@ changed no label at all, so hardware non-determinism is not a plausible
 explanation for the original discrepancy.
 \fi
 
-\textbf{Licensing.} \dsname{} aggregates two corpora under different
+\dsname{}, the construction and evaluation scripts, the frozen split and the
+trained adapter are archived at
+\url{https://doi.org/10.5281/zenodo.23888785}, and developed at
+\url{https://github.com/hejlevoj/crosslang-c-rust-similarity}.
+
+\variant{\textbf{Licensing.} }{}\dsname{} aggregates two corpora under different
 licences, so every record carries its own SPDX expression: the 1018
 xCodeEval-derived pairs are CC BY-NC 4.0 and the 839 CodeNet-derived pairs are
 CDLA-Permissive-2.0. The aggregate is therefore non-commercial and requires
 attribution to both projects; the CodeNet portion alone gives 839 pairs with no
 commercial restriction.
-
-\section*{Acknowledgements}
-TODO.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
