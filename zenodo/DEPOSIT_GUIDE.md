@@ -1,11 +1,27 @@
 # Depositing CRUSTPairs on Zenodo
 
-> **Status.** The DOI `10.5281/zenodo.23888785` is **reserved** and is now
-> cited throughout the repository and in the paper. It does **not resolve
-> yet** — Zenodo registers a DOI only when the record is published, and
-> `zenodo.org/records/23888785` currently returns 404. Steps 1 to 5 below are
-> done; step 6, Publish, is not. Do not delete the draft: that releases the
-> DOI and every reference to it becomes wrong.
+> **Status.** The record is **published** (2026-11-02). The version DOI
+> `10.5281/zenodo.23888785` resolves, and the concept DOI
+> `10.5281/zenodo.23888784` always points at the newest version. All six steps
+> below are done — but see the correction note immediately after.
+
+> **One correction still needed.** The record was published under
+> **CC BY 4.0**. It should be **CC BY-NC 4.0**: 1018 of the 1857 pairs derive
+> from xCodeEval, whose own README licenses it CC BY-NC 4.0, so the aggregate
+> cannot grant commercial use. As published, the record promises a permission
+> the upstream data does not give, and it contradicts the paper,
+> `DATA_LICENSES.md`, `CITATION.cff`, the per-record `license` field and the
+> README inside the archive — all of which say non-commercial.
+>
+> Zenodo metadata is editable at any time and a licence change needs no new
+> version: open the record, **Edit**, change the licence to *Creative Commons
+> Attribution-NonCommercial 4.0 International*, **Publish** again. The DOI and
+> the files are untouched. Section 4 below explains why this licence is not a
+> free choice.
+>
+> The likely cause is worth knowing: the xCodeEval **Hugging Face mirror** is
+> tagged `cc-by-4.0`, contradicting the project's own README. The README is the
+> authors' declaration and the more restrictive reading, so it governs.
 
 Step by step, with the exact values for this deposit. Checked against
 Zenodo's documentation on 2026-11-02.
@@ -110,15 +126,16 @@ in its `README.md`.
 
 Add these under **Related works**:
 
-| Relation | Identifier |
-|---|---|
-| is supplement to | `https://github.com/hejlevoj/crosslang-c-rust-similarity` |
-| is derived from | IBM Project CodeNet — *look up its DOI* |
-| is derived from | xCodeEval — *look up its DOI* |
+These are on the record, and all three were checked on 2026-11-02:
 
-The two source DOIs are deliberately absent from `.zenodo.json`: neither was
-verified, and an identifier that resolves to the wrong record is worse than a
-missing one. Take two minutes on dblp or the projects' own pages.
+| Relation | Identifier | Resolves to |
+|---|---|---|
+| is supplement to | `https://github.com/hejlevoj/crosslang-c-rust-similarity` | the repository |
+| is derived from | `10.5281/zenodo.4814770` | *IBM/Project_CodeNet: Initial release 1.0*, Zenodo, 2021 |
+| is derived from | `10.18653/v1/2024.acl-long.367` | *XCodeEval: …*, ACL 2024, pp. 6766–6805 |
+
+They are deliberately absent from `.zenodo.json`, which was written before
+either was verified; the live record is the authoritative copy.
 
 Once the paper has a DOI, come back and add **is supplemented by** pointing at
 it. Metadata stays editable forever, so this costs nothing later.
@@ -156,20 +173,17 @@ Section VII of `paper/main.tex` currently reads:
 > DOI, cited here, for the camera-ready version.
 
 That has been done — it now cites `10.5281/zenodo.23888785` alongside the
-repository. `CITATION.cff` and `.zenodo.json` carry the DOI too.
+repository. `CITATION.cff` and `.zenodo.json` carry the DOI too, and
+`date-released` is the publication date.
 
-What remains is `date-released` in `CITATION.cff`, which should be the day the
-record is actually published rather than the day the DOI was reserved.
+The paper cites the **version** DOI, which is the right choice: it resolves to
+the exact files the reported numbers were measured on. Use the concept DOI
+`10.5281/zenodo.23888784` only where you mean "whatever is current".
 
 ---
 
-## One thing to settle first
+## 8. Once the paper has a DOI
 
-The paper points at `github.com/hejlevoj/crosslang-c-rust-similarity`, whose
-default branch still holds the superseded 1886-pair dataset with the old
-five-field schema. A reviewer following that link sees something other than
-what the paper describes.
-
-Depositing on Zenodo gives a correct, citable copy and largely solves this.
-But the repository link is in the paper too, so merging the working branch to
-`master` is still worth doing before submitting.
+Come back and add a **is supplemented by** related identifier pointing at it.
+Metadata stays editable, so this costs nothing later — and it makes the deposit
+and the paper discoverable from each other.

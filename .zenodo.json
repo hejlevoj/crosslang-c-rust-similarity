@@ -45,5 +45,5 @@
 
   "doi": "10.5281/zenodo.23888785",
 
-  "notes": "Derived from IBM Project CodeNet (CDLA-Permissive-2.0) and xCodeEval (CC BY-NC 4.0). Attribution to both upstream projects is required. Before publishing, add isDerivedFrom entries pointing at the two source corpora, and an isSupplementTo entry for the paper once it has a DOI. No identifier is given here for either source because none was verified; a plausible-looking DOI that resolves to the wrong record is worse than none."
+  "notes": "Derived from IBM Project CodeNet (CDLA-Permissive-2.0) and xCodeEval (CC BY-NC 4.0). Attribution to both upstream projects is required. The published record (10.5281/zenodo.23888785) additionally carries isDerivedFrom entries for both sources, verified on 2026-11-02: 10.5281/zenodo.4814770 for CodeNet and 10.18653/v1/2024.acl-long.367 for xCodeEval. Add an isSupplementTo entry for the paper once it has a DOI. This file is kept for Zenodo's GitHub-release integration; the live record is authoritative."
 }

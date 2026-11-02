@@ -45,8 +45,12 @@ the reproducibility analysis of the earlier tier labels in detail.
 - [ ] Dataset name settled and consistent with the repository and Zenodo
 - [ ] Author list, order and affiliations confirmed
 - [x] Zenodo DOI cited in the availability section: `10.5281/zenodo.23888785`
-- [ ] **Publish the Zenodo record** — the DOI is reserved, not registered,
-      so it does not resolve yet
+- [x] **Publish the Zenodo record** — published 2026-11-02; the DOI resolves,
+      concept DOI `10.5281/zenodo.23888784`
+- [ ] **Fix the licence on the Zenodo record** — it was published as
+      `CC-BY-4.0`, but the aggregate is `CC-BY-NC-4.0` (1018 of the 1857 pairs
+      derive from xCodeEval). Zenodo metadata is editable at any time; this
+      one is not cosmetic — see `zenodo/DEPOSIT_GUIDE.md`
 - [ ] Body within 4 pages, bibliography starting on page 4 or earlier
       (`build.sh` reports this; a 5-page PDF is fine, body text on page 5 is not)
 - [ ] Numbers match the regenerated `outputs/*.json`, not the stale READMEs
